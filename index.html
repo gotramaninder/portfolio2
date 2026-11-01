@@ -404,8 +404,10 @@ details[open] summary::after{transform:rotate(45deg)}details p{padding:0 4px 24p
  <div class="snap" id="snap"></div>
  <h3 class="sh" id="reels-h">Video editing</h3>
  <div class="reels" id="reels"></div>
+ <h3 class="sh" style="margin-top:70px">Edited videos · Full quality</h3><div class="reels" id="mp4videos"></div>
  <h3 class="sh" id="designs-h" style="margin-top:70px">Graphic design</h3>
  <div class="designs" id="designs"></div>
+ <h3 class="sh" style="margin-top:70px">Instagram post designs</h3><div class="designs" id="socialposts"></div>
 </div></section>
 
 <section id="clients"><div class="wrap">
@@ -484,7 +486,7 @@ details[open] summary::after{transform:rotate(45deg)}details p{padding:0 4px 24p
  <div class="foot"><span>Maninder, Ahmedabad, India. Available for remote work worldwide.</span><span><a href="review.html">Leave a review</a><a href="admin.html">Admin</a><a href="#top">Back to top</a></span></div>
 </div></footer>
 
-<script>var REELS=[],DESIGNS=[],PROOF=[]</script>
+<script>var REELS=[],VIDEOS=[],POSTS=[],DESIGNS=[],PROOF=[]</script>
 <script src="work.js"></script>
 <script>
 (function(){
@@ -607,14 +609,16 @@ function reelCard(r){var rc=mk('article','rc');
 function renderReels(){var g=document.getElementById('reels');g.innerHTML='';
  if(!REELS.length){for(var i=0;i<4;i++){var rc=mk('article','rc ph'),a=mk('div','reel');a.appendChild(mk('span','pl'));a.appendChild(mk('span','cl','Coming soon'));a.appendChild(mk('strong',null,'New reel dropping soon'));rc.appendChild(a);g.appendChild(rc)}return}
  REELS.forEach(function(r){if(cur==='all'||r.client===cur)g.appendChild(reelCard(r))})}
+function renderVideos(){var g=document.getElementById("mp4videos");g.innerHTML="";(VIDEOS||[]).forEach(function(v){if(cur!=="all"&&v.client!==cur)return;var card=mk("article","rc"),wrap=mk("div","reel"),vid=mk("video");vid.controls=true;vid.preload="metadata";vid.playsInline=true;vid.src=v.video;vid.setAttribute("aria-label",v.title||"Edited video");if(v.cover)vid.poster=PV[v.cover]||v.cover;wrap.appendChild(vid);wrap.appendChild(mk("span","cl",CL[v.client]||v.client||"Client"));wrap.appendChild(mk("strong",null,v.title||"Edited video"));card.appendChild(wrap);g.appendChild(card)})}
+function renderPosts(){var g=document.getElementById("socialposts");g.innerHTML="";(POSTS||[]).forEach(function(p){if(cur!=="all"&&p.client!==cur)return;var b=mk("button","post");b.type="button";if(p.img)b.style.backgroundImage=cssUrl(PV[p.img]||p.img);b.appendChild(mk("span",null,(p.title||"Instagram post")+" | "+(CL[p.client]||p.client||"")));b.addEventListener("click",function(){if(!p.img)return;var lb=mk("div","lb"),im=mk("img");im.src=PV[p.img]||p.img;im.alt=p.title||"Instagram post design";lb.appendChild(im);lb.addEventListener("click",function(){lb.remove()});document.body.appendChild(lb)});g.appendChild(b)})}
 function renderDesigns(){var g=document.getElementById('designs');g.innerHTML='';
  if(!DESIGNS.length){for(var i=0;i<6;i++){var p=mk('div','post');p.style.cursor='default';p.appendChild(mk('span',null,'Coming soon'));g.appendChild(p)}return}
  DESIGNS.forEach(function(d){if(!(cur==='all'||d.client===cur))return;var p=mk('button','post');p.type='button';if(d.img)p.style.backgroundImage=cssUrl(PV[d.img]||d.img);p.appendChild(mk('span',null,(d.title||'Design')+' | '+(CL[d.client]||d.client||'')));
   p.addEventListener('click',function(){if(!d.img)return;var lb=mk('div','lb'),im=mk('img');im.src=PV[d.img]||d.img;im.alt=d.title||'Design';lb.appendChild(im);function x(){lb.remove();removeEventListener('keydown',k)}function k(e){if(e.key==='Escape')x()}lb.addEventListener('click',x);addEventListener('keydown',k);document.body.appendChild(lb)});g.appendChild(p)})}
-function glitch(){['reels','designs'].forEach(function(id){var e=document.getElementById(id);e.classList.remove('gl');void e.offsetWidth;if(!rm)e.classList.add('gl')})}
-function renderAll(){renderSnap();renderReels();renderDesigns()}
+function glitch(){['reels','designs','mp4videos','socialposts'].forEach(function(id){var e=document.getElementById(id);e.classList.remove('gl');void e.offsetWidth;if(!rm)e.classList.add('gl')})}
+function renderAll(){renderSnap();renderReels();renderVideos();renderDesigns();renderPosts()}
 renderAll();
-document.querySelectorAll('.chips button').forEach(function(b){b.addEventListener('click',function(){cur=b.dataset.f;glitch();document.querySelectorAll('.chips button').forEach(function(x){x.classList.toggle('on',x===b)});renderReels();renderDesigns()})});
+document.querySelectorAll('.chips button').forEach(function(b){b.addEventListener('click',function(){cur=b.dataset.f;glitch();document.querySelectorAll('.chips button').forEach(function(x){x.classList.toggle('on',x===b)});renderReels();renderVideos();renderDesigns();renderPosts()})});
 
 })();
 </script>
