@@ -1,6 +1,16 @@
 REELS=[
  {
   "client": "fre",
+  "title": "smooth to savage",
+  "url": "https://www.instagram.com/reel/DavQiQGstZJ/",
+  "cover": "",
+  "views": 500,
+  "likes": 33,
+  "comments": 2,
+  "shares": 6
+ },
+ {
+  "client": "fre",
   "title": "majboor",
   "url": "https://www.instagram.com/reel/Dak4HlGsWoN/",
   "cover": "",
