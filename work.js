@@ -312,6 +312,21 @@ REELS=[
 ];
 DESIGNS=[
  {
+  "client": "urb",
+  "title": "Mockup design",
+  "img": "designs/1793520503422.jpg"
+ },
+ {
+  "client": "urb",
+  "title": "Design",
+  "img": "designs/1793520481437.jpg"
+ },
+ {
+  "client": "urb",
+  "title": "spirit Design",
+  "img": "designs/1793520466269.jpg"
+ },
+ {
   "client": "ims",
   "title": "CTA ",
   "img": "designs/1793520100987.jpg"
