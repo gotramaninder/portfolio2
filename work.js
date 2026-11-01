@@ -122,6 +122,11 @@ REELS=[
 ];
 DESIGNS=[
  {
+  "client": "mes",
+  "title": "Grand Opening",
+  "img": "designs/1793517329861.jpg"
+ },
+ {
   "client": "urb",
   "title": "Melting Design",
   "img": "designs/1793515262755.jpg"
