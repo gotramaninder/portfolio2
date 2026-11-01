@@ -1,6 +1,16 @@
 REELS=[
  {
   "client": "fre",
+  "title": "The urge to Get posted",
+  "url": "https://www.instagram.com/reel/DeBoEdFyy0u/",
+  "cover": "",
+  "views": 1600,
+  "likes": 50,
+  "comments": 4,
+  "shares": 25
+ },
+ {
+  "client": "fre",
   "title": "Beauty of Ahmedabad",
   "url": "https://www.instagram.com/reel/DcwiOdIgKaz/",
   "cover": "",
