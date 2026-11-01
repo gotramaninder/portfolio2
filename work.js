@@ -1,6 +1,16 @@
 REELS=[
  {
   "client": "fre",
+  "title": "majboor",
+  "url": "https://www.instagram.com/reel/Dak4HlGsWoN/",
+  "cover": "",
+  "views": 630,
+  "likes": 39,
+  "comments": 5,
+  "shares": 5
+ },
+ {
+  "client": "fre",
   "title": "Breaking down Boundaries",
   "url": "https://www.instagram.com/reel/DaiHSBxMh7S/",
   "cover": "",
