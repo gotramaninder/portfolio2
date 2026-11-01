@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Instrument+Sans:wght@400;500;700&display=swap">
 <script>document.documentElement.className='js'</script>
 <style>
-:root{--ink:#15120E;--lil:#F1EEE3;--yel:#FFDD3C;--red:#FF3D2E;--cob:#3A3CFF;--pnk:#FF8FD0;--mute:#6B6558;
+:root{--ink:#15120E;--lil:#F1EEE3;--yel:#FFE02E;--red:#FF2E4D;--cob:#2E3BFF;--pnk:#FF6FC8;--lim:#B8FF2E;--cyn:#19E3FF;--mute:#6B6558;
 --d:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif;--b:"Instrument Sans",system-ui,sans-serif}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth;scroll-padding-top:80px;background:var(--ink)}
@@ -82,20 +82,21 @@ a{color:inherit}
 @media (min-width:861px) and (max-height:860px){.dh{display:none}.hero{padding-bottom:150px}.hero .btns{margin-top:24px}.tag{font-size:clamp(24px,min(3.3vw,5.2vh),42px)}}
 /* bubbles */
 .orbs{position:absolute;inset:0;z-index:5;pointer-events:none;overflow:hidden}
-.orb{position:absolute;left:0;top:0;border:0;padding:0;border-radius:50%;display:grid;place-items:center;text-align:center;overflow:hidden;color:#fff;font:800 16px/1 var(--d);letter-spacing:-.02em;text-shadow:0 1px 6px rgba(0,0,0,.35);cursor:grab;touch-action:none;pointer-events:auto;user-select:none;-webkit-user-select:none;will-change:transform;box-shadow:inset -7px -12px 22px rgba(0,0,0,.3),inset 7px 7px 16px rgba(255,255,255,.5),0 16px 26px rgba(21,18,14,.22)}
+.orb{position:absolute;left:0;top:0;border:0;padding:0;border-radius:50%;display:grid;place-items:center;text-align:center;overflow:hidden;color:#fff;font:800 16px/1 var(--d);letter-spacing:-.02em;text-shadow:0 1px 6px rgba(0,0,0,.35);cursor:grab;touch-action:none;pointer-events:auto;user-select:none;-webkit-user-select:none;will-change:transform;box-shadow:inset -7px -12px 22px rgba(0,0,0,.3),inset 7px 7px 16px rgba(255,255,255,.5),0 18px 34px -8px var(--gl,rgba(21,18,14,.3))}
+.orb::after{content:"";position:absolute;inset:-12%;border-radius:50%;pointer-events:none;background:conic-gradient(transparent 0 55%,rgba(255,255,255,.4) 75%,transparent 92%);mix-blend-mode:overlay;animation:sp 7s linear infinite}
 .orb::before{content:"";position:absolute;inset:0;border-radius:50%;pointer-events:none;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.9) 0,rgba(255,255,255,0) 26%),radial-gradient(circle at 72% 88%,rgba(255,255,255,.3),transparent 38%)}
 .orb span{position:relative;z-index:1;pointer-events:none;display:block}
 .orb small{display:block;font:500 .55em var(--b);margin-top:3px;text-shadow:none;letter-spacing:0}
 .orb.hold{cursor:grabbing}
-.o1{background:radial-gradient(circle at 30% 30%,#FFE14A,#FF8A2B 45%,#FF3D8B)}
-.o2{background:radial-gradient(circle at 35% 30%,#4A1F1F,#0B0808 62%);border:4px solid #FF3D2E}
-.o3{background:linear-gradient(135deg,#B8FF3C,#00D68F);color:var(--ink);text-shadow:none}
-.o4{background:radial-gradient(circle at 30% 30%,#FFB3E6,#FF3FA4 58%,#8A1FFF)}
-.o5{background:conic-gradient(from 20deg,#FF3D2E,#FFDD3C,#3AE08A,#2F6BFF,#B14CFF,#FF3D2E)}
-.o6{background:radial-gradient(circle at 30% 30%,#7DF3E8,#0FA3B1 55%,#3A3CFF)}
-.o7{background:radial-gradient(circle at 40% 35%,#C9A6FF,#7B3CFF 55%,#2A0B7A)}
-.o8{background:radial-gradient(circle at 30% 30%,#5B5148,#1A1612 70%);border:4px solid #FF8FD0}
-.o9{background:radial-gradient(circle at 30% 30%,#FF8A7A,#FF3D2E 60%,#B3150A)}
+.o1{background:radial-gradient(circle at 30% 30%,#FFF35A,#FF9A00 42%,#FF1F6D);--gl:#FF9A00}
+.o2{background:radial-gradient(circle at 35% 30%,#8B72FF,#2E3BFF 55%,#00C2FF);border:4px solid #FFE02E;--gl:#2E3BFF}
+.o3{background:linear-gradient(135deg,#D4FF2E,#00E08A 60%,#00C2FF);color:var(--ink);text-shadow:none;--gl:#00E08A}
+.o4{background:radial-gradient(circle at 30% 30%,#FFC2F0,#FF2DA4 52%,#8B2BFF);--gl:#FF2DA4}
+.o5{background:conic-gradient(from 20deg,#FF2E4D,#FFE02E,#2EEA8A,#19B6FF,#B14CFF,#FF2E4D);--gl:#B14CFF}
+.o6{background:radial-gradient(circle at 30% 30%,#9CFFF5,#00C8D8 50%,#2E3BFF);--gl:#00C8D8}
+.o7{background:radial-gradient(circle at 40% 35%,#E0B3FF,#9A3CFF 52%,#4A12FF);--gl:#9A3CFF}
+.o8{background:radial-gradient(circle at 30% 30%,#FFB36B,#FF5A1F 55%,#C4005A);border:4px solid #FFE02E;--gl:#FF5A1F}
+.o9{background:radial-gradient(circle at 30% 30%,#FFA29A,#FF2E4D 55%,#C4002B);--gl:#FF2E4D}
 /* glitch on filter */
 .gl .rc,.gl .post{animation:gl .6s steps(1) 1}
 @keyframes gl{0%{clip-path:inset(0 0 80% 0);transform:translateX(-16px)}15%{clip-path:inset(35% 0 40% 0);transform:translateX(14px);filter:hue-rotate(70deg)}30%{clip-path:inset(60% 0 8% 0);transform:translateX(-10px)}50%{clip-path:inset(10% 0 55% 0);transform:translateX(8px);filter:hue-rotate(-70deg)}75%{clip-path:inset(0 0 25% 0);transform:translateX(-4px)}100%{clip-path:inset(0);transform:none;filter:none}}
@@ -235,6 +236,39 @@ details[open] summary::after{transform:rotate(45deg)}details p{padding:0 4px 24p
 .ob em{position:absolute;inset:-10%;border-radius:50%;background:conic-gradient(transparent 0 55%,rgba(255,255,255,.55) 75%,transparent 90%);mix-blend-mode:overlay;animation:sp 5s linear infinite}
 .ob span{position:relative;text-shadow:0 1px 4px rgba(0,0,0,.45)}.ob:hover{transform:scale(1.18) translateY(-6px)}.ob.on{outline-color:var(--ink)}
 @keyframes sp{to{transform:rotate(360deg)}}@keyframes fl{50%{translate:0 -10px}}
+
+/* extras */
+.flash{animation:flash 1.6s ease .45s 1;transform-origin:left center}
+@keyframes flash{0%,100%{transform:none}35%{transform:scale(1.08) rotate(-1.2deg);color:#fff;text-shadow:0 0 28px var(--pnk)}}
+.stgl{pointer-events:auto;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.stgl button{font:700 16px var(--b);padding:12px 22px;border-radius:999px;border:2px solid var(--ink);background:var(--ink);color:var(--lil);cursor:pointer;transition:background .2s,transform .2s}
+.stgl button:hover{background:var(--red);border-color:var(--red);color:#fff;transform:translateY(-3px)}
+.s-pnk{background:var(--pnk);padding-bottom:120px;color:var(--ink)}
+.shots{display:grid;gap:26px 22px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+.shot{background:#fff;padding:12px 12px 52px;border:0;rotate:-2deg;box-shadow:0 18px 40px rgba(21,18,14,.28);position:relative;cursor:zoom-in;text-align:left;font:inherit;color:var(--ink);transition:rotate .3s,transform .3s}
+.shot:nth-child(even){rotate:2.4deg}.shot:nth-child(3n){rotate:-.8deg}
+.shot::before{content:"";position:absolute;top:-12px;left:50%;width:80px;height:26px;margin-left:-40px;background:rgba(255,224,46,.9);rotate:-3deg}
+.shot:hover{rotate:0deg;transform:translateY(-8px) scale(1.04)}
+.shot .im{display:block;aspect-ratio:9/16;background:linear-gradient(160deg,var(--cob),var(--red)) center/cover;border-radius:4px}
+.shot.ph .im{background:repeating-linear-gradient(45deg,#f3f0ff 0 12px,#fff 12px 24px);border:2px dashed var(--ink)}
+.shot b{position:absolute;bottom:12px;left:14px;right:14px;font:800 17px/1.1 var(--d);letter-spacing:-.02em}
+.tl2{border-bottom:2px solid var(--ink)}
+.st2{display:grid;grid-template-columns:120px 1fr;gap:22px;padding:30px 0;border-top:2px solid var(--ink);transition:padding .3s,background .3s}
+.st2:hover{padding-left:20px;background:var(--lim)}
+.st2>b{font:800 clamp(48px,7vw,92px)/.9 var(--d);letter-spacing:-.05em;color:var(--red)}.st2:nth-child(even)>b{color:var(--cob)}
+.st2 small{font:700 13px var(--b);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.st2 h3{font-size:clamp(26px,3.8vw,48px);margin:6px 0 8px}.st2 p{max-width:56ch;font-size:19px}
+.bf2{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:start}
+.f2 label{display:block;font:700 15px var(--b);margin:18px 0 8px}.f2 label:first-child{margin-top:0}
+.f2 input,.f2 select,.f2 textarea{width:100%;padding:15px 18px;border-radius:18px;border:2px solid #fff;background:transparent;color:#fff;font:500 17px var(--b)}
+.f2 ::placeholder{color:rgba(255,255,255,.65)}.f2 select option{color:#15120E}
+.pk{display:flex;gap:10px;flex-wrap:wrap}
+.pk button{font:700 16px var(--b);padding:11px 22px;border-radius:999px;border:2px solid #fff;background:transparent;color:#fff;cursor:pointer;transition:background .2s,color .2s,transform .2s}
+.pk button:hover,.pk button.on{background:var(--yel);border-color:var(--yel);color:var(--ink);transform:translateY(-2px)}
+.wap small{display:block;font:700 13px var(--b);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;opacity:.85}
+.wab{background:#DCF8C6;color:#15120E;border-radius:24px 24px 4px 24px;padding:20px 22px;font:500 17px/1.55 var(--b);white-space:pre-wrap;box-shadow:0 22px 44px rgba(0,0,0,.3);margin-bottom:24px;word-break:break-word}
+.wap .btn.y:hover{background:var(--red);border-color:var(--red);color:#fff}
+@media (max-width:860px){.bf2{grid-template-columns:1fr;gap:34px}.st2{grid-template-columns:70px 1fr;gap:14px}}
 </style>
 </head>
 <body>
@@ -257,9 +291,9 @@ details[open] summary::after{transform:rotate(45deg)}details p{padding:0 4px 24p
 <div class="orbs" id="orbs">
  <button type="button" class="orb o1" data-go="#work" data-f="ims" aria-label="See IMS work"><span>IMS</span></button>
  <button type="button" class="orb o2" data-go="#proof" aria-label="See results"><span>14.5M<small>views</small></span></button>
- <button type="button" class="orb o3" data-go="#work" data-f="all" aria-label="See all reels"><span>Reels</span></button>
+ <button type="button" class="orb o3" data-go="#reels-h" data-f="all" aria-label="See all reels"><span>Reels</span></button>
  <button type="button" class="orb o4" data-go="#work" data-f="mes" aria-label="See Mesmereyes work"><span>Salon</span></button>
- <button type="button" class="orb o5" data-go="#work" data-f="all" aria-label="See designs"><span>Design</span></button>
+ <button type="button" class="orb o5" data-go="#designs-h" data-f="all" aria-label="See designs"><span>Design</span></button>
  <button type="button" class="orb o6" data-go="#work" data-f="taj" aria-label="See Taj Beauty work"><span>Taj<small>Beauty</small></span></button>
  <button type="button" class="orb o7" data-go="#proof" aria-label="See results"><span>+3,550<small>followers</small></span></button>
  <button type="button" class="orb o8" data-go="#work" data-f="urb" aria-label="See UrbaNest work"><span>Urba<br>Nest</span></button>
@@ -320,15 +354,21 @@ details[open] summary::after{transform:rotate(45deg)}details p{padding:0 4px 24p
  </div>
 </div></section>
 
-<section id="stage" class="stg" aria-label="Pick a brand to see its work"><div class="stgc"><small>Tap an orb</small><h3 id="stgt">Pick a world.</h3><p id="stgp"></p></div><div id="tiles"></div><div class="dock" id="dock"></div></section>
+<section id="shots" class="s-pnk"><div class="wrap">
+ <h2 class="hd"><span>See it for yourself.</span></h2>
+ <p class="lead">Real screenshots from Instagram Insights, straight from the pages I ran. Tap one to zoom in.</p>
+ <div class="shots" id="shots-grid"></div>
+</div></section>
+
+<section id="stage" class="stg" aria-label="Pick a brand to see its work"><div class="stgc"><small>Tap an orb</small><h3 id="stgt">Pick a world.</h3><p id="stgp"></p><div class="stgl"><button type="button" data-t="#reels-h">Watch the reels</button><button type="button" data-t="#designs-h">See the designs</button></div></div><div id="tiles"></div><div class="dock" id="dock"></div></section>
 <section id="work" class="s-ink"><div class="wrap">
  <h2 class="hd"><span>Selected work.</span></h2>
  <p class="lead">Reels, edits and designs for institutes, salons, international clients and my own brand. Every reel shows its real Instagram numbers. Tap one to watch it.</p>
  <div class="chips" role="group" aria-label="Filter work"><button class="on" data-f="all">All</button><button data-f="ims">IMS</button><button data-f="mes">Mesmereyes</button><button data-f="taj">Taj Beauty</button><button data-f="urb">UrbaNest</button><button data-f="fre">Freelance</button></div>
  <div class="snap" id="snap"></div>
- <h3 class="sh">Video editing</h3>
+ <h3 class="sh" id="reels-h">Video editing</h3>
  <div class="reels" id="reels"></div>
- <h3 class="sh" style="margin-top:70px">Graphic design</h3>
+ <h3 class="sh" id="designs-h" style="margin-top:70px">Graphic design</h3>
  <div class="designs" id="designs"></div>
 </div></section>
 
@@ -341,6 +381,18 @@ details[open] summary::after{transform:rotate(45deg)}details p{padding:0 4px 24p
   <div class="r"><h3>IMS</h3><span>Coaching institute, Gujarat and Rajasthan</span><span>Social media, June to September 2026</span></div>
   <div class="r"><h3>Freelance</h3><span>Brands and creators</span><span>Reels, edits and designs</span></div>
   <div class="r"><h3>UrbaNest Clothing</h3><span>Clothing brand</span><span>Founder: brand, content and design</span></div>
+ </div>
+</div></section>
+
+<section id="journey"><div class="wrap">
+ <h2 class="hd"><span>How I got here.</span></h2>
+ <p class="lead">From design and edits for clients to running full Instagram pages that reach millions.</p>
+ <div class="tl2">
+  <div class="st2"><b>01</b><div><small>Where it started</small><h3>Freelance design and video editing</h3><p>I began by designing posts and editing videos for clients, including Taj Beauty in the UK.</p></div></div>
+  <div class="st2"><b>02</b><div><small>My own brand</small><h3>Founded UrbaNest Clothing</h3><p>Building a clothing label taught me brand, content and design from the owner's side.</p></div></div>
+  <div class="st2"><b>03</b><div><small>June 2026</small><h3>Social Media Executive at IMS</h3><p>I took over the Instagram pages of three branches: Ahmedabad, Jaipur and Bopal.</p></div></div>
+  <div class="st2"><b>04</b><div><small>September 2026</small><h3>14.5M views later</h3><p>I wrapped up with 14.5M views and +3,550 followers across the three pages.</p></div></div>
+  <div class="st2"><b>05</b><div><small>Now</small><h3>Mesmereyes, and open for more</h3><p>I'm freelancing for a salon and open to freelance projects and full-time roles.</p></div></div>
  </div>
 </div></section>
 
@@ -370,6 +422,21 @@ details[open] summary::after{transform:rotate(45deg)}details p{padding:0 4px 24p
   <details><summary>How do we get started?</summary><p>Send me a message on WhatsApp or Instagram with what you need. I'll reply, understand your goals and suggest the best next step.</p></details>
  </div>
 </div></section>
+
+<section id="brief" class="s-cob"><div class="wrap">
+ <h2 class="hd"><span>Got a project? Start here.</span></h2>
+ <p class="lead">Fill this in and watch your message write itself. One tap and it opens in my WhatsApp, ready to send.</p>
+ <div class="bf2">
+  <div class="f2">
+   <label>What do you need?</label><div class="pk" id="bk"></div>
+   <label for="bn">Your name or brand</label><input id="bn" type="text" maxlength="60" placeholder="e.g. Riya, Glow Studio">
+   <label for="bl">Instagram page or website (optional)</label><input id="bl" type="text" maxlength="120" placeholder="@yourpage">
+   <label for="bg">Main goal</label><select id="bg"><option>Grow followers</option><option>Get more sales or leads</option><option>Launch something new</option><option>Better looking content</option><option>Not sure yet</option></select>
+   <label for="bm">Anything else?</label><textarea id="bm" rows="3" maxlength="500" placeholder="Tell me a little about it"></textarea>
+  </div>
+  <div class="wap"><small>Your message to Maninder</small><div class="wab" id="wab"></div><a class="btn y" id="bw" data-mag href="https://wa.me/919712890124" target="_blank" rel="noopener">Send on WhatsApp</a></div>
+ </div>
+</div></section>
 </main>
 
 <footer class="contact" id="contact" style="margin-top:130px"><div class="wrap">
@@ -379,7 +446,7 @@ details[open] summary::after{transform:rotate(45deg)}details p{padding:0 4px 24p
  <div class="foot"><span>Maninder, Ahmedabad, India. Available for remote work worldwide.</span><a href="#top">Back to top</a></div>
 </div></footer>
 
-<script>var REELS=[],DESIGNS=[]</script>
+<script>var REELS=[],DESIGNS=[],PROOF=[]</script>
 <script src="work.js"></script>
 <script>
 (function(){
@@ -404,7 +471,7 @@ var tcl=document.getElementById('tcl'),hero=document.getElementById('top'),name=
 var orbsEl=document.getElementById('orbs'),orbs=[].slice.call(orbsEl.children),F=[1.15,.95,1,.9,1.05,.9,1,.85,.9],P=[],W=0,HH=0,floor=0,ceilOn=false,drag=null,lastW=innerWidth;
 function baseR(){return Math.max(32,Math.min(80,hero.clientWidth*.056,hero.clientHeight*.085))}
 function hp(e){var b=hero.getBoundingClientRect();return{x:e.clientX-b.left,y:e.clientY-b.top}}
-function go(o){var f=o.dataset.f;if(f){var b=document.querySelector('.chips button[data-f="'+f+'"]');if(b)b.click()}var t=document.querySelector(o.dataset.go);if(t)t.scrollIntoView({behavior:rm?'auto':'smooth'})}
+function go(o){var f=o.dataset.f;if(f){var b=document.querySelector('.chips button[data-f="'+f+'"]');if(b)b.click()}var t=document.querySelector(o.dataset.go);if(t){t.scrollIntoView({behavior:rm?'auto':'smooth'});t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash')}}
 function render(){orbs.forEach(function(o,i){var q=P[i];if(!q)return;o.style.transform='translate('+(q.x-q.r)+'px,'+(q.y-q.r)+'px)';o.firstChild.style.transform='rotate('+(Math.sin(q.a)*.4)+'rad)'})}
 function build(){
  W=hero.clientWidth;HH=hero.clientHeight;floor=HH-34;ceilOn=false;drag=null;var br=baseR();
@@ -504,9 +571,9 @@ document.querySelectorAll('.chips button').forEach(function(b){b.addEventListene
 </script>
 <script>
 (function(){
-var C=[['all','All work','Reels, edits and designs from every brand.','#FF3D2E','#7B1208'],['ims','IMS','Three coaching pages, 14.5M views in one season.','#FFDD3C','#B07A00'],['mes','Mesmereyes','Salon content and creatives. Working now.','#FF8FD0','#9A2A6B'],['taj','Taj Beauty','UK beauty brand. Graphic design and video editing.','#7DF3E8','#0A6E78'],['urb','UrbaNest','My own clothing brand, built from scratch.','#7B8CFF','#1A1A7A'],['fre','Freelance','Reels, edits and designs for brands and creators.','#9BFFC9','#0B7A4A']];
-var dock=document.getElementById('dock'),tl=document.getElementById('tiles'),T=document.getElementById('stgt'),P=document.getElementById('stgp');
-function show(i){var c=C[i];[].forEach.call(dock.children,function(b,j){b.classList.toggle('on',j===i)});
+var C=[['all','All work','Reels, edits and designs from every brand.','#FF4D6D','#B0002A'],['ims','IMS','Three coaching pages, 14.5M views in one season.','#FFE94D','#FF8A00'],['mes','Mesmereyes','Salon content and creatives. Working now.','#FF8AD8','#C400A0'],['taj','Taj Beauty','UK beauty brand. Graphic design and video editing.','#7DFFF0','#00A7C7'],['urb','UrbaNest','My own clothing brand, built from scratch.','#9AA6FF','#3B1FFF'],['fre','Freelance','Reels, edits and designs for brands and creators.','#B8FF2E','#00B864']];
+var key='all',dock=document.getElementById('dock'),tl=document.getElementById('tiles'),T=document.getElementById('stgt'),P=document.getElementById('stgp');
+function show(i){var c=C[i];key=c[0];window.__stgKey=key;[].forEach.call(dock.children,function(b,j){b.classList.toggle('on',j===i)});
  T.textContent=c[1];P.textContent=c[2];
  [].slice.call(tl.children).forEach(function(t){t.style.setProperty('--dl','0ms');t.classList.remove('in');setTimeout(function(){t.remove()},800)});
  var all=(typeof REELS!=='undefined'?REELS:[]).filter(function(r){return i===0||r.client===c[0]}).slice(0,innerWidth<700?5:8);
@@ -523,6 +590,23 @@ C.forEach(function(c,i){var b=document.createElement('button');b.type='button';b
  b.innerHTML='<em></em><span>'+c[1]+'</span>';b.setAttribute('aria-label',c[1]);b.addEventListener('click',function(){show(i)});dock.appendChild(b)});
 new IntersectionObserver(function(es,o){if(es[0].isIntersecting){show(0);o.disconnect()}},{threshold:.4}).observe(document.getElementById('stage'));
 if('serviceWorker'in navigator)addEventListener('load',function(){navigator.serviceWorker.register('sw.js')});
+})();
+</script>
+<script>
+(function(){
+function mk(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function cu(u){return 'url("'+String(u).replace(/["\\()\s]/g,function(c){return encodeURIComponent(c)})+'")'}
+function zoom(src,alt){var lb=mk('div','lb'),im=mk('img');im.src=src;im.alt=alt||'';lb.appendChild(im);function x(){lb.remove();removeEventListener('keydown',k)}function k(e){if(e.key==='Escape')x()}lb.addEventListener('click',x);addEventListener('keydown',k);document.body.appendChild(lb)}
+var g=document.getElementById('shots-grid');
+var P=(typeof PROOF!=='undefined'&&PROOF&&PROOF.length)?PROOF:null;
+if(P){P.forEach(function(p){var b=mk('button','shot');b.type='button';var im=mk('span','im');if(p.img)im.style.backgroundImage=cu(p.img);b.appendChild(im);b.appendChild(mk('b',null,p.title||'Insights'));b.addEventListener('click',function(){if(p.img)zoom(p.img,p.title)});g.appendChild(b)})}
+else{['Reach and views','Followers growth','Top reel insights','Audience'].forEach(function(t){var b=mk('div','shot ph');b.style.cursor='default';b.appendChild(mk('span','im'));b.appendChild(mk('b',null,t+' (coming soon)'));g.appendChild(b)})}
+var picked={},bk=document.getElementById('bk'),wab=document.getElementById('wab'),bw=document.getElementById('bw');
+function q(i){return document.getElementById(i)}
+function upd(){var n=Object.keys(picked),t='Hi Maninder, I saw your portfolio.';if(q('bn').value.trim())t+='\nName or brand: '+q('bn').value.trim();if(n.length)t+='\nNeed: '+n.join(', ');t+='\nGoal: '+q('bg').value;if(q('bl').value.trim())t+='\nPage: '+q('bl').value.trim();if(q('bm').value.trim())t+='\nNote: '+q('bm').value.trim();wab.textContent=t;bw.href='https://wa.me/919712890124?text='+encodeURIComponent(t)}
+['Social media management','Reels and editing','Graphic design','Research and analytics'].forEach(function(n){var b=mk('button',null,n);b.type='button';b.addEventListener('click',function(){if(picked[n])delete picked[n];else picked[n]=1;b.classList.toggle('on',!!picked[n]);upd()});bk.appendChild(b)});
+['bn','bl','bg','bm'].forEach(function(i){q(i).addEventListener('input',upd);q(i).addEventListener('change',upd)});upd();
+[].forEach.call(document.querySelectorAll('.stgl button'),function(b){b.addEventListener('click',function(){var ch=document.querySelector('.chips button[data-f="'+(window.__stgKey||'all')+'"]');if(ch)ch.click();var t=document.querySelector(b.dataset.t);if(t){t.scrollIntoView({behavior:'smooth'});t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash')}})});
 })();
 </script>
 </body>
