@@ -100,22 +100,7 @@ a{color:inherit}
 /* glitch on filter */
 .gl .rc,.gl .post{animation:gl .6s steps(1) 1}
 @keyframes gl{0%{clip-path:inset(0 0 80% 0);transform:translateX(-16px)}15%{clip-path:inset(35% 0 40% 0);transform:translateX(14px);filter:hue-rotate(70deg)}30%{clip-path:inset(60% 0 8% 0);transform:translateX(-10px)}50%{clip-path:inset(10% 0 55% 0);transform:translateX(8px);filter:hue-rotate(-70deg)}75%{clip-path:inset(0 0 25% 0);transform:translateX(-4px)}100%{clip-path:inset(0);transform:none;filter:none}}
-/* admin */
-.dr{position:fixed;top:0;right:0;bottom:0;width:min(470px,100vw);background:#fff;color:var(--ink);z-index:190;overflow:auto;padding:22px;box-shadow:-20px 0 50px rgba(0,0,0,.3);font-size:16px}
-.dr h3{font-size:26px}.dr .dh2{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.dr label{display:block;font-size:14px;color:var(--mute);margin:12px 0 4px}
-.dr input,.dr select{width:100%;padding:11px 13px;border-radius:12px;border:1.5px solid #d8d2c2;background:var(--lil);color:var(--ink);font:16px var(--b)}
-.dr .g4{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.dr button{font:700 15px var(--b);padding:11px 18px;border-radius:99px;border:0;cursor:pointer;background:var(--ink);color:var(--lil)}
-.dr .sec{background:transparent;color:var(--ink);border:1.5px solid #d8d2c2}.dr .del{background:#C62828;color:#fff}
-.dr .tabs{display:flex;gap:8px;margin:14px 0 4px}.dr .tabs .on{background:var(--ink);color:var(--lil);border-color:var(--ink)}
-.dr details,.dr details:last-child{border:1.5px solid #d8d2c2;border-radius:14px;padding:0 14px;margin-bottom:8px}
-.dr summary{font:700 16px var(--b);letter-spacing:0;padding:12px 0}.dr summary::after{font-size:24px}
-.dr details p{padding:0 0 12px;font-size:14px;color:var(--mute)}
-.dr .li{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:12px 0;border-top:1px solid #e6e0d0;font-size:15px}.dr .li div{display:flex;gap:6px;flex-wrap:wrap}.dr .li button{padding:7px 12px;font-size:13px}
-.dr .df{position:sticky;bottom:-22px;background:#fff;padding:14px 0;margin-top:18px;border-top:1.5px solid #d8d2c2}
-.dr .msg{display:block;margin-top:8px;font-size:14px;color:var(--mute)}
-.foot a+a{margin-left:14px}
+
 .dr textarea{width:100%;min-height:90px;padding:11px 13px;border-radius:12px;border:1.5px solid #d8d2c2;background:var(--lil);color:var(--ink);font:15px var(--b)}
 .dr #pv{display:none;margin-top:8px;align-items:center;gap:12px;font-size:14px;color:var(--mute)}.dr #pv.on{display:flex}.dr #pv .fr{width:96px;height:150px;border-radius:12px;overflow:hidden;position:relative;background:#000;flex:none}.dr #pv iframe{position:absolute;left:0;top:-30px;width:100%;height:calc(100% + 90px);border:0;pointer-events:none}
 .dr .chk{display:flex;gap:10px;align-items:center;margin-top:14px;font-size:14px;color:var(--ink)}.dr .chk input{width:auto}
@@ -494,7 +479,7 @@ details[open] summary::after{transform:rotate(45deg)}details p{padding:0 4px 24p
  <h2>Let's make something people <em>can't scroll past.</em></h2>
  <p class="l">I'm open to freelance projects and full-time social media roles. Message me and I'll get back to you soon.</p>
  <div class="btns"><a class="btn" data-mag href="https://wa.me/919712890124?text=Hi%20Maninder%2C%20I%20saw%20your%20portfolio" target="_blank" rel="noopener">Message on WhatsApp</a><a class="btn o" data-mag href="https://instagram.com/manindergotra_25" target="_blank" rel="noopener">@manindergotra_25 on Instagram</a></div>
- <div class="foot"><span>Maninder, Ahmedabad, India. Available for remote work worldwide.</span><span><a href="review.html">Leave a review</a><a href="#admin" id="adminlink">Admin</a><a href="#top">Back to top</a></span></div>
+ <div class="foot"><span>Maninder, Ahmedabad, India. Available for remote work worldwide.</span><span><a href="review.html">Leave a review</a><a href="admin.html">Admin</a><a href="#top">Back to top</a></span></div>
 </div></footer>
 
 <script>var REELS=[],DESIGNS=[],PROOF=[]</script>
@@ -628,92 +613,7 @@ function glitch(){['reels','designs'].forEach(function(id){var e=document.getEle
 function renderAll(){renderSnap();renderReels();renderDesigns()}
 renderAll();
 document.querySelectorAll('.chips button').forEach(function(b){b.addEventListener('click',function(){cur=b.dataset.f;glitch();document.querySelectorAll('.chips button').forEach(function(x){x.classList.toggle('on',x===b)});renderReels();renderDesigns()})});
-/* ---------- admin panel (publishes through GitHub) ---------- */
-window.mpPV=PV;var CK='mp_admin_cfg',cfg={};try{cfg=JSON.parse(localStorage.getItem(CK)||'{}')}catch(e){}
-var dr=null,pend=[],ei=-1;
-function shrink(file,max){return new Promise(function(res,rej){var img=new Image(),u=URL.createObjectURL(file);img.onload=function(){var k=Math.min(1,max/Math.max(img.width,img.height)),c=document.createElement('canvas');c.width=Math.round(img.width*k);c.height=Math.round(img.height*k);c.getContext('2d').drawImage(img,0,0,c.width,c.height);URL.revokeObjectURL(u);res(c.toDataURL('image/jpeg',.85))};img.onerror=function(){rej(new Error('Could not read the image'))};img.src=u})}
-function frame(file,max){return new Promise(function(res,rej){var v=document.createElement('video'),u=URL.createObjectURL(file);v.muted=true;v.playsInline=true;v.preload='auto';v.src=u;
- v.onerror=function(){URL.revokeObjectURL(u);rej(new Error('Could not read this video. Try a screenshot instead.'))};
- v.onloadedmetadata=function(){v.currentTime=Math.min(1.2,(v.duration||2)/2)};
- v.onseeked=function(){var k=Math.min(1,max/Math.max(v.videoWidth,v.videoHeight)),c=document.createElement('canvas');c.width=Math.round(v.videoWidth*k);c.height=Math.round(v.videoHeight*k);c.getContext('2d').drawImage(v,0,0,c.width,c.height);URL.revokeObjectURL(u);res(c.toDataURL('image/jpeg',.85))}})}
-function ghx(method,path,body){return fetch('https://api.github.com/repos/'+cfg.user+'/'+cfg.repo+'/contents/'+path+(method==='GET'?'?ref='+encodeURIComponent(cfg.branch):''),{method:method,headers:{Authorization:'Bearer '+cfg.token,Accept:'application/vnd.github+json'},body:body?JSON.stringify(body):undefined})}
-async function putFile(path,b64,msg){var sha,g=await ghx('GET',path);if(g.ok){sha=(await g.json()).sha}else if(g.status!==404){throw new Error('GitHub '+g.status+(g.status===401?': token is wrong or expired':g.status===403?': give the token Contents = Read and write permission':g.status===404?'':''))}
- var r=await ghx('PUT',path,{message:msg,content:b64,branch:cfg.branch,sha:sha});if(!r.ok){var t='';try{t=(await r.json()).message}catch(e){}throw new Error('Save fail '+r.status+(t?': '+t:''))}}
-function b64utf8(t){return btoa(unescape(encodeURIComponent(t)))}
-function workJs(){return '/* Saved by the admin panel. You can still edit this file by hand. client: ims | mes | taj | urb */\nvar REELS='+JSON.stringify(REELS,null,1)+';\nvar DESIGNS='+JSON.stringify(DESIGNS,null,1)+';\nvar PROOF='+JSON.stringify(typeof PROOF!=='undefined'?PROOF:[],null,1)+';\n'+'var REVIEWS='+JSON.stringify(typeof REVIEWS!=='undefined'?REVIEWS:[],null,1)+';\n'}
-function buildAdmin(){
- dr=mk('div','dr');dr.hidden=true;
- var opts='<option value="ims">IMS</option><option value="mes">Mesmereyes</option><option value="taj">Taj Beauty</option><option value="urb">UrbaNest</option><option value="fre">Freelance</option>';
- dr.innerHTML='<div class="dh2"><h3>Admin</h3><button type="button" class="sec" id="dx">Close</button></div>'+
- '<details id="gd"><summary>GitHub connection (one time)</summary><label>GitHub username</label><input id="gu" autocomplete="off"><label>Repository name</label><input id="gr" autocomplete="off"><label>Branch</label><input id="gb" value="main"><label>Token</label><input id="gt" type="password" autocomplete="off" placeholder="github_pat_..."><p>To create a token: GitHub > Settings > Developer settings > Fine-grained tokens > Generate. Select only this repo and set Contents to Read and write. The token stays in this browser only.</p><button type="button" id="gs">Save connection</button></details>'+
- '<div class="tabs"><button type="button" class="sec on" data-t="r">Reels</button><button type="button" class="sec" data-t="d">Designs</button><button type="button" class="sec" data-t="p">Proof</button></div>'+
- '<div id="tr"><label>Instagram reel link</label><input id="fu" type="url" placeholder="Paste the Instagram link"><div id="pv"></div><label>Title</label><input id="ft" maxlength="60"><label>Client (the reel shows up in this section)</label><select id="fc">'+opts+'</select>'+
- '<div class="g4"><div><label>Reach</label><input id="fr" type="number" min="0"></div><div><label>Views</label><input id="fv" type="number" min="0"></div><div><label>Likes</label><input id="fl" type="number" min="0"></div><div><label>Comments</label><input id="fm" type="number" min="0"></div><div><label>Shares</label><input id="fs" type="number" min="0"></div></div>'+
- '<details><summary>Auto-fill numbers from an Insights screenshot</summary><p>Upload an Instagram Insights screenshot. Views, reach, likes, comments and shares are read and filled in for you. Give them a quick check.</p><input id="fo" type="file" accept="image/*"><span class="msg" id="om"></span></details>'+
- '<label>Cover (optional). Upload an image or the video itself, a frame is captured for you. If empty, a cover is generated automatically.</label><input id="fi" type="file" accept="image/*,video/*">'+
- '<label class="chk"><input type="checkbox" id="afp"> Feature this first (shows first in the orb stage)</label>'+
- '<label class="chk"><input type="checkbox" id="ap" checked> Publish right after adding</label>'+
- '<div style="display:flex;gap:8px;margin-top:14px"><button type="button" id="fa">Add reel</button><button type="button" class="sec" id="fx" hidden>Cancel edit</button></div><details style="margin-top:14px"><summary>Add many links at once</summary><p>One Instagram link per line. All of them get the client selected above. Add numbers later with Edit.</p><textarea id="abk" placeholder="https://www.instagram.com/reel/...\nhttps://www.instagram.com/reel/..."></textarea><button type="button" id="bb" style="margin-top:8px">Add all</button></details><div id="lr"></div></div>'+
- '<div id="td" hidden><label>Title</label><input id="dt" maxlength="60"><label>Client</label><select id="dc">'+opts+'</select><label>Design image</label><input id="di" type="file" accept="image/*"><div style="margin-top:14px"><button type="button" id="da">Add design</button></div><div id="ld"></div></div>'+
- '<div id="tp" hidden><p style="font-size:14px;color:var(--mute)">Upload Instagram Insights screenshots. They appear in the pink "See it for yourself" section.</p><label>Title</label><input id="pt" maxlength="60" placeholder="IMS Ahmedabad reach"><label>Screenshot</label><input id="pi" type="file" accept="image/*"><div style="margin-top:14px"><button type="button" id="pa">Add screenshot</button></div><div id="lp"></div></div>'+
- '<div class="df"><button type="button" id="sv" style="width:100%">Save and publish</button><span class="msg" id="mg">Changes go live when you press Save and publish.</span></div>';
- document.body.appendChild(dr);
- var $=function(i){return dr.querySelector('#'+i)};
- function msg(t){$('mg').textContent=t}
- $('gu').value=cfg.user||'';$('gr').value=cfg.repo||'';$('gb').value=cfg.branch||'main';$('gt').value=cfg.token||'';if(!cfg.token)$('gd').open=true;
- $('gs').addEventListener('click',function(){cfg={user:$('gu').value.trim(),repo:$('gr').value.trim(),branch:$('gb').value.trim()||'main',token:$('gt').value.trim()};try{localStorage.setItem(CK,JSON.stringify(cfg))}catch(e){}msg('Connection saved.');$('gd').open=false});
- $('dx').addEventListener('click',function(){dr.hidden=true});
- dr.querySelectorAll('.tabs button').forEach(function(b){b.addEventListener('click',function(){dr.querySelectorAll('.tabs button').forEach(function(x){x.classList.toggle('on',x===b)});$('tr').hidden=b.dataset.t!=='r';$('td').hidden=b.dataset.t!=='d';$('tp').hidden=b.dataset.t!=='p'})});
- function lists(){var lr=$('lr');lr.innerHTML='';REELS.forEach(function(r,i){var li=mk('div','li');li.appendChild(mk('span',null,(r.title||'Reel')+' ('+(CL[r.client]||r.client)+', '+fmt(r.views)+')'));var b=mk('div');
-  [['Edit',function(){ei=i;$('fu').value=r.url||'';$('ft').value=r.title||'';$('fc').value=r.client;$('fr').value=r.reach||'';$('afp').checked=!!r.pin;$('fv').value=r.views;$('fl').value=r.likes;$('fm').value=r.comments;$('fs').value=r.shares;$('fa').textContent='Update reel';$('fx').hidden=false;$('fu').scrollIntoView({block:'center'})}],
-   ['Up',function(){if(i>0){var t=REELS[i-1];REELS[i-1]=r;REELS[i]=t;done()}}],
-   ['Delete',function(){REELS.splice(i,1);done()},'del']].forEach(function(a){var x=mk('button',a[2]||'sec',a[0]);x.type='button';x.addEventListener('click',a[1]);b.appendChild(x)});li.appendChild(b);lr.appendChild(li)});
-  var lp=$('lp');lp.innerHTML='';(typeof PROOF!=='undefined'?PROOF:[]).forEach(function(d,i){var li=mk('div','li');li.appendChild(mk('span',null,d.title||'Screenshot'));var x=mk('button','del','Delete');x.type='button';x.addEventListener('click',function(){PROOF.splice(i,1);done()});li.appendChild(x);lp.appendChild(li)});
-  var ld=$('ld');ld.innerHTML='';DESIGNS.forEach(function(d,i){var li=mk('div','li');li.appendChild(mk('span',null,(d.title||'Design')+' ('+(CL[d.client]||d.client)+')'));var x=mk('button','del','Delete');x.type='button';x.addEventListener('click',function(){DESIGNS.splice(i,1);done()});li.appendChild(x);ld.appendChild(li)})}
- function done(){renderAll();lists();if(window.renderShots)renderShots();msg('Unsaved changes. Press Save and publish.')}
- function clear(){$('afp').checked=false;ei=-1;['fu','ft','fr','fv','fl','fm','fs','fi'].forEach(function(i){$(i).value=''});$('fa').textContent='Add reel';$('fx').hidden=true}
- $('fx').addEventListener('click',clear);
- $('pa').addEventListener('click',function(){var f=$('pi').files[0];if(!f){msg('Choose a screenshot first.');return}msg('Preparing image...');
-  shrink(f,1400).then(function(d){var path='proof/'+Date.now()+'.jpg';PV[path]=d;pend.push({path:path,data:d});PROOF.unshift({title:$('pt').value.trim()||'Insights',img:path});$('pt').value='';$('pi').value='';done()}).catch(function(e){msg(e.message)})});
- try{var lc=localStorage.getItem('mp_lastc');if(lc)$('fc').value=lc}catch(e){}
- $('fc').addEventListener('change',function(){try{localStorage.setItem('mp_lastc',$('fc').value)}catch(e){}});
- $('fu').addEventListener('input',function(){var pv=$('pv'),u=$('fu').value.trim(),g=igId(u);pv.innerHTML='';pv.classList.toggle('on',!!g);if(!g)return;
-  var fr=mk('div','fr'),f=document.createElement('iframe');f.src='https://www.instagram.com/'+g.t+'/'+g.id+'/embed';f.setAttribute('scrolling','no');f.tabIndex=-1;fr.appendChild(f);pv.appendChild(fr);
-  pv.appendChild(mk('span',null,(g.t==='reel'?'Reel':'Post')+' detected ('+g.id+'). Pick a client, add numbers, press Add.'));
-  if(!$('ft').value)$('ft').placeholder='Title (defaults to '+(g.t==='reel'?'Reel':'Post')+' if empty)'});
- $('bb').addEventListener('click',function(){var ls=$('abk').value.split(/\s+/).filter(function(x){return igId(x)}),n=0;
-  ls.forEach(function(u){var g=igId(u);if(REELS.some(function(r){var h=igId(r.url);return h&&h.id===g.id}))return;REELS.unshift({url:u,title:(g.t==='reel'?'Reel ':'Post ')+g.id.slice(0,5),client:$('fc').value,reach:0,views:0,likes:0,comments:0,shares:0,cover:''});n++});
-  $('abk').value='';done();msg(n+' links added. Use Edit to set titles and numbers, then Save and publish.')});
- var ocr=null;$('fo').addEventListener('change',async function(){var f=$('fo').files[0];if(!f)return;var om=$('om');om.textContent='Reading screenshot...';
-  try{if(!window.Tesseract){await new Promise(function(ok,no){var sc=document.createElement('script');sc.src='https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/5.1.0/tesseract.min.js';sc.onload=ok;sc.onerror=function(){no(new Error('Could not load the reader. Check your internet.'))};document.head.appendChild(sc)})}
-   var r=await Tesseract.recognize(f,'eng'),v=parseIns(r.data.text),got=[];
-   [['reach','fr'],['views','fv'],['likes','fl'],['comments','fm'],['shares','fs']].forEach(function(k){if(v[k[0]]){$(k[1]).value=v[k[0]];got.push(k[0])}});
-   $('fo').value='';om.textContent=got.length?'Filled in: '+got.join(', ')+'. Please double-check them.':'No numbers found. Use a clear, zoomed screenshot or type them in.'}
-  catch(e){om.textContent='Error: '+e.message}})
- $('fa').addEventListener('click',function(){var u=$('fu').value.trim();if(!okUrl(u)){msg('The Instagram link must start with https://');return}
-  var o={url:u,title:$('ft').value.trim()||((igId(u)||{}).t==='p'?'Post':'Reel'),client:$('fc').value,pin:$('afp').checked||undefined,reach:+$('fr').value||0,views:+$('fv').value||0,likes:+$('fl').value||0,comments:+$('fm').value||0,shares:+$('fs').value||0,cover:ei>=0?(REELS[ei].cover||''):''};
-  var f=$('fi').files[0],p=Promise.resolve();
-  if(f){msg('Preparing image...');p=(f.type.indexOf('video')===0?frame(f,720):shrink(f,1000)).then(function(d){var path='covers/'+Date.now()+'.jpg';PV[path]=d;pend.push({path:path,data:d});o.cover=path})}
-  p.then(function(){if(ei>=0)REELS[ei]=o;else REELS.unshift(o);clear();done();if($('ap').checked&&cfg.token)$('sv').click()}).catch(function(e){msg(e.message)})});
- $('da').addEventListener('click',function(){var f=$('di').files[0];if(!f){msg('Choose an image first.');return}msg('Preparing image...');
-  shrink(f,1600).then(function(d){var path='designs/'+Date.now()+'.jpg';PV[path]=d;pend.push({path:path,data:d});DESIGNS.unshift({title:$('dt').value.trim()||'Design',client:$('dc').value,img:path});$('dt').value='';$('di').value='';done()}).catch(function(e){msg(e.message)})});
- $('sv').addEventListener('click',async function(){
-  if(!cfg.token||!cfg.user||!cfg.repo){$('gd').open=true;msg('Save the GitHub connection first.');return}
-  var btn=$('sv');btn.disabled=true;
-  try{var keep=[];
-   for(var k=0;k<pend.length;k++){var it=pend[k];if(!REELS.some(function(r){return r.cover===it.path})&&!DESIGNS.some(function(d){return d.img===it.path})&&!PROOF.some(function(x){return x.img===it.path}))continue;msg('Uploading image: '+(k+1)+'/'+pend.length);await putFile(it.path,it.data.split(',')[1],'Add '+it.path)}
-   msg('Saving work.js...');await putFile('work.js',b64utf8(workJs()),'Update portfolio work');
-   pend=[];msg('Published. The live site updates in 1-2 minutes (refresh with Ctrl+F5).')}
-  catch(e){msg('Error: '+e.message)}
-  btn.disabled=false});
- lists()}
-function num(t){t=String(t).replace(/,/g,'').trim();var m=t.match(/^([\d.]+)\s*([kKmM])?$/);if(!m)return 0;var n=parseFloat(m[1]);if(m[2]&&/k/i.test(m[2]))n*=1e3;if(m[2]&&/m/i.test(m[2]))n*=1e6;return Math.round(n)}
-function parseIns(txt){var out={},K={reach:/accounts\s*reached|reach/i,views:/views|plays/i,likes:/likes/i,comments:/comments/i,shares:/shares/i},L=String(txt).split(/\n+/).map(function(x){return x.trim()}).filter(Boolean);
- Object.keys(K).forEach(function(k){for(var i=0;i<L.length;i++){if(!K[k].test(L[i]))continue;var m=L[i].match(/(\d[\d,.]*\s*[kKmM]?)\s*$/)||L[i].match(/(\d[\d,.]*\s*[kKmM]?)/)||(L[i+1]&&L[i+1].match(/^(\d[\d,.]*\s*[kKmM]?)\b/))||(L[i-1]&&L[i-1].match(/^(\d[\d,.]*\s*[kKmM]?)\b/));if(m){var n=num(m[1]);if(n){out[k]=n;break}}}});return out}
-window.mpParse=parseIns;
-function openAdmin(){if(!dr)buildAdmin();dr.hidden=false}
-var al=document.getElementById('adminlink');if(al)al.addEventListener('click',function(e){e.preventDefault();openAdmin()});
-if(location.hash==='#admin')openAdmin();
+
 })();
 </script>
 <script>
