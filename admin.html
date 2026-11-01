@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>Portfolio Admin</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font:16px/1.5 system-ui,sans-serif;background:#15120E;color:#F1EEE3;padding:20px;max-width:900px;margin:auto}
+h1{font-size:28px;margin:0 0 4px}h2{font-size:20px;color:#FFDD3C;margin:28px 0 10px}
+.box{background:#201C16;border:1px solid #3a342a;border-radius:16px;padding:16px;margin-bottom:14px}
+input,select,button{font:inherit;padding:10px 12px;border-radius:10px;border:1px solid #4a4336;background:#15120E;color:#F1EEE3;width:100%}
+.g{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}.w{grid-column:1/-1}
+button{cursor:pointer;background:#FFDD3C;color:#15120E;font-weight:700;border:0}button.s{background:#3a342a;color:#F1EEE3;width:auto;padding:6px 12px}
+.row{display:flex;gap:10px;align-items:center;padding:8px 0;border-top:1px solid #3a342a}.row img{width:44px;height:64px;object-fit:cover;border-radius:8px;background:#3a342a}.row div{flex:1;min-width:0}
+.row small{color:#A39D8B;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#msg{position:sticky;top:0;background:#FF3D2E;color:#15120E;font-weight:700;padding:8px 14px;border-radius:10px;margin:10px 0;display:none}
+iframe{width:100%;height:420px;border:0;border-radius:12px;background:#000;display:none}label{font-size:13px;color:#A39D8B}
+#save{position:sticky;bottom:12px;margin-top:20px;padding:16px;font-size:18px}
+</style></head><body>
+<h1>Portfolio Admin</h1><div id="msg"></div>
+
+<div class="box" id="setup"><div class="g">
+<div class="w"><label>GitHub repo (username/repo)</label><input id="repo" placeholder="maninder/portfolio"></div>
+<div class="w"><label>GitHub token (Contents: read and write, sirf isi repo ke liye)</label><input id="tok" type="password"></div>
+<div class="w"><label>Tera email</label><input id="em" type="email" autocomplete="username"></div><div class="w"><label>Password (pehli baar naya banao, baad mein yahi se login)</label><input id="pw" type="password" autocomplete="current-password"></div><button class="w" id="conn">Connect</button><button class="w s" id="rst" style="background:#3a342a;color:#F1EEE3">Reset login</button></div></div>
+
+<div id="app" hidden>
+<h2>Add reel</h2>
+<div class="box"><div class="g">
+<div class="w"><label>Instagram reel link</label><input id="url" placeholder="https://www.instagram.com/reel/XXXX/"></div>
+<div class="w"><iframe id="emb" title="Instagram preview" allowfullscreen></iframe></div>
+<div><label>Client</label><select id="cl"><option value="ims">IMS</option><option value="mes">Mesmereyes</option><option value="taj">Taj Beauty</option><option value="urb">UrbaNest</option></select></div>
+<div><label>Title</label><input id="ti"></div>
+<div><label>Views</label><input id="vw" type="number"></div><div><label>Likes</label><input id="lk" type="number"></div>
+<div><label>Comments</label><input id="cm" type="number"></div><div><label>Shares</label><input id="sh" type="number"></div>
+<div class="w"><label>Cover: image ya video file (video se frame khud nikal lunga)</label><input id="cov" type="file" accept="image/*,video/*"></div>
+<button class="w" id="addR">Add reel</button></div></div>
+<div class="box" id="lr"></div>
+
+<h2>Add design</h2>
+<div class="box"><div class="g">
+<div><label>Client</label><select id="dcl"><option value="ims">IMS</option><option value="mes">Mesmereyes</option><option value="taj">Taj Beauty</option><option value="urb">UrbaNest</option></select></div>
+<div><label>Title</label><input id="dti"></div>
+<div class="w"><label>Design image</label><input id="dim" type="file" accept="image/*"></div>
+<button class="w" id="addD">Add design</button></div></div>
+<div class="box" id="ld"></div>
+<button id="save">Save to website</button>
+</div>
+
+<script>
+const $=s=>document.querySelector(s),LS=localStorage,CL={ims:'IMS',mes:'Mesmereyes',taj:'Taj Beauty',urb:'UrbaNest'};
+let cfg={},R=[],D=[],sha=null,pend={},keep='';
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function msg(t){const m=$('#msg');m.textContent=t;m.style.display=t?'block':'none'}
+const api=(p,o={})=>fetch('https://api.github.com/repos/'+cfg.repo+'/contents/'+p,{...o,headers:{Authorization:'Bearer '+cfg.token,Accept:'application/vnd.github+json'}}).then(async r=>{if(!r.ok&&r.status!=404)throw new Error('GitHub '+r.status+': '+(await r.text()).slice(0,100));return r});
+async function load(){
+ try{msg('Loading...');const r=await api('work.js');
+  if(r.status==404){R=[];D=[];sha=null}
+  else{const j=await r.json();sha=j.sha;const t=decodeURIComponent(escape(atob(j.content.replace(/\n/g,''))));
+   const o=new Function('var REELS=[],DESIGNS=[];'+t+';return{R:REELS,D:DESIGNS}')();R=o.R||[];D=o.D||[]}
+  $('#setup').hidden=true;$('#app').hidden=false;draw();msg('')}
+ catch(e){msg('Connect nahi hua: '+e.message)}}
+const kdf=async s=>{const k=await crypto.subtle.importKey('raw',new TextEncoder().encode(s),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt:new TextEncoder().encode('pf-admin'),iterations:200000,hash:'SHA-256'},k,{name:'AES-GCM',length:256},false,['encrypt','decrypt'])};
+const enc=async(o,s)=>{const iv=crypto.getRandomValues(new Uint8Array(12)),c=await crypto.subtle.encrypt({name:'AES-GCM',iv},await kdf(s),new TextEncoder().encode(JSON.stringify(o)));return JSON.stringify([...iv,...new Uint8Array(c)])};
+const dec=async(v,s)=>{const a=new Uint8Array(JSON.parse(v));return JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:a.slice(0,12)},await kdf(s),a.slice(12))))};
+if(LS.vault){$('#repo').parentElement.hidden=$('#tok').parentElement.hidden=true;$('#conn').textContent='Login'}
+$('#rst').onclick=()=>{if(confirm('Saved login hata dun? Repo aur token dobara daalna padega.')){LS.removeItem('vault');location.reload()}};
+$('#conn').onclick=async()=>{try{const pw=$('#pw').value;if(!pw||!$('#em').value)return msg('Email aur password daalo');const k=$('#em').value.trim().toLowerCase()+'|'+pw;
+ if(LS.vault)cfg=await dec(LS.vault,k);else{cfg={repo:$('#repo').value.trim(),token:$('#tok').value.trim()};if(!cfg.repo||!cfg.token)return msg('Repo aur token bhi daalo');LS.vault=await enc(cfg,k)}
+ load()}catch(e){msg('Email ya password galat')}};
+
+$('#url').oninput=e=>{const m=e.target.value.match(/instagram\.com\/(reel|p|tv)\/([\w-]+)/),f=$('#emb');
+ if(m){f.src='https://www.instagram.com/'+m[1]+'/'+m[2]+'/embed';f.style.display='block'}else f.style.display='none'};
+
+const toEl=f=>new Promise((ok,no)=>{
+ if(f.type.startsWith('video')){const v=document.createElement('video');v.muted=true;v.playsInline=true;v.src=URL.createObjectURL(f);
+  v.onloadeddata=()=>{v.currentTime=Math.min(1,v.duration/3)};v.onseeked=()=>ok(v);v.onerror=no}
+ else{const i=new Image();i.src=URL.createObjectURL(f);i.onload=()=>ok(i);i.onerror=no}});
+async function shrink(f,w=720){const s=await toEl(f),sw=s.videoWidth||s.width,sh=s.videoHeight||s.height,k=Math.min(1,w/sw),c=document.createElement('canvas');
+ c.width=sw*k;c.height=sh*k;c.getContext('2d').drawImage(s,0,0,c.width,c.height);return c.toDataURL('image/jpeg',.82)}
+
+$('#addR').onclick=async()=>{
+ const u=$('#url').value.trim();if(!/instagram\.com\/(reel|p|tv)\//.test(u))return msg('Sahi Instagram reel link daalo');
+ let cover=keep;const f=$('#cov').files[0];
+ if(f){try{cover='covers/'+Date.now()+'.jpg';pend[cover]=await shrink(f)}catch(e){return msg('Cover read nahi hua')}}
+ R.unshift({client:$('#cl').value,title:$('#ti').value||'Reel',url:u.split('?')[0],cover,views:+$('#vw').value||0,likes:+$('#lk').value||0,comments:+$('#cm').value||0,shares:+$('#sh').value||0});
+ keep='';['url','ti','vw','lk','cm','sh','cov'].forEach(i=>$('#'+i).value='');$('#emb').style.display='none';msg('');draw()};
+$('#addD').onclick=async()=>{
+ const f=$('#dim').files[0];if(!f)return msg('Design image chuno');
+ const p='designs/'+Date.now()+'.jpg';pend[p]=await shrink(f,1200);
+ D.unshift({client:$('#dcl').value,title:$('#dti').value||'Design',img:p});$('#dti').value='';$('#dim').value='';msg('');draw()};
+
+function draw(){
+ const th=p=>pend[p]||p||'';
+ $('#lr').innerHTML='<b>Reels ('+R.length+')</b>'+R.map((r,i)=>'<div class="row"><img src="'+esc(th(r.cover))+'" alt=""><div><b>'+esc(r.title)+'</b><small>'+esc(CL[r.client]||r.client)+' · '+r.views+' views</small><small>'+esc(r.url)+'</small></div><button class="s" data-a="up" data-i="'+i+'">↑</button><button class="s" data-a="ed" data-i="'+i+'">Edit</button><button class="s" data-a="del" data-i="'+i+'">✕</button></div>').join('');
+ $('#ld').innerHTML='<b>Designs ('+D.length+')</b>'+D.map((d,i)=>'<div class="row"><img src="'+esc(th(d.img))+'" alt=""><div><b>'+esc(d.title)+'</b><small>'+esc(CL[d.client]||d.client)+'</small></div><button class="s" data-a="ddel" data-i="'+i+'">✕</button></div>').join('')}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const i=+b.dataset.i,a=b.dataset.a;
+ if(a=='del'&&confirm('Delete reel?'))R.splice(i,1);
+ if(a=='ddel'&&confirm('Delete design?'))D.splice(i,1);
+ if(a=='up'&&i>0)R.splice(i-1,0,R.splice(i,1)[0]);
+ if(a=='ed'){const r=R.splice(i,1)[0];$('#url').value=r.url;$('#url').dispatchEvent(new Event('input'));$('#cl').value=r.client;$('#ti').value=r.title;$('#vw').value=r.views;$('#lk').value=r.likes;$('#cm').value=r.comments;$('#sh').value=r.shares;keep=r.cover||'';scrollTo(0,0)}
+ draw()});
+
+async function put(p,content,sh,b64){const body={message:'admin: '+p,content:b64?content:btoa(unescape(encodeURIComponent(content)))};if(sh)body.sha=sh;
+ const r=await api(p,{method:'PUT',body:JSON.stringify(body)});return (await r.json()).content.sha}
+$('#save').onclick=async()=>{
+ try{msg('Saving... ruko');const used=new Set([...R.map(x=>x.cover),...D.map(x=>x.img)]);
+  for(const p in pend){if(used.has(p))await put(p,pend[p].split(',')[1],null,1);delete pend[p]}
+  sha=await put('work.js','REELS='+JSON.stringify(R,null,1)+';\nDESIGNS='+JSON.stringify(D,null,1)+';\n',sha);
+  msg('Saved ✓ Website 1-2 minute mein update ho jayegi')}
+ catch(e){msg(e.message)}};
+</script></body></html>
