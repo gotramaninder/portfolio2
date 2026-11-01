@@ -313,6 +313,16 @@ REELS=[
 DESIGNS=[
  {
   "client": "urb",
+  "title": "UrbaNest Logo",
+  "img": "designs/1793520586489.jpg"
+ },
+ {
+  "client": "urb",
+  "title": "The Warrior Mockup",
+  "img": "designs/1793520567232.jpg"
+ },
+ {
+  "client": "urb",
   "title": "Mockup design",
   "img": "designs/1793520503422.jpg"
  },
