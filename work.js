@@ -312,6 +312,16 @@ REELS=[
 ];
 DESIGNS=[
  {
+  "client": "ims",
+  "title": "Spiderman post",
+  "img": "designs/1793520068905.jpg"
+ },
+ {
+  "client": "taj",
+  "title": "Logo Design ",
+  "img": "designs/1793520036050.jpg"
+ },
+ {
   "client": "taj",
   "title": "Saloon Menu ",
   "img": "designs/1793517368853.jpg"
