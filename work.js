@@ -1,6 +1,26 @@
 REELS=[
  {
   "client": "fre",
+  "title": "Forest Bioveda",
+  "url": "https://www.instagram.com/reel/DbpTyeQqN2r/",
+  "cover": "",
+  "views": 800,
+  "likes": 27,
+  "comments": 2,
+  "shares": 12
+ },
+ {
+  "client": "fre",
+  "title": "this part of Aarzu",
+  "url": "https://www.instagram.com/reel/Da22fXeszUl/",
+  "cover": "",
+  "views": 700,
+  "likes": 25,
+  "comments": 12,
+  "shares": 10
+ },
+ {
+  "client": "fre",
   "title": "I Don't care ",
   "url": "https://www.instagram.com/reel/DancG7rJctK/",
   "cover": "",
