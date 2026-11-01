@@ -1,6 +1,26 @@
 REELS=[
  {
   "client": "fre",
+  "title": "I Don't care ",
+  "url": "https://www.instagram.com/reel/DancG7rJctK/",
+  "cover": "",
+  "views": 620,
+  "likes": 26,
+  "comments": 12,
+  "shares": 10
+ },
+ {
+  "client": "fre",
+  "title": "cafe hi hai ",
+  "url": "https://www.instagram.com/reel/DTxvmAXEueL/",
+  "cover": "",
+  "views": 3200,
+  "likes": 72,
+  "comments": 11,
+  "shares": 25
+ },
+ {
+  "client": "fre",
   "title": "will accept>?",
   "url": "https://www.instagram.com/reel/DUVCcXbEup7/",
   "cover": "",
