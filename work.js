@@ -1,7 +1,11 @@
-REELS=[
+// MANINDER PORTFOLIO: your work lives here. The admin panel rewrites this file when you press Save and publish.
+// client must be one of: ims, mes (Mesmereyes), taj (Taj Beauty), urb (UrbaNest), fre (Freelance)
+// Optional per reel: reach (number). Reach and views show separately when reach is filled.
+
+var REELS=[
  {
   "client": "urb",
-  "title": "legnesan ",
+  "title": "legnesan",
   "url": "https://www.instagram.com/reel/DRj2FHKkhRj/",
   "cover": "",
   "views": 2500,
@@ -11,7 +15,7 @@ REELS=[
  },
  {
   "client": "urb",
-  "title": "Robotic Angel ",
+  "title": "Robotic Angel",
   "url": "https://www.instagram.com/p/DSbbs9mkqtw/",
   "cover": "",
   "views": 921,
@@ -81,7 +85,7 @@ REELS=[
  },
  {
   "client": "fre",
-  "title": "I Don't care ",
+  "title": "I Don't care",
   "url": "https://www.instagram.com/reel/DancG7rJctK/",
   "cover": "",
   "views": 620,
@@ -91,7 +95,7 @@ REELS=[
  },
  {
   "client": "fre",
-  "title": "cafe hi hai ",
+  "title": "cafe hi hai",
   "url": "https://www.instagram.com/reel/DTxvmAXEueL/",
   "cover": "",
   "views": 3200,
@@ -221,7 +225,7 @@ REELS=[
  },
  {
   "client": "ims",
-  "title": "Reverse Shark Tank ",
+  "title": "Reverse Shark Tank",
   "url": "https://www.instagram.com/reel/DdCOggOsssd/",
   "cover": "",
   "views": 5000,
@@ -241,7 +245,7 @@ REELS=[
  },
  {
   "client": "ims",
-  "title": "Ninja series 5 ",
+  "title": "Ninja series 5",
   "url": "https://www.instagram.com/reel/DcF4LRTp0uX/",
   "cover": "",
   "views": 41300,
@@ -310,7 +314,8 @@ REELS=[
   "shares": 9
  }
 ];
-DESIGNS=[
+
+var DESIGNS=[
  {
   "client": "fre",
   "title": "DermaTouch",
@@ -343,7 +348,7 @@ DESIGNS=[
  },
  {
   "client": "ims",
-  "title": "CTA ",
+  "title": "CTA",
   "img": "designs/1793520100987.jpg"
  },
  {
@@ -353,17 +358,17 @@ DESIGNS=[
  },
  {
   "client": "taj",
-  "title": "Logo Design ",
+  "title": "Logo Design",
   "img": "designs/1793520036050.jpg"
  },
  {
   "client": "taj",
-  "title": "Saloon Menu ",
+  "title": "Saloon Menu",
   "img": "designs/1793517368853.jpg"
  },
  {
   "client": "taj",
-  "title": "Saloon Menu ",
+  "title": "Saloon Menu",
   "img": "designs/1793517359005.jpg"
  },
  {
@@ -392,3 +397,7 @@ DESIGNS=[
   "img": "designs/1793515120347.jpg"
  }
 ];
+
+// Instagram Insights screenshots for the "See it for yourself" wall
+// Example: {title:"IMS Ahmedabad reach", img:"proof/ims-reach.jpg"}
+var PROOF=[];
