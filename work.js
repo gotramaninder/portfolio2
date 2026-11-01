@@ -1,6 +1,16 @@
 REELS=[
  {
   "client": "fre",
+  "title": "Beauty of Ahmedabad",
+  "url": "https://www.instagram.com/reel/DcwiOdIgKaz/",
+  "cover": "",
+  "views": 500,
+  "likes": 30,
+  "comments": 6,
+  "shares": 12
+ },
+ {
+  "client": "fre",
   "title": "Forest Bioveda",
   "url": "https://www.instagram.com/reel/DbpTyeQqN2r/",
   "cover": "",
