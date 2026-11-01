@@ -1,8 +1,4 @@
-// MANINDER PORTFOLIO: your work lives here. The admin panel rewrites this file when you press Save and publish.
-// client must be one of: ims, mes (Mesmereyes), taj (Taj Beauty), urb (UrbaNest), fre (Freelance)
-// Optional per reel: reach (number). Reach and views show separately when reach is filled.
-
-var REELS=[
+REELS=[
  {
   "client": "urb",
   "title": "legnesan",
@@ -314,13 +310,7 @@ var REELS=[
   "shares": 9
  }
 ];
-
-var DESIGNS=[
- {
-  "client": "fre",
-  "title": "DermaTouch",
-  "img": "designs/1793520730492.jpg"
- },
+DESIGNS=[
  {
   "client": "urb",
   "title": "UrbaNest Logo",
@@ -397,7 +387,3 @@ var DESIGNS=[
   "img": "designs/1793515120347.jpg"
  }
 ];
-
-// Instagram Insights screenshots for the "See it for yourself" wall
-// Example: {title:"IMS Ahmedabad reach", img:"proof/ims-reach.jpg"}
-var PROOF=[];
