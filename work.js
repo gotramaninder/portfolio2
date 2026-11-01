@@ -1,6 +1,16 @@
 REELS=[
  {
   "client": "fre",
+  "title": "syabllus cover",
+  "url": "https://www.instagram.com/reel/DVL-yGEkqap/",
+  "cover": "",
+  "views": 2300,
+  "likes": 81,
+  "comments": 6,
+  "shares": 20
+ },
+ {
+  "client": "fre",
   "title": "bargad",
   "url": "https://www.instagram.com/reel/DXfEMQfklaR/",
   "cover": "",
