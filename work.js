@@ -1,5 +1,15 @@
 REELS=[
  {
+  "client": "fre",
+  "title": "Cinematic look",
+  "url": "https://www.instagram.com/reel/DaqBYE_MIx1/",
+  "cover": "",
+  "views": 567,
+  "likes": 33,
+  "comments": 8,
+  "shares": 5
+ },
+ {
   "client": "urb",
   "title": "Mini Vlog",
   "url": "https://www.instagram.com/reel/DS0gBuiE39g/",
