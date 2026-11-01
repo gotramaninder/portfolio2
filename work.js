@@ -1,6 +1,16 @@
 REELS=[
  {
   "client": "fre",
+  "title": "bargad",
+  "url": "https://www.instagram.com/reel/DXfEMQfklaR/",
+  "cover": "",
+  "views": 2800,
+  "likes": 45,
+  "comments": 3,
+  "shares": 35
+ },
+ {
+  "client": "fre",
   "title": "kenyee westttt",
   "url": "https://www.instagram.com/reel/Dd0w34GggHE/",
   "cover": "",
