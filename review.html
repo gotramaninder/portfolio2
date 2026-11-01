@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>Leave a review for Maninder</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Instrument+Sans:wght@400;600;700&display=swap">
+<style>
+*{box-sizing:border-box;margin:0}body{min-height:100vh;background:#F1EEE3;color:#15120E;font:18px/1.5 "Instrument Sans",system-ui,sans-serif;display:grid;place-items:center;padding:24px;overflow-x:hidden}
+.o{position:fixed;border-radius:50%;filter:blur(2px);z-index:0;animation:fl 6s ease-in-out infinite}.o1{width:220px;height:220px;left:-60px;top:8%;background:radial-gradient(circle at 30% 30%,#FFC2F0,#FF2E93 55%,#6A1BFF)}.o2{width:160px;height:160px;right:-40px;bottom:10%;background:radial-gradient(circle at 30% 30%,#B8FFF6,#00C2D1 50%,#2B2BFF);animation-delay:-3s}
+@keyframes fl{50%{transform:translateY(-18px)}}
+main{position:relative;z-index:1;width:min(560px,100%);background:#fff;border:2px solid #15120E;border-radius:26px;padding:30px;box-shadow:8px 8px 0 #15120E}
+h1{font:800 clamp(30px,6vw,44px)/1 "Bricolage Grotesque",sans-serif;letter-spacing:-.04em;margin-bottom:8px}p.s{opacity:.7;margin-bottom:22px}
+label{display:block;font-weight:700;font-size:14px;margin:16px 0 6px}input,textarea{width:100%;font:inherit;padding:12px 14px;border:2px solid #15120E;border-radius:14px;background:#F1EEE3}
+.st{display:flex;gap:6px}.st button{font-size:34px;line-height:1;background:none;border:0;cursor:pointer;color:#C9C3B0;transition:transform .2s}.st button.on{color:#FF8A00}.st button:hover{transform:scale(1.2) rotate(-8deg)}
+.go{margin-top:22px;width:100%;padding:16px;border:0;border-radius:99px;background:#15120E;color:#F1EEE3;font:700 18px "Instrument Sans";cursor:pointer;transition:transform .2s}.go:hover{transform:scale(1.03)}
+small{display:block;margin-top:12px;opacity:.6;text-align:center;font-size:14px}.er{color:#B0002A;font-weight:700;margin-top:10px;min-height:1.4em}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style></head><body><div class="o o1"></div><div class="o o2"></div>
+<main><h1>How was working with me?</h1><p class="s">A few honest lines help a lot. It takes one minute.</p>
+<label for="n">Your name</label><input id="n" autocomplete="name">
+<label for="b">Your brand or business</label><input id="b" placeholder="e.g. Mesmereyes Beauty Lounge">
+<label>Your rating</label><div class="st" id="st" role="radiogroup" aria-label="Rating"></div>
+<label for="t">Your review</label><textarea id="t" rows="5" placeholder="What did I do for you? How did it go?"></textarea>
+<div class="er" id="er" role="alert"></div><button class="go" id="go" type="button">Send my review on WhatsApp</button>
+<small>It opens WhatsApp with your review ready to send. I may show it on my website.</small></main>
+<script>
+(function(){var r=5,st=document.getElementById('st');
+function paint(){[].forEach.call(st.children,function(b,i){b.classList.toggle('on',i<r);b.setAttribute('aria-checked',i===r-1)})}
+for(var i=1;i<=5;i++)(function(i){var b=document.createElement('button');b.type='button';b.textContent='\u2605';b.setAttribute('role','radio');b.setAttribute('aria-label',i+' star'+(i>1?'s':''));b.addEventListener('click',function(){r=i;paint()});st.appendChild(b)})(i);paint();
+document.getElementById('go').addEventListener('click',function(){var n=document.getElementById('n').value.trim(),b=document.getElementById('b').value.trim(),t=document.getElementById('t').value.trim(),er=document.getElementById('er');
+if(!n||!t){er.textContent='Please add your name and a few words.';return}er.textContent='';
+var m='Hi Maninder! Here is my review.\n\n'+'\u2605'.repeat(r)+'\u2606'.repeat(5-r)+' ('+r+'/5)\n"'+t+'"\n\n- '+n+(b?', '+b:'');
+location.href='https://wa.me/919712890124?text='+encodeURIComponent(m)})})();
+</script></body></html>
