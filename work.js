@@ -312,6 +312,11 @@ REELS=[
 ];
 DESIGNS=[
  {
+  "client": "fre",
+  "title": "DermaTouch",
+  "img": "designs/1793520730492.jpg"
+ },
+ {
   "client": "urb",
   "title": "UrbaNest Logo",
   "img": "designs/1793520586489.jpg"
