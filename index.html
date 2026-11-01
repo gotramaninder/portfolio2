@@ -596,7 +596,7 @@ function renderSnap(){var el=document.getElementById('snap');el.innerHTML='';if(
  var er=v?((l+o)/v*100):0;
  [[String(REELS.length),'reels showcased']].concat(rc?[[fmt(rc),'total reach']]:[]).concat([[fmt(v),'total views'],[fmt(l),'total likes'],[fmt(o),'comments and shares'],[er.toFixed(1)+'%','average engagement']]).forEach(function(a){var d=mk('div');d.appendChild(mk('b',null,a[0]));d.appendChild(mk('span',null,a[1]));el.appendChild(d)})}
 function reelCard(r){var rc=mk('article','rc');
- var a=mk('a','reel');a.dataset.cat=r.client;a.href=okUrl(r.url)?r.url:'#';a.target='_blank';a.rel='noopener';a.setAttribute('aria-label','Watch '+(r.title||'reel'));
+ var a=mk('a','reel');a.dataset.cat=r.client;a.href=r.video|| (okUrl(r.url)?r.url:'#');a.target='_blank';a.rel='noopener';a.setAttribute('aria-label','Watch '+(r.title||'reel'));
  if(r.cover){a.classList.add('cv');a.style.backgroundImage=cssUrl(PV[r.cover]||r.cover)}else{mpCover(a,r);hoverPrev(a,r)}
  a.appendChild(mk('span','pl'));a.appendChild(mk('span','cl',CL[r.client]||r.client||'Client'));a.appendChild(mk('strong',null,r.title||'Reel'));rc.appendChild(a);
  var s=mk('div','st');s.style.gridTemplateColumns='repeat('+(r.reach?5:4)+',1fr)';(r.reach?[['reach',r.reach]]:[]).concat([['views',r.views],['likes',r.likes],['comments',r.comments],['shares',r.shares]]).forEach(function(p){var d=mk('div');d.appendChild(mk('b',null,fmt(p[1])));d.appendChild(mk('span',null,p[0]));s.appendChild(d)});rc.appendChild(s);
