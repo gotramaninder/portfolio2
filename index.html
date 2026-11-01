@@ -294,7 +294,11 @@ details[open] summary::after{transform:rotate(45deg)}details p{padding:0 4px 24p
 .ac,.reel.ac[data-cat],.tile.ac{background-image:radial-gradient(circle at 18% 14%,hsl(var(--h1),95%,64%) 0 20%,transparent 21%),radial-gradient(circle at 90% 60%,hsla(var(--h2),92%,62%,.85) 0 27%,transparent 28%),linear-gradient(165deg,hsl(var(--h1),78%,46%),hsl(var(--h2),80%,24%))}
 .reel .acn{position:absolute;top:16px;left:16px;z-index:2;font:800 clamp(34px,4vw,52px)/.88 var(--d);letter-spacing:-.045em;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.25)}
 .reel .acn small{display:block;font:700 13px var(--b);letter-spacing:0;margin-top:5px;opacity:.9}
-.reel iframe{opacity:0;transition:opacity .5s}.reel iframe.on{opacity:1}
+.reel.ac::after{content:"M / MOTION WORK";position:absolute;z-index:2;top:15px;right:14px;padding:5px 9px;border:1px solid rgba(255,255,255,.55);border-radius:99px;background:rgba(21,18,14,.22);color:#fff;font:700 9px var(--b);letter-spacing:.12em}
+.tile.ac{isolation:isolate;background-color:#17142c;background-image:radial-gradient(circle at 18% 16%,hsla(var(--h1),100%,70%,.95),transparent 34%),radial-gradient(circle at 88% 70%,hsla(var(--h2),95%,60%,.75),transparent 38%),linear-gradient(150deg,#17142c 5%,#29214b 58%,#0e1828)}
+.tile.ac::before{content:"M";position:absolute;inset:8% 0 auto;text-align:center;color:rgba(255,255,255,.2);font:800 clamp(88px,13vw,150px)/1 var(--d);letter-spacing:-.12em;pointer-events:none}
+.tile.ac::after{content:"MANINDER  /  CREATIVE PORTFOLIO";position:absolute;top:10px;left:9px;right:9px;padding:6px 5px;border:1px solid rgba(255,255,255,.38);border-radius:99px;background:rgba(10,10,20,.2);color:#fff;text-align:center;font:700 7px var(--b);letter-spacing:.09em;pointer-events:none}
+.tile.ac span{position:relative;z-index:2;background:var(--yel);color:var(--ink);box-shadow:0 5px 18px rgba(0,0,0,.2)}
 .tile.dz{border:3px solid #fff}
 .stg{transition:background .9s}.bp{position:fixed;width:16px;height:16px;margin:-8px;border-radius:50%;pointer-events:none;z-index:120;animation:bp .95s cubic-bezier(.2,.8,.4,1) forwards}@keyframes bp{to{transform:translate(var(--dx),calc(var(--dy) + 110px)) scale(.2);opacity:0}}
 .sv{opacity:0;transform:translate(var(--sx,0),46px) scale(.98);filter:blur(8px);transition:opacity .8s,transform .9s cubic-bezier(.2,.8,.2,1),filter .8s;transition-delay:var(--rd,0s)}.sv.v{opacity:1;transform:none;filter:none}
@@ -635,7 +639,7 @@ function show(i){var c=C[i];key=c[0];window.__stgKey=key;[].forEach.call(dock.ch
  var WA='https://wa.me/919712890124?text=Hi%20Maninder%2C%20I%20want%20to%20work%20with%20you';if(c[0]==='next')all=[{title:'You can be next',url:WA},{title:'Your brand here',url:WA},{title:'Your reels',url:WA},{title:'Your designs',url:WA},{title:'Say hi',url:WA}];else if(!all.length)all=[{},{},{},{},{}];var n=all.length;
  all.forEach(function(r,k){var a=k/n*6.283-1.4,t=document.createElement(r.url?'a':'div');t.className='tile g'+(k%4);
   if(r.design)t.classList.add('dz');if(r.url){t.href=(r.design||/^https?:\/\//i.test(r.url))?r.url:'#';t.target='_blank';t.rel='noopener';t.setAttribute('aria-label','Watch '+(r.title||'reel'))}
-  if(r.cover)t.style.backgroundImage='url("'+encodeURI((window.mpPV&&mpPV[r.cover])||r.cover)+'")';else if(r.url&&window.mpCover)mpCover(t,r,true);
+  if(r.cover){t.style.backgroundImage='url("'+encodeURI((window.mpPV&&mpPV[r.cover])||r.cover)+'")';t.classList.add('has-cover')}else if(r.url&&window.mpCover)mpCover(t,r,true);
   if(r.title){var s=document.createElement('span');s.textContent=r.title;t.appendChild(s)}
   t.style.left=(50+39*Math.cos(a))+'%';t.style.top=(36+26*Math.sin(a))+'%';
   t.style.setProperty('--x0',(Math.random()*90-45)+'vw');t.style.setProperty('--y0',(Math.random()*90-45)+'vh');
