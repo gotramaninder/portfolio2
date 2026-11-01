@@ -1,109 +1,91 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex"><title>Portfolio Admin</title>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Maninder — Portfolio Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box}body{margin:0;font:16px/1.5 system-ui,sans-serif;background:#15120E;color:#F1EEE3;padding:20px;max-width:900px;margin:auto}
-h1{font-size:28px;margin:0 0 4px}h2{font-size:20px;color:#FFDD3C;margin:28px 0 10px}
-.box{background:#201C16;border:1px solid #3a342a;border-radius:16px;padding:16px;margin-bottom:14px}
-input,select,button{font:inherit;padding:10px 12px;border-radius:10px;border:1px solid #4a4336;background:#15120E;color:#F1EEE3;width:100%}
-.g{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}.w{grid-column:1/-1}
-button{cursor:pointer;background:#FFDD3C;color:#15120E;font-weight:700;border:0}button.s{background:#3a342a;color:#F1EEE3;width:auto;padding:6px 12px}
-.row{display:flex;gap:10px;align-items:center;padding:8px 0;border-top:1px solid #3a342a}.row img{width:44px;height:64px;object-fit:cover;border-radius:8px;background:#3a342a}.row div{flex:1;min-width:0}
-.row small{color:#A39D8B;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-#msg{position:sticky;top:0;background:#FF3D2E;color:#15120E;font-weight:700;padding:8px 14px;border-radius:10px;margin:10px 0;display:none}
-iframe{width:100%;height:420px;border:0;border-radius:12px;background:#000;display:none}label{font-size:13px;color:#A39D8B}
-#save{position:sticky;bottom:12px;margin-top:20px;padding:16px;font-size:18px}
+:root{--ink:#15120e;--paper:#f1eee3;--white:#fffdf7;--yellow:#ffe02e;--red:#ff3d2e;--muted:#777163;--line:#e2dccf}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 "Instrument Sans",sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.wrap{max-width:1160px;margin:auto;padding:22px 18px 60px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font:800 19px "Bricolage Grotesque"}.brand small{display:block;font:500 12px "Instrument Sans";color:var(--muted)}.hero{margin:22px 0;background:var(--ink);color:var(--paper);border-radius:22px;padding:28px;display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}.eyebrow{font-size:11px;letter-spacing:.15em;color:#bdb7a6;font-weight:700}.hero h1{font:800 clamp(32px,5vw,52px)/.98 "Bricolage Grotesque";margin:9px 0}.hero p{color:#c9c3b5;margin:0}.stats{display:flex;gap:8px;flex-wrap:wrap}.stat{background:#29251e;border:1px solid #403a2e;border-radius:13px;padding:11px 15px;min-width:82px}.stat b{display:block;font:800 23px "Bricolage Grotesque"}.stat span{font-size:11px;color:#c9c3b5}.tabs{display:flex;gap:8px;overflow:auto;padding:4px 0 14px}.tab{white-space:nowrap;border:1px solid var(--line);background:var(--white);padding:10px 17px;border-radius:99px;font-weight:700}.tab.active{background:var(--ink);color:var(--yellow);border-color:var(--ink)}.panel{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:20px;margin:12px 0}.head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px}.head h2{font:800 21px "Bricolage Grotesque";margin:0}.muted{font-size:13px;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field label{display:block;font-size:12px;font-weight:700;color:var(--muted);margin:0 0 5px}.field input,.field select,.field textarea{width:100%;padding:12px;border:1px solid #dcd5c7;border-radius:11px;background:#f8f5ed;color:var(--ink);outline:none}.field textarea{min-height:100px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{border-color:#8b8475;box-shadow:0 0 0 3px #15120e12}.wide{grid-column:1/-1}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.btn{border:0;border-radius:99px;padding:11px 17px;background:var(--ink);color:var(--paper);font-weight:800}.btn.primary{background:var(--yellow);color:var(--ink)}.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}.btn.danger{background:#fae8e5;color:#a72d25}.btn.small{padding:7px 11px;font-size:12px}.list{display:grid;gap:8px}.item{display:flex;align-items:center;gap:11px;border:1px solid var(--line);border-radius:12px;padding:9px;min-width:0}.thumb{width:52px;height:52px;border-radius:9px;object-fit:cover;background:#e8e2d6;flex:none}.itemmain{min-width:0;flex:1}.itemmain b,.itemmain small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.itemmain small{color:var(--muted);font-size:12px}.itemactions{display:flex;gap:6px;flex:none}.empty{border:1px dashed var(--line);border-radius:12px;text-align:center;color:var(--muted);padding:22px}.notice{padding:11px 14px;border-radius:11px;background:#eee9dc;margin:10px 0;font-size:13px}.notice.error{background:#fae8e5;color:#a72d25}.notice.ok{background:#e7f3eb;color:#17613f}.hidden{display:none!important}.login{max-width:470px;margin:8vh auto;padding:18px}.login .panel{padding:25px;box-shadow:0 20px 55px #20190d12}.login h1{font:800 34px "Bricolage Grotesque";margin:8px 0}.login p{font-size:13px;color:var(--muted)}.login .field{margin:12px 0}.foot{text-align:center;color:var(--muted);font-size:12px;margin-top:20px}@media(max-width:620px){.wrap{padding:15px 12px 45px}.hero{padding:21px}.stats{width:100%}.stat{flex:1}.grid{grid-template-columns:1fr}.wide{grid-column:auto}.panel{padding:15px}.item{align-items:flex-start}.itemactions{flex-direction:column}}
 </style></head><body>
-<h1>Portfolio Admin</h1><div id="msg"></div>
+<div id="loginView" class="login"><div class="panel">
+<div class="brand">M / PORTFOLIO STUDIO <small>Private content workspace</small></div><div style="height:18px"></div><div class="eyebrow">MANINDER SINGH GOTRA</div><h1>Welcome back.</h1>
+<p>Login using the same email and password you created in the previous admin. If this is a new browser, enter your GitHub repository and token too. Your token is encrypted in this browser's local storage.</p>
+<div class="field"><label>Email</label><input id="email" type="email" autocomplete="username" placeholder="Your admin email"></div>
+<div class="field"><label>Password</label><input id="password" type="password" autocomplete="current-password" placeholder="Your admin password"></div>
+<div id="githubFields"><div class="field"><label>GitHub repository (username/repo)</label><input id="repo" value="gotramaninder/portfolio2" placeholder="username/repository"></div><div class="field"><label>GitHub fine-grained token</label><input id="token" type="password" autocomplete="off" placeholder="github_pat_…"></div></div>
+<button class="btn primary" id="loginBtn" style="width:100%">Connect & sign in →</button><div id="loginMsg" class="notice hidden"></div>
+<p style="margin-top:14px">Token permission required: only this repository, Contents → Read and write. Never share your token. If your previous saved login is in this same browser, the GitHub fields will be filled from its encrypted vault.</p>
+</div><div class="foot">PORTFOLIO STUDIO · PRIVATE ADMIN</div></div>
 
-<div class="box" id="setup"><div class="g">
-<div class="w"><label>GitHub repo (username/repo)</label><input id="repo" placeholder="maninder/portfolio"></div>
-<div class="w"><label>GitHub token (Contents: read and write, sirf isi repo ke liye)</label><input id="tok" type="password"></div>
-<div class="w"><label>Tera email</label><input id="em" type="email" autocomplete="username"></div><div class="w"><label>Password (pehli baar naya banao, baad mein yahi se login)</label><input id="pw" type="password" autocomplete="current-password"></div><button class="w" id="conn">Connect</button><button class="w s" id="rst" style="background:#3a342a;color:#F1EEE3">Reset login</button></div></div>
+<div id="appView" class="wrap hidden">
+<header class="top"><div class="brand">M / PORTFOLIO STUDIO <small>Content management</small></div><div class="actions" style="margin:0"><span class="muted" id="connection">● Connected</span><button class="btn ghost small" id="logout">Log out</button></div></header>
+<section class="hero"><div><div class="eyebrow">MANINDER SINGH GOTRA / CONTROL ROOM</div><h1>Make your work<br>look its best.</h1><p>Manage your portfolio content in one place.</p><div class="muted" id="status" style="color:#ffe02e;margin-top:12px">● Ready</div></div><div class="stats"><div class="stat"><b id="countR">0</b><span>Reels</span></div><div class="stat"><b id="countD">0</b><span>Designs</span></div><div class="stat"><b id="countP">0</b><span>Proofs</span></div><div class="stat"><b id="countV">0</b><span>Reviews</span></div></div></section>
+<div id="globalMsg" class="notice hidden"></div>
+<nav class="tabs"><button class="tab active" data-tab="reels">Instagram / Reels</button><button class="tab" data-tab="designs">Designs</button><button class="tab" data-tab="proof">Instagram Proof</button><button class="tab" data-tab="reviews">Reviews</button></nav>
+<section id="page-reels" class="page"><div class="panel"><div class="head"><h2 id="reelHeading">Add a reel</h2><span class="muted">Instagram content</span></div><div class="grid">
+<div class="field wide"><label>Instagram post / reel URL</label><input id="rUrl" placeholder="https://www.instagram.com/reel/..."></div>
+<div class="field"><label>Title</label><input id="rTitle" maxlength="100"></div><div class="field"><label>Client</label><select id="rClient"><option value="ims">IMS</option><option value="mes">Mesmereyes</option><option value="taj">Taj Beauty</option><option value="urb">UrbaNest</option><option value="fre">Freelance</option></select></div>
+<div class="field"><label>Views</label><input id="rViews" type="number" min="0"></div><div class="field"><label>Reach (optional)</label><input id="rReach" type="number" min="0"></div><div class="field"><label>Likes</label><input id="rLikes" type="number" min="0"></div><div class="field"><label>Comments</label><input id="rComments" type="number" min="0"></div><div class="field"><label>Shares</label><input id="rShares" type="number" min="0"></div><div class="field wide"><label>Cover image (optional)</label><input id="rCover" type="file" accept="image/*"></div></div><div class="actions"><button class="btn primary" id="addReel">Add reel</button><button class="btn ghost hidden" id="cancelReel">Cancel edit</button></div></div><div class="panel"><div class="head"><h2>Published reels</h2><span class="muted" id="reelCount"></span></div><div id="reelList" class="list"></div></div></section>
 
-<div id="app" hidden>
-<h2>Add reel</h2>
-<div class="box"><div class="g">
-<div class="w"><label>Instagram reel link</label><input id="url" placeholder="https://www.instagram.com/reel/XXXX/"></div>
-<div class="w"><iframe id="emb" title="Instagram preview" allowfullscreen></iframe></div>
-<div><label>Client</label><select id="cl"><option value="ims">IMS</option><option value="mes">Mesmereyes</option><option value="taj">Taj Beauty</option><option value="urb">UrbaNest</option><option value="fre">Freelance</option></select></div>
-<div><label>Title</label><input id="ti"></div>
-<div><label>Views</label><input id="vw" type="number"></div><div><label>Likes</label><input id="lk" type="number"></div>
-<div><label>Comments</label><input id="cm" type="number"></div><div><label>Shares</label><input id="sh" type="number"></div>
-<div class="w"><label>Cover: image ya video file (video se frame khud nikal lunga)</label><input id="cov" type="file" accept="image/*,video/*"></div>
-<button class="w" id="addR">Add reel</button></div></div>
-<div class="box" id="lr"></div>
+<section id="page-designs" class="page hidden"><div class="panel"><div class="head"><h2 id="designHeading">Add a design</h2><span class="muted">Portfolio gallery</span></div><div class="grid"><div class="field"><label>Title</label><input id="dTitle" maxlength="100"></div><div class="field"><label>Client</label><select id="dClient"><option value="ims">IMS</option><option value="mes">Mesmereyes</option><option value="taj">Taj Beauty</option><option value="urb">UrbaNest</option><option value="fre">Freelance</option></select></div><div class="field wide"><label>Design image</label><input id="dImage" type="file" accept="image/*"></div></div><div class="actions"><button class="btn primary" id="addDesign">Add design</button><button class="btn ghost hidden" id="cancelDesign">Cancel edit</button></div></div><div class="panel"><div class="head"><h2>Design gallery</h2><span class="muted" id="designCount"></span></div><div id="designList" class="list"></div></div></section>
 
-<h2>Add design</h2>
-<div class="box"><div class="g">
-<div><label>Client</label><select id="dcl"><option value="ims">IMS</option><option value="mes">Mesmereyes</option><option value="taj">Taj Beauty</option><option value="urb">UrbaNest</option><option value="fre">Freelance</option></select></div>
-<div><label>Title</label><input id="dti"></div>
-<div class="w"><label>Design image</label><input id="dim" type="file" accept="image/*"></div>
-<button class="w" id="addD">Add design</button></div></div>
-<div class="box" id="ld"></div>
-<button id="save">Save to website</button>
+<section id="page-proof" class="page hidden"><div class="panel"><div class="head"><h2>Add Instagram proof</h2><span class="muted">Insights screenshots</span></div><div class="grid"><div class="field wide"><label>Screenshot title</label><input id="pTitle" placeholder="IMS Ahmedabad reach"></div><div class="field wide"><label>Screenshot image</label><input id="pImage" type="file" accept="image/*"></div></div><div class="actions"><button class="btn primary" id="addProof">Add proof</button></div></div><div class="panel"><div class="head"><h2>Proof library</h2><span class="muted" id="proofCount"></span></div><div id="proofList" class="list"></div></div></section>
+
+<section id="page-reviews" class="page hidden"><div class="panel"><div class="head"><h2 id="reviewHeading">Add a review</h2><span class="muted">Client testimonials</span></div><div class="grid"><div class="field"><label>Client name</label><input id="vName" maxlength="100"></div><div class="field"><label>Brand / role</label><input id="vBrand" maxlength="120"></div><div class="field"><label>Rating</label><select id="vStars"><option value="5">5 stars</option><option value="4">4 stars</option><option value="3">3 stars</option><option value="2">2 stars</option><option value="1">1 star</option></select></div><div class="field wide"><label>Review text</label><textarea id="vText" maxlength="1500" placeholder="Client feedback…"></textarea></div></div><div class="actions"><button class="btn primary" id="addReview">Add review</button><button class="btn ghost hidden" id="cancelReview">Cancel edit</button></div></div><div class="panel"><div class="head"><h2>Client reviews</h2><span class="muted" id="reviewCount"></span></div><div id="reviewList" class="list"></div></div></section>
+<div class="panel"><div class="head"><div><h2 style="font:800 21px 'Bricolage Grotesque';margin:0">Save & publish</h2><div class="muted">Changes commit to GitHub. GitHub Pages may take 1–2 minutes to refresh.</div></div></div><div class="actions"><button class="btn primary" id="publish">Save & publish website ↗</button><button class="btn ghost" id="discard">Discard unsaved changes</button></div><div id="publishMsg" class="muted" style="margin-top:10px">No unsaved changes.</div></div><div class="foot">Portfolio Studio · Changes are committed to your GitHub repository.</div>
 </div>
-
 <script>
-const $=s=>document.querySelector(s),LS=localStorage,CL={ims:'IMS',mes:'Mesmereyes',taj:'Taj Beauty',urb:'UrbaNest',fre:'Freelance'};
-let cfg={},R=[],D=[],sha=null,pend={},keep='';
-const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-function msg(t){const m=$('#msg');m.textContent=t;m.style.display=t?'block':'none'}
-const api=(p,o={})=>fetch('https://api.github.com/repos/'+cfg.repo+'/contents/'+p,{...o,signal:AbortSignal.timeout(45000),cache:'no-store',headers:{Authorization:'Bearer '+cfg.token,Accept:'application/vnd.github+json'}}).then(async r=>{if(!r.ok&&r.status!=404)throw new Error('GitHub '+r.status+': '+(await r.text()).slice(0,100));return r});
-async function load(){
- try{msg('Loading...');const r=await api('work.js');
-  if(r.status==404){R=[];D=[];sha=null}
-  else{const j=await r.json();sha=j.sha;const t=decodeURIComponent(escape(atob(j.content.replace(/\n/g,''))));
-   const o=new Function('var REELS=[],DESIGNS=[];'+t+';return{R:REELS,D:DESIGNS}')();R=o.R||[];D=o.D||[]}
-  $('#setup').hidden=true;$('#app').hidden=false;draw();msg('')}
- catch(e){msg('Connect nahi hua: '+e.message)}}
-const kdf=async s=>{const k=await crypto.subtle.importKey('raw',new TextEncoder().encode(s),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt:new TextEncoder().encode('pf-admin'),iterations:200000,hash:'SHA-256'},k,{name:'AES-GCM',length:256},false,['encrypt','decrypt'])};
-const enc=async(o,s)=>{const iv=crypto.getRandomValues(new Uint8Array(12)),c=await crypto.subtle.encrypt({name:'AES-GCM',iv},await kdf(s),new TextEncoder().encode(JSON.stringify(o)));return JSON.stringify([...iv,...new Uint8Array(c)])};
-const dec=async(v,s)=>{const a=new Uint8Array(JSON.parse(v));return JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:a.slice(0,12)},await kdf(s),a.slice(12))))};
-if(LS.vault){$('#repo').parentElement.hidden=$('#tok').parentElement.hidden=true;$('#conn').textContent='Login'}
-$('#rst').onclick=()=>{if(confirm('Saved login hata dun? Repo aur token dobara daalna padega.')){LS.removeItem('vault');location.reload()}};
-$('#conn').onclick=async()=>{try{const pw=$('#pw').value;if(!pw||!$('#em').value)return msg('Email aur password daalo');const k=$('#em').value.trim().toLowerCase()+'|'+pw;
- if(LS.vault)cfg=await dec(LS.vault,k);else{cfg={repo:$('#repo').value.trim(),token:$('#tok').value.trim()};if(!cfg.repo||!cfg.token)return msg('Repo aur token bhi daalo');LS.vault=await enc(cfg,k)}
- load()}catch(e){msg('Email ya password galat')}};
-
-$('#url').oninput=e=>{const m=e.target.value.match(/instagram\.com\/(reel|p|tv)\/([\w-]+)/),f=$('#emb');
- if(m){f.src='https://www.instagram.com/'+m[1]+'/'+m[2]+'/embed';f.style.display='block'}else f.style.display='none'};
-
-const toEl=f=>new Promise((ok,no)=>{
- if(f.type.startsWith('video')){const v=document.createElement('video');v.muted=true;v.playsInline=true;v.src=URL.createObjectURL(f);
-  v.onloadeddata=()=>{v.currentTime=Math.min(1,v.duration/3)};v.onseeked=()=>ok(v);v.onerror=no}
- else{const i=new Image();i.src=URL.createObjectURL(f);i.onload=()=>ok(i);i.onerror=no}});
-async function shrink(f,w=720){const s=await toEl(f),sw=s.videoWidth||s.width,sh=s.videoHeight||s.height,k=Math.min(1,w/sw),c=document.createElement('canvas');
- c.width=sw*k;c.height=sh*k;c.getContext('2d').drawImage(s,0,0,c.width,c.height);return c.toDataURL('image/jpeg',.82)}
-
-$('#addR').onclick=async()=>{
- const u=$('#url').value.trim();if(!/instagram\.com\/(reel|p|tv)\//.test(u))return msg('Sahi Instagram reel link daalo');
- let cover=keep;const f=$('#cov').files[0];
- if(f){try{cover='covers/'+Date.now()+'.jpg';pend[cover]=await shrink(f)}catch(e){return msg('Cover read nahi hua')}}
- R.unshift({client:$('#cl').value,title:$('#ti').value||'Reel',url:u.split('?')[0],cover,views:+$('#vw').value||0,likes:+$('#lk').value||0,comments:+$('#cm').value||0,shares:+$('#sh').value||0});
- keep='';['url','ti','vw','lk','cm','sh','cov'].forEach(i=>$('#'+i).value='');$('#emb').style.display='none';msg('');draw()};
-$('#addD').onclick=async()=>{
- const f=$('#dim').files[0];if(!f)return msg('Design image chuno');
- const p='designs/'+Date.now()+'.jpg';pend[p]=await shrink(f,1200);
- D.unshift({client:$('#dcl').value,title:$('#dti').value||'Design',img:p});$('#dti').value='';$('#dim').value='';msg('');draw()};
-
-function draw(){
- const th=p=>pend[p]||p||'';
- $('#lr').innerHTML='<b>Reels ('+R.length+')</b>'+R.map((r,i)=>'<div class="row"><img src="'+esc(th(r.cover))+'" alt=""><div><b>'+esc(r.title)+'</b><small>'+esc(CL[r.client]||r.client)+' · '+r.views+' views</small><small>'+esc(r.url)+'</small></div><button class="s" data-a="up" data-i="'+i+'">↑</button><button class="s" data-a="ed" data-i="'+i+'">Edit</button><button class="s" data-a="del" data-i="'+i+'">✕</button></div>').join('');
- $('#ld').innerHTML='<b>Designs ('+D.length+')</b>'+D.map((d,i)=>'<div class="row"><img src="'+esc(th(d.img))+'" alt=""><div><b>'+esc(d.title)+'</b><small>'+esc(CL[d.client]||d.client)+'</small></div><button class="s" data-a="ddel" data-i="'+i+'">✕</button></div>').join('')}
-document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const i=+b.dataset.i,a=b.dataset.a;
- if(a=='del'&&confirm('Delete reel?'))R.splice(i,1);
- if(a=='ddel'&&confirm('Delete design?'))D.splice(i,1);
- if(a=='up'&&i>0)R.splice(i-1,0,R.splice(i,1)[0]);
- if(a=='ed'){const r=R.splice(i,1)[0];$('#url').value=r.url;$('#url').dispatchEvent(new Event('input'));$('#cl').value=r.client;$('#ti').value=r.title;$('#vw').value=r.views;$('#lk').value=r.likes;$('#cm').value=r.comments;$('#sh').value=r.shares;keep=r.cover||'';scrollTo(0,0)}
- draw()});
-
-async function put(p,content,sh,b64){const body={message:'admin: '+p,content:b64?content:btoa(unescape(encodeURIComponent(content)))};if(sh)body.sha=sh;
- const r=await api(p,{method:'PUT',body:JSON.stringify(body)});return (await r.json()).content.sha}
-$('#save').onclick=async()=>{
- try{msg('Saving... ruko');const used=new Set([...R.map(x=>x.cover),...D.map(x=>x.img)]);
-  const ks=Object.keys(pend).filter(k=>used.has(k));let n=0;for(const p of ks){msg('Image upload '+(++n)+'/'+ks.length+'...');await put(p,pend[p].split(',')[1],null,1);delete pend[p]}msg('work.js save ho rahi hai...');
-  sha=await put('work.js','REELS='+JSON.stringify(R,null,1)+';\nDESIGNS='+JSON.stringify(D,null,1)+';\n',sha);
-  msg('Saved ✓ Website 1-2 minute mein update ho jayegi')}
- catch(e){msg(e.name=='TimeoutError'?'Net slow hai, 45 sec mein jawab nahi aaya. Wapas Save dabao.':e.message)}};
+(function(){
+'use strict';
+const $=id=>document.getElementById(id),CLIENT={ims:'IMS',mes:'Mesmereyes',taj:'Taj Beauty',urb:'UrbaNest',fre:'Freelance'};
+let cfg=null,REELS=[],DESIGNS=[],PROOF=[],REVIEWS=[],workSha=null,pending={},dirty=false,editR=-1,editD=-1,editV=-1;
+const enc64=s=>btoa(unescape(encodeURIComponent(s))),dec64=s=>decodeURIComponent(escape(atob(s.replace(/\s/g,''))));
+function notify(id,text,type){const e=$(id);e.textContent=text;e.className='notice'+(type?' '+type:'');e.classList.remove('hidden')}
+function changed(){dirty=true;$('publishMsg').textContent='Unsaved changes — press Save & publish when ready.'}
+function github(path,method='GET',body){const url='https://api.github.com/repos/'+cfg.repo+'/contents/'+path+(method==='GET'?'?ref=main':'');return fetch(url,{method,headers:{Authorization:'Bearer '+cfg.token,Accept:'application/vnd.github+json','Content-Type':'application/json'},body:body?JSON.stringify(body):undefined,cache:'no-store'});}
+async function loadData(){const r=await github('work.js');if(!r.ok)throw Error('Cannot read work.js — GitHub '+r.status+'. Check repository and token permissions.');const j=await r.json();workSha=j.sha;const src=dec64(j.content);const data=new Function(src+';return {R:typeof REELS==="undefined"?[]:REELS,D:typeof DESIGNS==="undefined"?[]:DESIGNS,P:typeof PROOF==="undefined"?[]:PROOF,V:typeof REVIEWS==="undefined"?[]:REVIEWS}')();REELS=data.R||[];DESIGNS=data.D||[];PROOF=data.P||[];REVIEWS=data.V||[];dirty=false;pending={};render();}
+function safeImage(path){return pending[path]||path||''}
+function makeItem(title,sub,img,buttons){const el=document.createElement('div');el.className='item';if(img){const im=document.createElement('img');im.className='thumb';im.src=safeImage(img);im.alt='';el.appendChild(im)}const m=document.createElement('div');m.className='itemmain';const b=document.createElement('b');b.textContent=title||'Untitled';const s=document.createElement('small');s.textContent=sub||'';m.append(b,s);el.appendChild(m);const a=document.createElement('div');a.className='itemactions';buttons.forEach(x=>{const bt=document.createElement('button');bt.className='btn small '+(x.danger?'danger':'ghost');bt.textContent=x.label;bt.onclick=x.run;a.appendChild(bt)});el.appendChild(a);return el}
+function drawList(id,arr,fn){const e=$(id);e.replaceChildren();arr.forEach((x,i)=>e.appendChild(fn(x,i)));if(!arr.length){const n=document.createElement('div');n.className='empty';n.textContent='Nothing here yet. Add your first item above.';e.appendChild(n)}}
+function remove(arr,i,what){if(!confirm('Delete this '+what+'? It will disappear from the live website after publishing.'))return;arr.splice(i,1);changed();render()}
+function render(){
+$('countR').textContent=REELS.length;$('countD').textContent=DESIGNS.length;$('countP').textContent=PROOF.length;$('countV').textContent=REVIEWS.length;
+$('reelCount').textContent=REELS.length+' items';$('designCount').textContent=DESIGNS.length+' items';$('proofCount').textContent=PROOF.length+' items';$('reviewCount').textContent=REVIEWS.length+' items';
+drawList('reelList',REELS,(x,i)=>makeItem(x.title,(CLIENT[x.client]||x.client)+' · '+(x.views||0)+' views',x.cover,[{label:'Edit',run:()=>editReel(i)},{label:'Delete',danger:true,run:()=>remove(REELS,i,'reel')}]));
+drawList('designList',DESIGNS,(x,i)=>makeItem(x.title,CLIENT[x.client]||x.client,x.img,[{label:'Edit',run:()=>editDesign(i)},{label:'Delete',danger:true,run:()=>remove(DESIGNS,i,'design')}]));
+drawList('proofList',PROOF,(x,i)=>makeItem(x.title,'Instagram insights',x.img,[{label:'Rename',run:()=>{const v=prompt('Proof title',x.title||'');if(v!==null){x.title=v;changed();render()}}},{label:'Delete',danger:true,run:()=>remove(PROOF,i,'proof')}]));
+drawList('reviewList',REVIEWS,(x,i)=>makeItem(x.name,(x.brand||'')+' · '+(x.stars||5)+'/5 stars',null,[{label:'Edit',run:()=>editReview(i)},{label:'Delete',danger:true,run:()=>remove(REVIEWS,i,'review')}]));
+}
+function switchTab(tab){document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));document.querySelectorAll('.page').forEach(p=>p.classList.toggle('hidden',p.id!=='page-'+tab))}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
+async function imageToData(file,max=1400){if(!file)return '';if(!file.type.startsWith('image/'))throw Error('Please choose an image file.');return new Promise((resolve,reject)=>{const u=URL.createObjectURL(file),im=new Image();im.onload=()=>{const k=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.max(1,Math.round(im.width*k));c.height=Math.max(1,Math.round(im.height*k));c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);resolve(c.toDataURL('image/jpeg',.86))};im.onerror=()=>{URL.revokeObjectURL(u);reject(Error('Could not read image.'))};im.src=u})}
+async function addImage(file,folder){const data=await imageToData(file);const path=folder+'/'+Date.now()+'-'+Math.random().toString(36).slice(2,7)+'.jpg';pending[path]=data;return path}
+function resetReel(){['rUrl','rTitle','rViews','rReach','rLikes','rComments','rShares','rCover'].forEach(x=>$(x).value='');editR=-1;$('reelHeading').textContent='Add a reel';$('addReel').textContent='Add reel';$('cancelReel').classList.add('hidden')}
+function editReel(i){const x=REELS[i];editR=i;$('rUrl').value=x.url||'';$('rTitle').value=x.title||'';$('rClient').value=x.client||'fre';$('rViews').value=x.views||0;$('rReach').value=x.reach||0;$('rLikes').value=x.likes||0;$('rComments').value=x.comments||0;$('rShares').value=x.shares||0;$('reelHeading').textContent='Edit reel';$('addReel').textContent='Update reel';$('cancelReel').classList.remove('hidden');switchTab('reels');scrollTo({top:0,behavior:'smooth'})}
+$('addReel').onclick=async()=>{try{const url=$('rUrl').value.trim();if(!/^https:\/\/(www\.)?instagram\.com\/(reel|p|tv)\//.test(url))return notify('globalMsg','Enter a valid Instagram post or reel URL.','error');const x={client:$('rClient').value,title:$('rTitle').value.trim()||'Reel',url:url.split('?')[0],cover:editR>=0?REELS[editR].cover||'':'',views:+$('rViews').value||0,likes:+$('rLikes').value||0,comments:+$('rComments').value||0,shares:+$('rShares').value||0};if($('rReach').value!=='')x.reach=+$('rReach').value;if($('rCover').files[0])x.cover=await addImage($('rCover').files[0],'covers');if(editR>=0)REELS[editR]=x;else REELS.unshift(x);resetReel();changed();render();notify('globalMsg','Reel saved as a draft. Publish to make it live.','ok')}catch(e){notify('globalMsg',e.message,'error')}};
+$('cancelReel').onclick=resetReel;
+function resetDesign(){$('dTitle').value='';$('dImage').value='';editD=-1;$('designHeading').textContent='Add a design';$('addDesign').textContent='Add design';$('cancelDesign').classList.add('hidden')}
+function editDesign(i){const x=DESIGNS[i];editD=i;$('dTitle').value=x.title||'';$('dClient').value=x.client||'fre';$('designHeading').textContent='Edit design';$('addDesign').textContent='Update design';$('cancelDesign').classList.remove('hidden');switchTab('designs');scrollTo({top:0,behavior:'smooth'})}
+$('addDesign').onclick=async()=>{try{const f=$('dImage').files[0];if(editD<0&&!f)return notify('globalMsg','Choose a design image first.','error');const x={client:$('dClient').value,title:$('dTitle').value.trim()||'Design',img:editD>=0?DESIGNS[editD].img:''};if(f)x.img=await addImage(f,'designs');if(editD>=0)DESIGNS[editD]=x;else DESIGNS.unshift(x);resetDesign();changed();render();notify('globalMsg','Design saved as a draft.','ok')}catch(e){notify('globalMsg',e.message,'error')}};
+$('cancelDesign').onclick=resetDesign;
+$('addProof').onclick=async()=>{try{const f=$('pImage').files[0];if(!f)return notify('globalMsg','Choose a screenshot first.','error');const img=await addImage(f,'proof');PROOF.unshift({title:$('pTitle').value.trim()||'Instagram insights',img});$('pTitle').value='';$('pImage').value='';changed();render();notify('globalMsg','Proof saved as a draft.','ok')}catch(e){notify('globalMsg',e.message,'error')}};
+function resetReview(){$('vName').value='';$('vBrand').value='';$('vText').value='';$('vStars').value='5';editV=-1;$('reviewHeading').textContent='Add a review';$('addReview').textContent='Add review';$('cancelReview').classList.add('hidden')}
+function editReview(i){const x=REVIEWS[i];editV=i;$('vName').value=x.name||'';$('vBrand').value=x.brand||'';$('vText').value=x.text||'';$('vStars').value=x.stars||5;$('reviewHeading').textContent='Edit review';$('addReview').textContent='Update review';$('cancelReview').classList.remove('hidden');switchTab('reviews');scrollTo({top:0,behavior:'smooth'})}
+$('addReview').onclick=()=>{const name=$('vName').value.trim(),text=$('vText').value.trim();if(!name||!text)return notify('globalMsg','Add the client name and review text.','error');const x={name,brand:$('vBrand').value.trim(),stars:+$('vStars').value,text};if(editV>=0)REVIEWS[editV]=x;else REVIEWS.unshift(x);resetReview();changed();render();notify('globalMsg','Review saved as a draft.','ok')};
+$('cancelReview').onclick=resetReview;
+async function putFile(path,content,sha,isBase64){const body={message:'Portfolio Studio: update '+path,content:isBase64?content:enc64(content),branch:'main'};if(sha)body.sha=sha;const r=await github(path,'PUT',body);if(!r.ok)throw Error('GitHub '+r.status+': '+(await r.text()).slice(0,220));return (await r.json()).content.sha}
+$('publish').onclick=async()=>{try{$('publish').disabled=true;$('status').textContent='● Publishing…';const paths=Object.keys(pending);for(let i=0;i<paths.length;i++){const p=paths[i];$('publishMsg').textContent='Uploading image '+(i+1)+' of '+paths.length+'…';await putFile(p,pending[p].split(',')[1],null,true)}$('publishMsg').textContent='Saving portfolio content…';const src='// Saved by Portfolio Studio. Existing content schema retained.\nvar REELS='+JSON.stringify(REELS,null,1)+';\nvar DESIGNS='+JSON.stringify(DESIGNS,null,1)+';\nvar PROOF='+JSON.stringify(PROOF,null,1)+';\nvar REVIEWS='+JSON.stringify(REVIEWS,null,1)+';\n';workSha=await putFile('work.js',src,workSha,false);pending={};dirty=false;$('status').textContent='● Published';$('publishMsg').textContent='Published successfully. GitHub Pages may take 1–2 minutes to refresh.';notify('globalMsg','All changes committed successfully.','ok')}catch(e){$('status').textContent='● Publish failed';$('publishMsg').textContent='Publish failed. Draft remains in this tab. '+e.message;notify('globalMsg',e.message,'error')}finally{$('publish').disabled=false}};
+$('discard').onclick=async()=>{if(dirty&&!confirm('Discard all unsaved changes and reload the latest saved content?'))return;try{await loadData();notify('globalMsg','Latest saved content loaded.','ok');$('publishMsg').textContent='Draft discarded.'}catch(e){notify('globalMsg',e.message,'error')}};
+/* Backward-compatible encrypted login vault from the previous admin panel. */
+const derive=async secret=>{const key=await crypto.subtle.importKey('raw',new TextEncoder().encode(secret),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt:new TextEncoder().encode('pf-admin'),iterations:200000,hash:'SHA-256'},key,{name:'AES-GCM',length:256},false,['encrypt','decrypt'])};
+const encrypt=async(obj,secret)=>{const iv=crypto.getRandomValues(new Uint8Array(12)),cipher=await crypto.subtle.encrypt({name:'AES-GCM',iv},await derive(secret),new TextEncoder().encode(JSON.stringify(obj)));return JSON.stringify([...iv,...new Uint8Array(cipher)])};
+const decrypt=async(value,secret)=>{const a=new Uint8Array(JSON.parse(value));return JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:a.slice(0,12)},await derive(secret),a.slice(12))))};
+function showApp(){ $('loginView').classList.add('hidden');$('appView').classList.remove('hidden');$('connection').textContent='● '+cfg.repo; }
+async function connect(){const email=$('email').value.trim().toLowerCase(),password=$('password').value;if(!email||!password)return notify('loginMsg','Enter your email and password.','error');const secret=email+'|'+password;try{$('loginBtn').disabled=true;$('loginBtn').textContent='Signing in…';let vault=localStorage.getItem('vault');if(vault){cfg=await decrypt(vault,secret)}else{const repo=$('repo').value.trim(),token=$('token').value.trim();if(!repo||!token)return notify('loginMsg','Enter your GitHub repository and token for first-time setup.','error');cfg={repo,token};const test=await fetch('https://api.github.com/repos/'+repo,{headers:{Authorization:'Bearer '+token,Accept:'application/vnd.github+json'}});if(!test.ok)throw Error('GitHub connection failed ('+test.status+'). Check repository and token.');localStorage.setItem('vault',await encrypt(cfg,secret));}
+await loadData();showApp();}catch(e){cfg=null;notify('loginMsg',vaultExists()?'Email/password incorrect, or saved GitHub token no longer works. '+e.message:e.message,'error')}finally{$('loginBtn').disabled=false;$('loginBtn').textContent='Connect & sign in →'}}
+function vaultExists(){return !!localStorage.getItem('vault')}
+$('loginBtn').onclick=connect;
+$('logout').onclick=()=>{if(dirty&&!confirm('Unsaved changes will be lost. Log out?'))return;location.reload()};
+try{if(localStorage.getItem('vault')){$('githubFields').classList.add('hidden')}}catch(e){}
+})();
 </script></body></html>
