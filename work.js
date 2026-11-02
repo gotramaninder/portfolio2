@@ -14,11 +14,12 @@ var REELS=[
   "client": "fre",
   "title": "Dark Mode",
   "url": "https://www.instagram.com/reel/DaxvlCwMub6/",
-  "cover": "",
+  "cover": "covers/1793598339016-9ksm2.jpg",
   "views": 500,
   "likes": 26,
   "comments": 2,
-  "shares": 99
+  "shares": 99,
+  "reach": 0
  },
  {
   "client": "ims",
@@ -62,43 +63,47 @@ var REELS=[
  },
  {
   "client": "urb",
-  "title": "legnesan",
+  "title": "BRAND PROMOTIONAL",
   "url": "https://www.instagram.com/reel/DRj2FHKkhRj/",
-  "cover": "",
+  "cover": "covers/1793598386660-q1283.jpg",
   "views": 2500,
   "likes": 72,
   "comments": 10,
-  "shares": 100
+  "shares": 100,
+  "reach": 0
  },
  {
   "client": "urb",
   "title": "Robotic Angel",
   "url": "https://www.instagram.com/p/DSbbs9mkqtw/",
-  "cover": "",
+  "cover": "covers/1793598403135-i86o7.jpg",
   "views": 921,
   "likes": 32,
   "comments": 6,
-  "shares": 8
+  "shares": 8,
+  "reach": 0
  },
  {
   "client": "urb",
   "title": "Villians",
   "url": "https://www.instagram.com/p/DTFxwbXiPBi/",
-  "cover": "",
+  "cover": "covers/1793598421223-xj3o9.jpg",
   "views": 500,
   "likes": 22,
   "comments": 5,
-  "shares": 2
+  "shares": 2,
+  "reach": 0
  },
  {
   "client": "urb",
   "title": "stock live",
   "url": "https://www.instagram.com/p/DRZaa2UjM9P/",
-  "cover": "",
+  "cover": "covers/1793598431740-tmdag.jpg",
   "views": 7500,
   "likes": 110,
   "comments": 9,
-  "shares": 250
+  "shares": 250,
+  "reach": 0
  },
  {
   "client": "fre",
