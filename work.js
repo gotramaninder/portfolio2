@@ -1,4 +1,5 @@
-REELS=[
+// Saved by Portfolio Studio. Existing content schema retained.
+var REELS=[
  {
   "client": "urb",
   "title": "legnesan",
@@ -223,94 +224,112 @@ REELS=[
   "client": "ims",
   "title": "Reverse Shark Tank",
   "url": "https://www.instagram.com/reel/DdCOggOsssd/",
-  "cover": "",
+  "cover": "covers/1793595401988-sfjta.jpg",
   "views": 5000,
   "likes": 95,
   "comments": 1,
-  "shares": 3
+  "shares": 3,
+  "reach": 0
  },
  {
   "client": "ims",
   "title": "Ninja Series 13",
   "url": "https://www.instagram.com/reel/DcqAl-0sRGO/",
-  "cover": "",
+  "cover": "covers/1793594893404-0g0bp.jpg",
   "views": 81900,
   "likes": 1377,
   "comments": 1,
-  "shares": 954
+  "shares": 954,
+  "reach": 0
  },
  {
   "client": "ims",
   "title": "Ninja series 5",
   "url": "https://www.instagram.com/reel/DcF4LRTp0uX/",
-  "cover": "",
+  "cover": "covers/1793594701481-00qzn.jpg",
   "views": 41300,
   "likes": 660,
   "comments": 7,
-  "shares": 401
+  "shares": 401,
+  "reach": 0
  },
  {
   "client": "ims",
   "title": "Ninja series 06",
   "url": "https://www.instagram.com/reel/DcGwPMPMwRV/",
-  "cover": "",
+  "cover": "covers/1793594671330-ecr1v.jpg",
   "views": 65000,
   "likes": 971,
   "comments": 6,
-  "shares": 19
+  "shares": 19,
+  "reach": 0
  },
  {
   "client": "ims",
   "title": "Ninja series 01",
   "url": "https://www.instagram.com/reel/Db5AM5nNEQn/",
-  "cover": "",
+  "cover": "covers/1793594908244-6islw.jpg",
   "views": 18100,
   "likes": 271,
   "comments": 2,
-  "shares": 6
+  "shares": 6,
+  "reach": 0
  },
  {
   "client": "ims",
   "title": "THE JOURNEY OF SOHAM SHAH",
   "url": "https://www.instagram.com/p/Dbpv7shjOSy/",
-  "cover": "",
+  "cover": "covers/1793595361380-50jup.jpg",
   "views": 10000,
   "likes": 313,
   "comments": 14,
-  "shares": 25
+  "shares": 25,
+  "reach": 0
  },
  {
   "client": "ims",
   "title": "Ai in Finance",
   "url": "https://www.instagram.com/reel/DbYQhBOsJLU/",
-  "cover": "",
+  "cover": "covers/1793595383136-w5goh.jpg",
   "views": 7000,
   "likes": 104,
   "comments": 4,
-  "shares": 23
+  "shares": 23,
+  "reach": 0
  },
  {
   "client": "ims",
   "title": "Techathon",
   "url": "https://www.instagram.com/reel/DbyR-LkMhg0/",
-  "cover": "",
+  "cover": "covers/1793594920662-o7f8u.jpg",
   "views": 7130,
   "likes": 113,
   "comments": 0,
-  "shares": 15
+  "shares": 15,
+  "reach": 0
  },
  {
   "client": "ims",
   "title": "Avg Packages of IIms",
   "url": "https://www.instagram.com/reel/Db41CW6EYwo/",
-  "cover": "",
+  "cover": "covers/1793594929620-lhmpi.jpg",
   "views": 160000,
   "likes": 200,
   "comments": 20,
-  "shares": 9
+  "shares": 9,
+  "reach": 0
  }
 ];
-DESIGNS=[
+var VIDEOS=[
+ {
+  "title": "DermaTouch",
+  "client": "fre",
+  "video": "videos/1793595473762-WhatsApp-Video-2026-11-01-at-1.30.29-PM.mp4",
+  "cover": ""
+ }
+];
+var POSTS=[];
+var DESIGNS=[
  {
   "client": "urb",
   "title": "UrbaNest Logo",
@@ -387,3 +406,5 @@ DESIGNS=[
   "img": "designs/1793515120347.jpg"
  }
 ];
+var PROOF=[];
+var REVIEWS=[];
