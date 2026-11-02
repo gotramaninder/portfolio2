@@ -425,6 +425,36 @@ var POSTS=[
 ];
 var DESIGNS=[
  {
+  "client": "mes",
+  "title": "MESMEREYES CLUB CARD",
+  "img": "designs/1793598640539-w9nps.jpg"
+ },
+ {
+  "client": "mes",
+  "title": "MESMEREYES GIFT VOUCHERS",
+  "img": "designs/1793598620603-1v4cd.jpg"
+ },
+ {
+  "client": "taj",
+  "title": "TAJ BEAUTY GIFT VOUCHERS",
+  "img": "designs/1793598603784-vbzd8.jpg"
+ },
+ {
+  "client": "taj",
+  "title": "TAJ BEAUTY CLUB CARD",
+  "img": "designs/1793598591135-gb52r.jpg"
+ },
+ {
+  "client": "taj",
+  "title": "TAJ BEAUTY BUSINESS CARD",
+  "img": "designs/1793598571849-yd5lb.jpg"
+ },
+ {
+  "client": "mes",
+  "title": "MESMEREYES BUSINESS CARD MOCKUP",
+  "img": "designs/1793598556182-4pc6s.jpg"
+ },
+ {
   "client": "urb",
   "title": "UrbaNest Logo",
   "img": "designs/1793520586489.jpg"
