@@ -7,7 +7,7 @@
       "description": "Reels, edits and designs from every brand.",
       "orbLabel": "All work",
       "visible": true,
-      "count": "all",
+      "count": null,
       "order": 0,
       "color1": "#FF4D6D",
       "color2": "#B0002A"
