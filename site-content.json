@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "hero": {
+    "tagline": "Social media manager, video editor and designer from Ahmedabad.",
+    "intro": "I plan, shoot, edit and design content that gets brands seen, remembered and followed. Three Instagram pages, 14.5 million views, one person behind the work."
+  },
+  "contact": {
+    "headline": "Let's make something people can't scroll past.",
+    "description": "I'm open to freelance projects and full-time social media roles. Message me and I'll get back to you soon.",
+    "location": "Maninder, Ahmedabad, India. Available for remote work worldwide.",
+    "email": "",
+    "phone": "",
+    "whatsapp": "919712890124",
+    "instagram": "https://instagram.com/manindergotra_25",
+    "linkedin": "",
+    "website": ""
+  },
+  "proof": {
+    "totalViews": 14.5,
+    "followers": 3550,
+    "ahmedabadViews": "9M",
+    "jaipurViews": "2.5M",
+    "bopalViews": "3M"
+  }
+}
