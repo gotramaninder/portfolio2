@@ -308,7 +308,7 @@ details[open] summary::after{transform:rotate(45deg)}details p{padding:0 4px 24p
 @media(prefers-reduced-motion:reduce){.sv{opacity:1;transform:none;filter:none}}
 .rvs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}.rvc{margin:0;background:#fff;color:#15120E;border:2px solid #15120E;border-radius:24px;padding:26px;box-shadow:7px 7px 0 #15120E;animation:pop .7s cubic-bezier(.2,.8,.2,1) both;transition:transform .3s}.rvc:hover{transform:translate(-3px,-3px) rotate(-.6deg)}
 .rvc .stx{color:#FF8A00;letter-spacing:3px;font-size:20px}.rvc blockquote{margin:12px 0 16px;font-size:18px}.rvc figcaption b{display:block}.rvc figcaption span{opacity:.65;font-size:15px}
-@keyframes pop{from{opacity:0;transform:translateY(30px) scale(.94)}}.dr textarea{width:100%;font:inherit;padding:10px;border-radius:10px}
+.review-invite{display:grid;grid-template-columns:.8fr 1.2fr;gap:34px;margin-top:54px;padding:34px;border:2px solid var(--ink);border-radius:26px;background:#fffdf7;color:var(--ink);box-shadow:8px 8px 0 var(--ink)}.review-invite h3{font-size:clamp(30px,4vw,48px);margin-bottom:12px}.review-invite p{font-size:16px;max-width:38ch}.review-invite form{display:grid;gap:9px}.review-invite label{font:700 14px var(--b);margin-top:6px}.review-invite input,.review-invite select,.review-invite textarea{width:100%;padding:13px 15px;border:1.5px solid #d8d2c2;border-radius:12px;background:#fff;color:var(--ink);font:16px var(--b)}.review-invite textarea{resize:vertical}.review-invite .btn{justify-self:start;margin-top:10px}.review-note{font-size:13px!important;color:var(--mute);max-width:none!important}@media(max-width:860px){.review-invite{grid-template-columns:1fr;padding:22px;gap:18px}}@keyframes pop{from{opacity:0;transform:translateY(30px) scale(.94)}}.dr textarea{width:100%;font:inherit;padding:10px;border-radius:10px}
 </style>
 </head>
 <body>
@@ -427,7 +427,7 @@ details[open] summary::after{transform:rotate(45deg)}details p{padding:0 4px 24p
  </div>
 </div></section>
 
-<section id="reviews" hidden><div class="wrap"><h2 class="hd"><span>Kind words.</span></h2><p class="lead">What clients say about working with me.</p><div class="rvs" id="rvs"></div></div></section>
+<section id="reviews"><div class="wrap"><h2 class="hd"><span>Kind words.</span></h2><p class="lead">What clients say about working with me. Reviews are checked before they appear here.</p><div class="rvs" id="rvs"></div><div class="review-invite"><div><h3>Worked together?</h3><p>Share a quick review about the project. I’ll check it and add approved feedback to this page.</p></div><form id="review-form"><label for="review-name">Your name</label><input id="review-name" name="name" maxlength="60" required placeholder="Name"><label for="review-brand">Brand / company</label><input id="review-brand" name="brand" maxlength="80" placeholder="Brand name"><label for="review-stars">Your rating</label><select id="review-stars" name="stars"><option value="5">★★★★★ — Excellent</option><option value="4">★★★★ — Good</option><option value="3">★★★ — Good experience</option><option value="2">★★ — Could be better</option><option value="1">★ — Needs improvement</option></select><label for="review-text">Your review</label><textarea id="review-text" name="review" maxlength="600" rows="4" required placeholder="Tell people what it was like working together…"></textarea><button class="btn y" type="submit">Send review on WhatsApp ↗</button><p class="review-note">Your message opens in WhatsApp for you to send. It won’t publish automatically.</p></form></div></div></section>
 
 <section id="journey"><div class="wrap">
  <h2 class="hd"><span>How I got here.</span></h2>
@@ -707,8 +707,16 @@ function E(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)
 function draw(){var g=document.getElementById('rvs'),sec=document.getElementById('reviews');if(!g)return;g.textContent='';
  window.REVIEWS.forEach(function(r){var n=Math.max(1,Math.min(5,+r.stars||5)),f=E('figure','rvc');f.appendChild(E('div','stx','\u2605'.repeat(n)+'\u2606'.repeat(5-n)));f.appendChild(E('blockquote',null,'\u201C'+(r.text||'')+'\u201D'));
   var c=E('figcaption');c.appendChild(E('b',null,r.name||'Client'));if(r.brand)c.appendChild(E('span',null,r.brand));f.appendChild(c);g.appendChild(f)});
- sec.hidden=!window.REVIEWS.length}
+ sec.hidden=false}
 draw();
+var reviewForm=document.getElementById("review-form");
+if(reviewForm)reviewForm.addEventListener("submit",function(ev){
+ ev.preventDefault();
+ var name=document.getElementById("review-name").value.trim(),brand=document.getElementById("review-brand").value.trim(),stars=document.getElementById("review-stars").value,review=document.getElementById("review-text").value.trim();
+ if(!name||!review)return;
+ var msg=["Hi Maninder, I’d like to submit a portfolio review.","Name: "+name,"Brand: "+(brand||"Not provided"),"Rating: "+stars+"/5","Review: "+review].join("\\n");
+ window.open("https://wa.me/919712890124?text="+encodeURIComponent(msg),"_blank","noopener");
+});
 new MutationObserver(function(){var sv=document.getElementById('sv');if(!sv||document.getElementById('rvadm'))return;
  var d=E('details');d.id='rvadm';d.innerHTML='<summary>Reviews (kind words)</summary><label>Name</label><input id="rn" autocomplete="off"><label>Brand or role</label><input id="rb" autocomplete="off"><label>Stars</label><select id="rs"><option>5</option><option>4</option><option>3</option></select><label>Review text</label><textarea id="rt" rows="4"></textarea><button type="button" id="ra">Add review</button><div id="rl"></div><p id="rm"></p>';
  sv.parentNode.insertBefore(d,sv);
