@@ -406,9 +406,9 @@ details[open] summary::after{transform:rotate(45deg)}details p{padding:0 4px 24p
  <p class="lead">Reels, edits and designs for institutes, a London beauty lounge, international clients and my own brand. Every reel shows its real Instagram numbers. Tap one to watch it.</p>
  <div class="chips" role="group" aria-label="Filter work"><button class="on" data-f="all">All</button><button data-f="ims">IMS</button><button data-f="mes">Mesmereyes</button><button data-f="taj">Taj Beauty</button><button data-f="urb">UrbaNest</button><button data-f="fre">Freelance</button></div>
  <div class="snap" id="snap"></div>
- <h3 class="sh" id="reels-h">Video editing</h3>
+ <h3 class="sh" id="reels-h">Social media &amp; video work</h3>
  <div class="reels" id="reels"></div>
- <h3 class="sh" style="margin-top:70px">Edited videos · Full quality</h3><div class="reels" id="mp4videos"></div>
+ <h3 class="sh" style="margin-top:70px">Client video projects</h3><div class="reels" id="mp4videos"></div>
  <h3 class="sh" id="designs-h" style="margin-top:70px">Graphic design</h3>
  <div class="designs" id="designs"></div>
  <h3 class="sh" style="margin-top:70px">Instagram post designs</h3><div class="designs" id="socialposts"></div>
@@ -620,9 +620,10 @@ function renderDesigns(){var g=document.getElementById('designs');g.innerHTML=''
  DESIGNS.forEach(function(d){if(!(cur==='all'||d.client===cur))return;var p=mk('button','post');p.type='button';if(d.img)p.style.backgroundImage=cssUrl(PV[d.img]||d.img);p.appendChild(mk('span',null,(d.title||'Design')+' | '+(CL[d.client]||d.client||'')));
   p.addEventListener('click',function(){if(!d.img)return;var lb=mk('div','lb'),im=mk('img');im.src=PV[d.img]||d.img;im.alt=d.title||'Design';lb.appendChild(im);function x(){lb.remove();removeEventListener('keydown',k)}function k(e){if(e.key==='Escape')x()}lb.addEventListener('click',x);addEventListener('keydown',k);document.body.appendChild(lb)});g.appendChild(p)})}
 function glitch(){['reels','designs','mp4videos','socialposts'].forEach(function(id){var e=document.getElementById(id);e.classList.remove('gl');void e.offsetWidth;if(!rm)e.classList.add('gl')})}
-function renderAll(){renderSnap();renderReels();renderVideos();renderDesigns();renderPosts()}
+function updateReelsHeading(){var h=document.getElementById('reels-h');if(!h)return;h.textContent=cur==='ims'?'Social media management':(cur==='all'?'Social media & video work':'Video editing')}
+function renderAll(){updateReelsHeading();renderSnap();renderReels();renderVideos();renderDesigns();renderPosts()}
 renderAll();
-document.querySelectorAll('.chips button').forEach(function(b){b.addEventListener('click',function(){cur=b.dataset.f;glitch();document.querySelectorAll('.chips button').forEach(function(x){x.classList.toggle('on',x===b)});renderReels();renderVideos();renderDesigns();renderPosts()})});
+document.querySelectorAll('.chips button').forEach(function(b){b.addEventListener('click',function(){cur=b.dataset.f;updateReelsHeading();glitch();document.querySelectorAll('.chips button').forEach(function(x){x.classList.toggle('on',x===b)});renderReels();renderVideos();renderDesigns();renderPosts()})});
 
 })();
 </script>
