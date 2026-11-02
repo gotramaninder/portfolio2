@@ -393,12 +393,12 @@ var DESIGNS=[
  },
  {
   "client": "urb",
-  "title": "Mockup design",
+  "title": "margarita design",
   "img": "designs/1793520503422.jpg"
  },
  {
   "client": "urb",
-  "title": "Design",
+  "title": "Margarita Mockup",
   "img": "designs/1793520481437.jpg"
  },
  {
