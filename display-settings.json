@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "sections": [
+    {
+      "id": "all",
+      "title": "All work",
+      "description": "Reels, edits and designs from every brand.",
+      "orbLabel": "All work",
+      "visible": true,
+      "count": "all",
+      "order": 0,
+      "color1": "#FF4D6D",
+      "color2": "#B0002A"
+    },
+    {
+      "id": "reels",
+      "title": "Reels",
+      "description": "Every reel with its real Instagram numbers. Tap one to watch it.",
+      "orbLabel": "Reels",
+      "visible": true,
+      "count": 8,
+      "order": 1,
+      "color1": "#FF8A3D",
+      "color2": "#B0004F"
+    },
+    {
+      "id": "designs",
+      "title": "Designs",
+      "description": "Posts, creatives and menus for every brand.",
+      "orbLabel": "Designs",
+      "visible": true,
+      "count": 8,
+      "order": 2,
+      "color1": "#C6FF3D",
+      "color2": "#00A86B"
+    },
+    {
+      "id": "next",
+      "title": "You can be next.",
+      "description": "Your brand could be on this wall. Tap any card and message me.",
+      "orbLabel": "You?",
+      "visible": true,
+      "count": 5,
+      "order": 3,
+      "color1": "#B24CFF",
+      "color2": "#3A00A8"
+    },
+    {
+      "id": "ims",
+      "title": "IMS",
+      "description": "Three coaching pages, 14.5M views in one season.",
+      "orbLabel": "IMS",
+      "visible": true,
+      "count": 8,
+      "order": 4,
+      "color1": "#FFE94D",
+      "color2": "#FF8A00"
+    },
+    {
+      "id": "mes",
+      "title": "Mesmereyes",
+      "description": "Freelancing for a beauty lounge for women in London: reels, creatives and content. Working now.",
+      "orbLabel": "Mesmereyes",
+      "visible": true,
+      "count": 8,
+      "order": 5,
+      "color1": "#FF8AD8",
+      "color2": "#C400A0"
+    },
+    {
+      "id": "taj",
+      "title": "Taj Beauty",
+      "description": "UK beauty brand. Graphic design and video editing.",
+      "orbLabel": "Taj Beauty",
+      "visible": true,
+      "count": 8,
+      "order": 6,
+      "color1": "#7DFFF0",
+      "color2": "#00A7C7"
+    },
+    {
+      "id": "urb",
+      "title": "UrbaNest",
+      "description": "My own clothing brand, built from scratch.",
+      "orbLabel": "UrbaNest",
+      "visible": true,
+      "count": 8,
+      "order": 7,
+      "color1": "#9AA6FF",
+      "color2": "#3B1FFF"
+    },
+    {
+      "id": "fre",
+      "title": "Freelance",
+      "description": "Reels, edits and designs for brands and creators.",
+      "orbLabel": "Freelance",
+      "visible": true,
+      "count": 8,
+      "order": 8,
+      "color1": "#B8FF2E",
+      "color2": "#00B864"
+    }
+  ],
+  "hiddenItems": []
+}
