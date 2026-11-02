@@ -274,31 +274,34 @@ var REELS=[
   "client": "urb",
   "title": "Mini Vlog",
   "url": "https://www.instagram.com/reel/DS0gBuiE39g/",
-  "cover": "",
+  "cover": "covers/1793598506823-p8ibm.jpg",
   "views": 1440,
   "likes": 76,
   "comments": 23,
-  "shares": 1072
+  "shares": 1072,
+  "reach": 0
  },
  {
   "client": "urb",
   "title": "Winter Collection",
   "url": "https://www.instagram.com/reel/DRgtSubEnoj/",
-  "cover": "",
+  "cover": "covers/1793598489720-z8hr8.jpg",
   "views": 1700,
   "likes": 87,
   "comments": 7,
-  "shares": 1
+  "shares": 1,
+  "reach": 0
  },
  {
   "client": "urb",
   "title": "Winter Hoodies Reveal",
   "url": "https://www.instagram.com/reel/DRZdmOMjPBj/",
-  "cover": "",
+  "cover": "covers/1793598481196-d3f5g.jpg",
   "views": 8000,
   "likes": 192,
   "comments": 32,
-  "shares": 1307
+  "shares": 1307,
+  "reach": 0
  },
  {
   "client": "ims",
