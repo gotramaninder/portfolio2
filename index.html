@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<script>if("scrollRestoration" in history)history.scrollRestoration="manual";window.addEventListener("pageshow",function(){window.scrollTo(0,0)})</script>
+<script>if("scrollRestoration" in history)history.scrollRestoration="manual";window.addEventListener("pageshow",function(e){if(!location.hash)requestAnimationFrame(function(){window.scrollTo(0,0)})});window.addEventListener("DOMContentLoaded",function(){if(!location.hash)window.scrollTo(0,0)},{once:true})</script>
 <title>Maninder | Social Media Manager, Video Editor and Designer</title>
 <meta name="description" content="Social media manager, video editor and graphic designer from Ahmedabad. 14.5M+ views across three Instagram pages.">
 <meta name="theme-color" content="#15120E">
@@ -507,7 +507,7 @@ function hoverPrev(a,r){var ig=igId(r.url);if(!ig||matchMedia('(pointer:coarse)'
  a.addEventListener('pointerenter',function(){if(on)return;on=true;var f=document.createElement('iframe');f.src='https://www.instagram.com/'+ig.t+'/'+ig.id+'/embed';f.title='';f.setAttribute('scrolling','no');f.tabIndex=-1;f.setAttribute('aria-hidden','true');f.addEventListener('load',function(){f.classList.add('on')});a.appendChild(f)})}
 function igId(u){var m=String(u||'').match(/instagram\.com\/(reel|reels|p|tv)\/([\w-]+)/i);return m?{t:m[1].toLowerCase()==='reels'?'reel':m[1].toLowerCase(),id:m[2]}:null}
 function mk(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
-function fmt(n){n=+n||0;if(n>=1e6)return(n/1e6).toFixed(1).replace(/\.0$/,'')+'M';if(n>=1e3)return(n/1e3).toFixed(1).replace(/\.0$/,'')+'K';return String(n)}
+function fmt(n){n=+n||0;return Math.round(n).toLocaleString('en-IN')}
 function okUrl(u){return /^https?:\/\//i.test(u||'')}
 function cssUrl(u){return 'url("'+String(u).replace(/["\\()\s]/g,function(c){return encodeURIComponent(c)})+'")'}
 var H=document.documentElement,bubblesGo=false;
@@ -731,5 +731,23 @@ if(stg)new IntersectionObserver(function(e){inS=e[0].isIntersecting;up()}).obser
 addEventListener('scroll',function(){requestAnimationFrame(up)},{passive:true});up();
 })();
 </script>
-</body>
+<script>
+(function(){'use strict';fetch('site-content.json?v='+Date.now(),{cache:'no-store'}).then(function(r){if(!r.ok)throw Error();return r.json()}).then(function(c){
+var h=c.hero||{},p=c.contact||{},proof=c.proof||{};
+var tag=document.querySelector('.hero .tag'),intro=document.querySelector('.hero .sub'),foot=document.querySelector('.contact');
+if(tag&&h.tagline)tag.textContent=h.tagline;if(intro&&h.intro)intro.textContent=h.intro;
+if(foot){var h2=foot.querySelector('h2'),desc=foot.querySelector('p.l');if(h2&&p.headline)h2.textContent=p.headline;if(desc&&p.description)desc.textContent=p.description;
+var links=foot.querySelectorAll('.btns a');links.forEach(function(a){a.remove()});
+var row=foot.querySelector('.btns');if(row){function add(label,url,cls){if(!url)return;var a=document.createElement('a');a.className='btn'+(cls?' o':'');a.textContent=label;a.href=url;if(/^https?:/i.test(url)){a.target='_blank';a.rel='noopener'}row.appendChild(a)}
+var wa=(p.whatsapp||'').replace(/\D/g,'');if(wa)add('Message on WhatsApp','https://wa.me/'+wa+'?text='+encodeURIComponent('Hi Maninder, I saw your portfolio'));
+if(p.email)add('Email me','mailto:'+p.email,1);if(p.phone)add('Call me','tel:'+p.phone,1);if(p.instagram)add('Instagram',p.instagram,1);if(p.linkedin)add('LinkedIn',p.linkedin,1);if(p.website)add('Website',p.website,1)}
+var loc=foot.querySelector('.foot span');if(loc&&p.location)loc.textContent=p.location}
+var nav=document.querySelector('.nav .go');if(nav&&p.whatsapp)nav.href='https://wa.me/'+String(p.whatsapp).replace(/\D/g,'');
+var fab=document.getElementById('fab');if(fab&&p.whatsapp){fab.href='https://wa.me/'+String(p.whatsapp).replace(/\D/g,'')+'?text='+encodeURIComponent('Hi Maninder, I saw your portfolio')}
+var big=document.querySelector('#proof .big [data-to]');if(big&&Number.isFinite(+proof.totalViews)){big.dataset.to=proof.totalViews;big.textContent=Number(proof.totalViews).toLocaleString('en-IN',{minimumFractionDigits:1,maximumFractionDigits:1})}
+var fol=document.querySelector('#proof .fol [data-to]');if(fol&&Number.isFinite(+proof.followers)){fol.dataset.to=proof.followers;fol.textContent=Number(proof.followers).toLocaleString('en-IN')}
+var lanes=document.querySelectorAll('#proof .trk .clip');[proof.ahmedabadViews,proof.jaipurViews,proof.bopalViews].forEach(function(v,i){if(lanes[i]&&v)lanes[i].textContent=v});
+}).catch(function(){});
+})();
+</script></body>
 </html>
