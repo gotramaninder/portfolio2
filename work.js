@@ -1,6 +1,46 @@
 // Saved by Portfolio Studio. Existing content schema retained.
 var REELS=[
  {
+  "client": "ims",
+  "title": "Core Series 35",
+  "url": "https://www.instagram.com/reel/DdTGMXQMl3s/",
+  "cover": "covers/1793595979410-2kybl.jpg",
+  "views": 27200,
+  "likes": 450,
+  "comments": 7,
+  "shares": 132
+ },
+ {
+  "client": "ims",
+  "title": "Core Series 27",
+  "url": "https://www.instagram.com/reel/DdTGMXQMl3s/",
+  "cover": "covers/1793595926483-92k17.jpg",
+  "views": 40000,
+  "likes": 580,
+  "comments": 11,
+  "shares": 224
+ },
+ {
+  "client": "ims",
+  "title": "Core Series 24",
+  "url": "https://www.instagram.com/reel/DdMDDnLMFGP/",
+  "cover": "covers/1793595882699-rin8c.jpg",
+  "views": 25700,
+  "likes": 318,
+  "comments": 4,
+  "shares": 151
+ },
+ {
+  "client": "ims",
+  "title": "Core Series 19",
+  "url": "https://www.instagram.com/reel/Dc_RVaQsP4B/",
+  "cover": "covers/1793595815481-pwgpz.jpg",
+  "views": 30700,
+  "likes": 517,
+  "comments": 8,
+  "shares": 206
+ },
+ {
   "client": "urb",
   "title": "legnesan",
   "url": "https://www.instagram.com/reel/DRj2FHKkhRj/",
@@ -328,7 +368,18 @@ var VIDEOS=[
   "cover": ""
  }
 ];
-var POSTS=[];
+var POSTS=[
+ {
+  "title": "Stop Doing This Mistakes",
+  "client": "ims",
+  "img": "posts/1793595635035-uakti.jpg"
+ },
+ {
+  "title": "Getting into IIMs",
+  "client": "ims",
+  "img": "posts/1793595603064-zieje.jpg"
+ }
+];
 var DESIGNS=[
  {
   "client": "urb",
