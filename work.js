@@ -1,6 +1,26 @@
 // Saved by Portfolio Studio. Existing content schema retained.
 var REELS=[
  {
+  "client": "fre",
+  "title": "8 Ball Pool",
+  "url": "https://www.instagram.com/reel/DYahRqlzng2/",
+  "cover": "covers/1793597264056-mxgmx.jpg",
+  "views": 3500,
+  "likes": 60,
+  "comments": 10,
+  "shares": 10
+ },
+ {
+  "client": "fre",
+  "title": "Dark Mode",
+  "url": "https://www.instagram.com/reel/DaxvlCwMub6/",
+  "cover": "",
+  "views": 500,
+  "likes": 26,
+  "comments": 2,
+  "shares": 99
+ },
+ {
   "client": "ims",
   "title": "Core Series 35",
   "url": "https://www.instagram.com/reel/DdTGMXQMl3s/",
@@ -84,151 +104,166 @@ var REELS=[
   "client": "fre",
   "title": "The urge to Get posted",
   "url": "https://www.instagram.com/reel/DeBoEdFyy0u/",
-  "cover": "",
+  "cover": "covers/1793596778331-lgz6h.jpg",
   "views": 1600,
   "likes": 50,
   "comments": 4,
-  "shares": 25
+  "shares": 25,
+  "reach": 0
  },
  {
   "client": "fre",
   "title": "Beauty of Ahmedabad",
   "url": "https://www.instagram.com/reel/DcwiOdIgKaz/",
-  "cover": "",
+  "cover": "covers/1793596592392-tz3pg.jpg",
   "views": 500,
   "likes": 30,
   "comments": 6,
-  "shares": 12
+  "shares": 12,
+  "reach": 0
  },
  {
   "client": "fre",
   "title": "Forest Bioveda",
   "url": "https://www.instagram.com/reel/DbpTyeQqN2r/",
-  "cover": "",
+  "cover": "covers/1793596585504-ea2h3.jpg",
   "views": 800,
   "likes": 27,
   "comments": 2,
-  "shares": 12
+  "shares": 12,
+  "reach": 0
  },
  {
   "client": "fre",
   "title": "this part of Aarzu",
   "url": "https://www.instagram.com/reel/Da22fXeszUl/",
-  "cover": "",
+  "cover": "covers/1793596340022-fe0ot.jpg",
   "views": 700,
   "likes": 25,
   "comments": 12,
-  "shares": 10
+  "shares": 10,
+  "reach": 0
  },
  {
   "client": "fre",
   "title": "I Don't care",
   "url": "https://www.instagram.com/reel/DancG7rJctK/",
-  "cover": "",
+  "cover": "covers/1793596358650-w0krs.jpg",
   "views": 620,
   "likes": 26,
   "comments": 12,
-  "shares": 10
+  "shares": 10,
+  "reach": 0
  },
  {
   "client": "fre",
   "title": "cafe hi hai",
   "url": "https://www.instagram.com/reel/DTxvmAXEueL/",
-  "cover": "",
+  "cover": "covers/1793597315822-120f8.jpg",
   "views": 3200,
   "likes": 72,
   "comments": 11,
-  "shares": 25
+  "shares": 25,
+  "reach": 0
  },
  {
   "client": "fre",
   "title": "will accept>?",
   "url": "https://www.instagram.com/reel/DUVCcXbEup7/",
-  "cover": "",
+  "cover": "covers/1793597299362-202g4.jpg",
   "views": 4200,
   "likes": 110,
   "comments": 10,
-  "shares": 60
+  "shares": 60,
+  "reach": 0
  },
  {
   "client": "fre",
   "title": "syabllus cover",
   "url": "https://www.instagram.com/reel/DVL-yGEkqap/",
-  "cover": "",
+  "cover": "covers/1793597281178-25r5n.jpg",
   "views": 2300,
   "likes": 81,
   "comments": 6,
-  "shares": 20
+  "shares": 20,
+  "reach": 0
  },
  {
   "client": "fre",
   "title": "bargad",
   "url": "https://www.instagram.com/reel/DXfEMQfklaR/",
-  "cover": "",
+  "cover": "covers/1793596770175-zhum0.jpg",
   "views": 2800,
   "likes": 45,
   "comments": 3,
-  "shares": 35
+  "shares": 35,
+  "reach": 0
  },
  {
   "client": "fre",
   "title": "kenyee westttt",
   "url": "https://www.instagram.com/reel/Dd0w34GggHE/",
-  "cover": "",
+  "cover": "covers/1793596790035-v5aqh.jpg",
   "views": 1500,
   "likes": 72,
   "comments": 5,
-  "shares": 9
+  "shares": 9,
+  "reach": 0
  },
  {
   "client": "fre",
   "title": "do you?",
   "url": "https://www.instagram.com/reel/De5iQyRySf4/",
-  "cover": "",
+  "cover": "covers/1793597008032-91jt8.jpg",
   "views": 1800,
   "likes": 100,
   "comments": 4,
-  "shares": 3
+  "shares": 3,
+  "reach": 0
  },
  {
   "client": "fre",
   "title": "smooth to savage",
   "url": "https://www.instagram.com/reel/DavQiQGstZJ/",
-  "cover": "",
+  "cover": "covers/1793596426500-7s84x.jpg",
   "views": 500,
   "likes": 33,
   "comments": 2,
-  "shares": 6
+  "shares": 6,
+  "reach": 0
  },
  {
   "client": "fre",
   "title": "majboor",
   "url": "https://www.instagram.com/reel/Dak4HlGsWoN/",
-  "cover": "",
+  "cover": "covers/1793596379506-hekdy.jpg",
   "views": 630,
   "likes": 39,
   "comments": 5,
-  "shares": 5
+  "shares": 5,
+  "reach": 0
  },
  {
   "client": "fre",
   "title": "Breaking down Boundaries",
   "url": "https://www.instagram.com/reel/DaiHSBxMh7S/",
-  "cover": "",
+  "cover": "covers/1793596471286-1km1x.jpg",
   "views": 787,
   "likes": 45,
   "comments": 8,
-  "shares": 6
+  "shares": 6,
+  "reach": 0
  },
  {
   "client": "fre",
   "title": "Cinematic look",
   "url": "https://www.instagram.com/reel/DaqBYE_MIx1/",
-  "cover": "",
+  "cover": "covers/1793596402995-capby.jpg",
   "views": 567,
   "likes": 33,
   "comments": 8,
-  "shares": 5
+  "shares": 5,
+  "reach": 0
  },
  {
   "client": "urb",
