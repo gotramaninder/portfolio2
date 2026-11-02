@@ -633,12 +633,15 @@ document.querySelectorAll('.chips button').forEach(function(b){b.addEventListene
 <script>
 (function(){
 var C=[['all','All work','Reels, edits and designs from every brand.','#FF4D6D','#B0002A'],['reels','Reels','Every reel with its real Instagram numbers. Tap one to watch it.','#FF8A3D','#B0004F'],['designs','Designs','Posts, creatives and menus for every brand.','#C6FF3D','#00A86B'],['next','You can be next.','Your brand could be on this wall. Tap any card and message me.','#B24CFF','#3A00A8','You?'],['ims','IMS','Three coaching pages, 14.5M views in one season.','#FFE94D','#FF8A00'],['mes','Mesmereyes','Freelancing for a beauty lounge for women in London: reels, creatives and content. Working now.','#FF8AD8','#C400A0'],['taj','Taj Beauty','UK beauty brand. Graphic design and video editing.','#7DFFF0','#00A7C7'],['urb','UrbaNest','My own clothing brand, built from scratch.','#9AA6FF','#3B1FFF'],['fre','Freelance','Reels, edits and designs for brands and creators.','#B8FF2E','#00B864']];
+var baseC=C,displayCfg={sections:baseC.map(function(c,i){return{id:c[0],title:c[1],description:c[2],orbLabel:c[5]||c[1],visible:true,count:8,order:i,color1:c[3],color2:c[4]}}),hiddenItems:[]};
+var displayReady=fetch('display-settings.json?v='+Date.now(),{cache:'no-store'}).then(function(r){if(!r.ok)throw Error('settings unavailable');return r.json()}).then(function(x){if(x&&Array.isArray(x.sections))displayCfg=x}).catch(function(){});
+
 var key='all',dock=document.getElementById('dock'),tl=document.getElementById('tiles'),T=document.getElementById('stgt'),P=document.getElementById('stgp');
-function show(i){var c=C[i];key=c[0];window.__stgKey=key;[].forEach.call(dock.children,function(b,j){b.classList.toggle('on',j===i)});
+function show(i){var c=C[i];if(!c)return;key=c[0];window.__stgKey=key;[].forEach.call(dock.children,function(b,j){b.classList.toggle('on',j===i)});
  T.textContent=c[1];P.textContent=c[2];document.getElementById('stage').style.background='color-mix(in srgb,'+c[3]+' 26%,#F1EEE3)';
  [].slice.call(tl.children).forEach(function(t){t.style.setProperty('--dl','0ms');t.classList.remove('in');setTimeout(function(){t.remove()},800)});
- var lim=innerWidth<700?5:8,rs=(typeof REELS!=='undefined'?REELS:[]).filter(function(r){return c[0]==='designs'?false:(i===0||c[0]==='reels'||r.client===c[0])}).slice().sort(function(a,b){return (b.pin?1:0)-(a.pin?1:0)||(+b.views||0)-(+a.views||0)}),
-  ds=(typeof DESIGNS!=='undefined'?DESIGNS:[]).filter(function(d){return d.img&&(c[0]==='reels'?false:(i===0||c[0]==='designs'||d.client===c[0]))}),all=[],ri=0,di=0;
+ var sc=displayCfg.sections.find(function(x){return x.id===c[0]})||{},lim=sc.count==='all'?9999:Math.max(0,Math.min(1000,+sc.count||8)),hidden=displayCfg.hiddenItems||[],rs=(typeof REELS!=='undefined'?REELS:[]).filter(function(r,j){return !hidden.includes('reel:'+j)&&(c[0]==='designs'?false:(i===0||c[0]==='reels'||r.client===c[0]))}).slice().sort(function(a,b){return (b.pin?1:0)-(a.pin?1:0)||(+b.views||0)-(+a.views||0)}),
+  ds=(typeof DESIGNS!=='undefined'?DESIGNS:[]).filter(function(d,j){return d.img&&!hidden.includes('design:'+j)&&(c[0]==='reels'?false:(i===0||c[0]==='designs'||d.client===c[0]))}),all=[],ri=0,di=0;
  if(c[0]==='all'){var nd=Math.min(ds.length,Math.floor(lim/3));for(var q=0;q<lim;q++){if(di<nd&&q%3===2){var d=ds[di++];all.push({title:d.title,url:d.img,cover:d.img,design:1})}else if(ri<rs.length)all.push(rs[ri++])}}
  else if(c[0]==='reels'){all=rs.slice(0,lim)}
  else{ds.slice(0,lim).forEach(function(d){all.push({title:d.title,url:d.img,cover:d.img,design:1})});rs.slice(0,Math.max(0,lim-all.length)).forEach(function(r){all.push(r)})}
@@ -652,9 +655,11 @@ function show(i){var c=C[i];key=c[0];window.__stgKey=key;[].forEach.call(dock.ch
   t.style.setProperty('--r',(Math.random()*12-6)+'deg');t.style.setProperty('--dl',(150+k*80)+'ms');
   tl.appendChild(t);requestAnimationFrame(function(){requestAnimationFrame(function(){t.classList.add('in')})})})}
 function burst(b,c){var r=b.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2;for(var k=0;k<14;k++){var d=document.createElement('i'),a=Math.random()*6.283,v=70+Math.random()*130;d.className='bp';d.style.cssText='left:'+x+'px;top:'+y+'px;--dx:'+Math.cos(a)*v+'px;--dy:'+(Math.sin(a)*v-50)+'px;background:radial-gradient(circle at 30% 30%,#fff,'+c[3]+' 42%,'+c[4]+')';document.body.appendChild(d);setTimeout(d.remove.bind(d),950)}}
-C.forEach(function(c,i){var b=document.createElement('button');b.type='button';b.className='ob';b.style.cssText='--c1:'+c[3]+';--c2:'+c[4]+';--d:-'+(i*.8)+'s;--sz:'+(window.mpScale?mpScale(c[0]):1);
- b.innerHTML='<em></em><span>'+(c[5]||c[1])+'</span>';b.setAttribute('aria-label',c[1]);b.addEventListener('click',function(){show(i);burst(b,c)});dock.appendChild(b)});
-new IntersectionObserver(function(es,o){if(es[0].isIntersecting){show(0);o.disconnect()}},{threshold:.4}).observe(document.getElementById('stage'));
+function buildDock(){dock.innerHTML='';C.forEach(function(c,i){var b=document.createElement('button');b.type='button';b.className='ob';b.style.cssText='--c1:'+c[3]+';--c2:'+c[4]+';--d:-'+(i*.8)+'s;--sz:'+(window.mpScale?mpScale(c[0]):1);
+ b.innerHTML='<em></em><span>'+(c[5]||c[1])+'</span>';b.setAttribute('aria-label',c[1]);b.addEventListener('click',function(){show(i);burst(b,c)});dock.appendChild(b)});}
+function applyDisplay(){var sections=displayCfg.sections.slice().sort(function(a,b){return (+a.order||0)-(+b.order||0)}),known={};baseC.forEach(function(c){known[c[0]]=c});var clients={};(REELS||[]).concat(DESIGNS||[]).forEach(function(x){if(x.client)clients[x.client]=1});Object.keys(clients).forEach(function(id){if(!known[id])known[id]=[id,id.toUpperCase(),'Selected work from '+id.toUpperCase()+'.','#B8FF2E','#00B864']});C=sections.filter(function(s){return s.visible!==false&&known[s.id]}).map(function(s){var c=known[s.id].slice();c[1]=s.title||c[1];c[2]=s.description||c[2];c[3]=s.color1||c[3];c[4]=s.color2||c[4];c[5]=s.orbLabel||c[1];return c});Object.keys(known).forEach(function(id){if(!sections.some(function(s){return s.id===id})&&id!=='next')C.push(known[id])});buildDock();show(0)}
+displayReady.then(applyDisplay);
+new IntersectionObserver(function(es,o){if(es[0].isIntersecting){displayReady.then(function(){show(0)});o.disconnect()}},{threshold:.4}).observe(document.getElementById('stage'));
 if('serviceWorker'in navigator)addEventListener('load',function(){navigator.serviceWorker.register('sw.js')});
 })();
 </script>
