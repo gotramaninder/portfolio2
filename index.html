@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Instrument+Sans:wght@400;500;700&display=swap">
 <script>document.documentElement.className='js'</script>
 <style>
-:root{--ink:#15120E;--lil:#F1EEE3;--yel:#FFDD3C;--red:#FF3D2E;--cob:#3A3CFF;--pnk:#FF8FD0;--mute:#6B6558;
+:root{--ink:#15120E;--lil:#F1EEE3;--yel:#FFE02E;--red:#FF2E4D;--cob:#2E3BFF;--pnk:#FF6FC8;--lim:#B8FF2E;--cyn:#19E3FF;--mute:#6B6558;
 --d:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif;--b:"Instrument Sans",system-ui,sans-serif}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth;scroll-padding-top:80px;background:var(--ink)}
@@ -82,23 +82,43 @@ a{color:inherit}
 @media (min-width:861px) and (max-height:860px){.dh{display:none}.hero{padding-bottom:150px}.hero .btns{margin-top:24px}.tag{font-size:clamp(24px,min(3.3vw,5.2vh),42px)}}
 /* bubbles */
 .orbs{position:absolute;inset:0;z-index:5;pointer-events:none;overflow:hidden}
-.orb{position:absolute;left:0;top:0;border:0;padding:0;border-radius:50%;display:grid;place-items:center;text-align:center;overflow:hidden;color:#fff;font:800 16px/1 var(--d);letter-spacing:-.02em;text-shadow:0 1px 6px rgba(0,0,0,.35);cursor:grab;touch-action:none;pointer-events:auto;user-select:none;-webkit-user-select:none;will-change:transform;box-shadow:inset -7px -12px 22px rgba(0,0,0,.3),inset 7px 7px 16px rgba(255,255,255,.5),0 16px 26px rgba(21,18,14,.22)}
+.orb{position:absolute;left:0;top:0;border:0;padding:0;border-radius:50%;display:grid;place-items:center;text-align:center;overflow:hidden;color:#fff;font:800 16px/1 var(--d);letter-spacing:-.02em;text-shadow:0 1px 6px rgba(0,0,0,.35);cursor:grab;touch-action:none;pointer-events:auto;user-select:none;-webkit-user-select:none;will-change:transform;box-shadow:inset -7px -12px 22px rgba(0,0,0,.3),inset 7px 7px 16px rgba(255,255,255,.5),0 18px 34px -8px var(--gl,rgba(21,18,14,.3))}
+.orb::after{content:"";position:absolute;inset:-12%;border-radius:50%;pointer-events:none;background:conic-gradient(transparent 0 55%,rgba(255,255,255,.4) 75%,transparent 92%);mix-blend-mode:overlay;animation:sp 7s linear infinite}
 .orb::before{content:"";position:absolute;inset:0;border-radius:50%;pointer-events:none;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.9) 0,rgba(255,255,255,0) 26%),radial-gradient(circle at 72% 88%,rgba(255,255,255,.3),transparent 38%)}
 .orb span{position:relative;z-index:1;pointer-events:none;display:block}
 .orb small{display:block;font:500 .55em var(--b);margin-top:3px;text-shadow:none;letter-spacing:0}
 .orb.hold{cursor:grabbing}
-.o1{background:radial-gradient(circle at 30% 30%,#FFE14A,#FF8A2B 45%,#FF3D8B)}
-.o2{background:radial-gradient(circle at 35% 30%,#4A1F1F,#0B0808 62%);border:4px solid #FF3D2E}
-.o3{background:linear-gradient(135deg,#B8FF3C,#00D68F);color:var(--ink);text-shadow:none}
-.o4{background:radial-gradient(circle at 30% 30%,#FFB3E6,#FF3FA4 58%,#8A1FFF)}
-.o5{background:conic-gradient(from 20deg,#FF3D2E,#FFDD3C,#3AE08A,#2F6BFF,#B14CFF,#FF3D2E)}
-.o6{background:radial-gradient(circle at 30% 30%,#7DF3E8,#0FA3B1 55%,#3A3CFF)}
-.o7{background:radial-gradient(circle at 40% 35%,#C9A6FF,#7B3CFF 55%,#2A0B7A)}
-.o8{background:radial-gradient(circle at 30% 30%,#5B5148,#1A1612 70%);border:4px solid #FF8FD0}
-.o9{background:radial-gradient(circle at 30% 30%,#FF8A7A,#FF3D2E 60%,#B3150A)}
+.o1{background:radial-gradient(circle at 30% 30%,#FFF35A,#FF9A00 42%,#FF1F6D);--gl:#FF9A00}
+.o2{background:radial-gradient(circle at 35% 30%,#8B72FF,#2E3BFF 55%,#00C2FF);border:4px solid #FFE02E;--gl:#2E3BFF}
+.o3{background:linear-gradient(135deg,#D4FF2E,#00E08A 60%,#00C2FF);color:var(--ink);text-shadow:none;--gl:#00E08A}
+.o4{background:radial-gradient(circle at 30% 30%,#FFC2F0,#FF2DA4 52%,#8B2BFF);--gl:#FF2DA4}
+.o5{background:conic-gradient(from 20deg,#FF2E4D,#FFE02E,#2EEA8A,#19B6FF,#B14CFF,#FF2E4D);--gl:#B14CFF}
+.o6{background:radial-gradient(circle at 30% 30%,#9CFFF5,#00C8D8 50%,#2E3BFF);--gl:#00C8D8}
+.o7{background:radial-gradient(circle at 40% 35%,#E0B3FF,#9A3CFF 52%,#4A12FF);--gl:#9A3CFF}
+.o8{background:radial-gradient(circle at 30% 30%,#FFB36B,#FF5A1F 55%,#C4005A);border:4px solid #FFE02E;--gl:#FF5A1F}
+.o9{background:radial-gradient(circle at 30% 30%,#FFA29A,#FF2E4D 55%,#C4002B);--gl:#FF2E4D}
 /* glitch on filter */
 .gl .rc,.gl .post{animation:gl .6s steps(1) 1}
 @keyframes gl{0%{clip-path:inset(0 0 80% 0);transform:translateX(-16px)}15%{clip-path:inset(35% 0 40% 0);transform:translateX(14px);filter:hue-rotate(70deg)}30%{clip-path:inset(60% 0 8% 0);transform:translateX(-10px)}50%{clip-path:inset(10% 0 55% 0);transform:translateX(8px);filter:hue-rotate(-70deg)}75%{clip-path:inset(0 0 25% 0);transform:translateX(-4px)}100%{clip-path:inset(0);transform:none;filter:none}}
+/* admin */
+.dr{position:fixed;top:0;right:0;bottom:0;width:min(470px,100vw);background:#fff;color:var(--ink);z-index:190;overflow:auto;padding:22px;box-shadow:-20px 0 50px rgba(0,0,0,.3);font-size:16px}
+.dr h3{font-size:26px}.dr .dh2{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.dr label{display:block;font-size:14px;color:var(--mute);margin:12px 0 4px}
+.dr input,.dr select{width:100%;padding:11px 13px;border-radius:12px;border:1.5px solid #d8d2c2;background:var(--lil);color:var(--ink);font:16px var(--b)}
+.dr .g4{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dr button{font:700 15px var(--b);padding:11px 18px;border-radius:99px;border:0;cursor:pointer;background:var(--ink);color:var(--lil)}
+.dr .sec{background:transparent;color:var(--ink);border:1.5px solid #d8d2c2}.dr .del{background:#C62828;color:#fff}
+.dr .tabs{display:flex;gap:8px;margin:14px 0 4px}.dr .tabs .on{background:var(--ink);color:var(--lil);border-color:var(--ink)}
+.dr details,.dr details:last-child{border:1.5px solid #d8d2c2;border-radius:14px;padding:0 14px;margin-bottom:8px}
+.dr summary{font:700 16px var(--b);letter-spacing:0;padding:12px 0}.dr summary::after{font-size:24px}
+.dr details p{padding:0 0 12px;font-size:14px;color:var(--mute)}
+.dr .li{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:12px 0;border-top:1px solid #e6e0d0;font-size:15px}.dr .li div{display:flex;gap:6px;flex-wrap:wrap}.dr .li button{padding:7px 12px;font-size:13px}
+.dr .df{position:sticky;bottom:-22px;background:#fff;padding:14px 0;margin-top:18px;border-top:1.5px solid #d8d2c2}
+.dr .msg{display:block;margin-top:8px;font-size:14px;color:var(--mute)}
+.foot a+a{margin-left:14px}
+.dr textarea{width:100%;min-height:90px;padding:11px 13px;border-radius:12px;border:1.5px solid #d8d2c2;background:var(--lil);color:var(--ink);font:15px var(--b)}
+.dr #pv{display:none;margin-top:8px;align-items:center;gap:12px;font-size:14px;color:var(--mute)}.dr #pv.on{display:flex}.dr #pv .fr{width:96px;height:150px;border-radius:12px;overflow:hidden;position:relative;background:#000;flex:none}.dr #pv iframe{position:absolute;left:0;top:-30px;width:100%;height:calc(100% + 90px);border:0;pointer-events:none}
+.dr .chk{display:flex;gap:10px;align-items:center;margin-top:14px;font-size:14px;color:var(--ink)}.dr .chk input{width:auto}
 /* marquee */
 .mq{background:var(--red);color:var(--ink);overflow:hidden;white-space:nowrap;padding:18px 0;font:800 clamp(26px,4.2vw,46px) var(--d);letter-spacing:-.02em;rotate:-1.5deg;margin:0 -30px;position:relative}
 .mqw{overflow:hidden;margin:-66px 0 -40px;padding:40px 0;position:relative;z-index:6;pointer-events:none}
@@ -153,7 +173,7 @@ h2{font-size:clamp(44px,8vw,112px);max-width:13ch;margin-bottom:22px}
 .chips button{font:700 16px var(--b);padding:11px 22px;border-radius:999px;border:2px solid #F6F2E8;background:transparent;color:#F6F2E8;cursor:pointer;transition:background .2s,color .2s}
 .chips button:hover,.chips button.on{background:var(--yel);border-color:var(--yel);color:var(--ink)}
 .sh{font-size:34px;margin:0 0 20px;color:var(--yel)}
-.snap{display:grid;gap:12px;grid-template-columns:repeat(5,1fr);margin-bottom:46px}
+.snap{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-bottom:46px}
 .snap div{border:1.5px solid rgba(255,255,255,.28);border-radius:20px;padding:18px}
 .snap b{display:block;font:800 clamp(30px,4vw,48px)/1 var(--d);letter-spacing:-.04em}.snap span{font-size:14px;color:#BDB7A6}
 .reels{display:grid;gap:26px 22px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));perspective:1000px}
@@ -161,13 +181,14 @@ h2{font-size:clamp(44px,8vw,112px);max-width:13ch;margin-bottom:22px}
 .reel{aspect-ratio:9/16;border-radius:26px;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:16px;color:#fff;text-decoration:none;overflow:hidden;background:linear-gradient(165deg,var(--cob),#B14CFF) center/cover;transition:transform .2s,box-shadow .3s;transform-style:preserve-3d;border:2px solid rgba(255,255,255,.18)}
 .reel[data-cat=mes]{background-image:linear-gradient(165deg,var(--red),#FF9F68)}.reel[data-cat=taj]{background-image:linear-gradient(165deg,#0FA3B1,var(--cob))}.reel[data-cat=urb]{background-image:linear-gradient(165deg,#2B2650,var(--pnk))}.reel[data-cat=fre]{background-image:linear-gradient(165deg,#0B7A4A,#9BFFC9)}
 .reel.cv{background-size:cover}
-.reel::before{content:"";position:absolute;inset:auto 0 0 0;height:60%;background:linear-gradient(transparent,rgba(0,0,0,.7))}
-.reel .pl{position:absolute;top:50%;left:50%;width:66px;height:66px;margin:-33px;border-radius:50%;background:rgba(255,255,255,.2);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:grid;place-items:center;transition:transform .3s,background .3s}
+.reel::before{content:"";position:absolute;inset:auto 0 0 0;height:60%;background:linear-gradient(transparent,rgba(0,0,0,.7));z-index:1}
+.reel iframe{position:absolute;left:0;top:-54px;width:100%;height:calc(100% + 150px);border:0;pointer-events:none;z-index:0;background:#000}
+.reel .pl{z-index:2;position:absolute;top:50%;left:50%;width:66px;height:66px;margin:-33px;border-radius:50%;background:rgba(255,255,255,.2);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:grid;place-items:center;transition:transform .3s,background .3s}
 .reel .pl::after{content:"";margin-left:5px;border-left:20px solid #fff;border-block:12px solid transparent}
 .reel:hover .pl{transform:scale(1.15);background:var(--red)}
 .reel:hover{box-shadow:0 22px 50px rgba(255,61,46,.4)}
-.reel .cl{position:relative;align-self:flex-start;background:var(--yel);color:var(--ink);padding:3px 12px;border-radius:99px;font:700 13px var(--b);margin-bottom:8px}
-.reel strong{position:relative;font:800 21px/1.1 var(--d);letter-spacing:-.02em}
+.reel .cl{z-index:2;position:relative;align-self:flex-start;background:var(--yel);color:var(--ink);padding:3px 12px;border-radius:99px;font:700 13px var(--b);margin-bottom:8px}
+.reel strong{z-index:2;position:relative;font:800 21px/1.1 var(--d);letter-spacing:-.02em}
 .st{display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:12px 0 2px}
 .st b{display:block;font:800 19px/1.1 var(--d)}.st span{font-size:12px;color:#BDB7A6}
 .er{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;font-size:13px;color:#BDB7A6;margin-top:8px}
@@ -231,10 +252,71 @@ details[open] summary::after{transform:rotate(45deg)}details p{padding:0 4px 24p
 .tile.g0{--g:linear-gradient(165deg,#3A3CFF,#B14CFF)}.tile.g1{--g:linear-gradient(165deg,#FF3D2E,#FF9F68)}.tile.g2{--g:linear-gradient(165deg,#0FA3B1,#3A3CFF)}.tile.g3{--g:linear-gradient(165deg,#2B2650,#FF8FD0)}
 .tile span{background:var(--yel);color:var(--ink);font:700 11px var(--b);padding:2px 9px;border-radius:99px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .dock{position:absolute;bottom:20px;left:0;right:0;display:flex;justify-content:center;gap:clamp(8px,2vw,22px);z-index:5;padding:0 8px}
-.ob{width:clamp(46px,9vw,92px);aspect-ratio:1;border-radius:50%;border:0;padding:0;cursor:pointer;position:relative;overflow:hidden;color:#fff;font:800 clamp(9px,1.3vw,13px) var(--d);background:radial-gradient(circle at 32% 28%,#fff 0 5%,var(--c1) 24%,var(--c2) 78%,#000 140%);box-shadow:inset -8px -10px 18px rgba(0,0,0,.35),0 14px 24px rgba(21,18,14,.25);animation:fl 4s ease-in-out infinite;animation-delay:var(--d);transition:transform .3s,outline-offset .3s;outline:3px solid transparent;outline-offset:4px}
+.ob{width:calc(clamp(46px,9vw,92px)*var(--sz,1));aspect-ratio:1;border-radius:50%;border:0;padding:0;cursor:pointer;position:relative;overflow:hidden;color:#fff;font:800 clamp(9px,1.3vw,13px) var(--d);background:radial-gradient(circle at 32% 28%,#fff 0 5%,var(--c1) 24%,var(--c2) 78%,#000 140%);box-shadow:inset -8px -10px 18px rgba(0,0,0,.35),0 14px 24px rgba(21,18,14,.25);animation:fl 4s ease-in-out infinite;animation-delay:var(--d);transition:transform .3s,outline-offset .3s;outline:3px solid transparent;outline-offset:4px}
 .ob em{position:absolute;inset:-10%;border-radius:50%;background:conic-gradient(transparent 0 55%,rgba(255,255,255,.55) 75%,transparent 90%);mix-blend-mode:overlay;animation:sp 5s linear infinite}
 .ob span{position:relative;text-shadow:0 1px 4px rgba(0,0,0,.45)}.ob:hover{transform:scale(1.18) translateY(-6px)}.ob.on{outline-color:var(--ink)}
 @keyframes sp{to{transform:rotate(360deg)}}@keyframes fl{50%{translate:0 -10px}}
+
+/* extras */
+.flash{animation:flash 1.6s ease .45s 1;transform-origin:left center}
+@keyframes flash{0%,100%{transform:none}35%{transform:scale(1.08) rotate(-1.2deg);color:#fff;text-shadow:0 0 28px var(--pnk)}}
+.stgl{pointer-events:auto;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.stgl button{font:700 16px var(--b);padding:12px 22px;border-radius:999px;border:2px solid var(--ink);background:var(--ink);color:var(--lil);cursor:pointer;transition:background .2s,transform .2s}
+.stgl button:hover{background:var(--red);border-color:var(--red);color:#fff;transform:translateY(-3px)}
+.s-pnk{background:var(--pnk);padding-bottom:120px;color:var(--ink)}
+.shots{display:grid;gap:26px 22px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+.shot{background:#fff;padding:12px 12px 52px;border:0;rotate:-2deg;box-shadow:0 18px 40px rgba(21,18,14,.28);position:relative;cursor:zoom-in;text-align:left;font:inherit;color:var(--ink);transition:rotate .3s,transform .3s}
+.shot:nth-child(even){rotate:2.4deg}.shot:nth-child(3n){rotate:-.8deg}
+.shot::before{content:"";position:absolute;top:-12px;left:50%;width:80px;height:26px;margin-left:-40px;background:rgba(255,224,46,.9);rotate:-3deg}
+.shot:hover{rotate:0deg;transform:translateY(-8px) scale(1.04)}
+.shot .im{display:block;aspect-ratio:9/16;background:linear-gradient(160deg,var(--cob),var(--red)) center/cover;border-radius:4px}
+.shot.ph .im{background:repeating-linear-gradient(45deg,#f3f0ff 0 12px,#fff 12px 24px);border:2px dashed var(--ink)}
+.shot b{position:absolute;bottom:12px;left:14px;right:14px;font:800 17px/1.1 var(--d);letter-spacing:-.02em}
+/* live board */
+.board{margin:0 0 70px}.board[hidden]{display:none}
+.bt{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}.bt>div{min-width:0;overflow:hidden}
+.bt>div{background:var(--ink);color:var(--lil);border-radius:26px;padding:22px 24px}
+.bt>div:first-child{grid-column:span 2;background:#fff;color:var(--ink)}
+.bt b{display:block;font:800 clamp(34px,3.7vw,54px)/.95 var(--d);letter-spacing:-.05em;margin-bottom:6px}.bt>div:first-child b{font-size:clamp(54px,7vw,100px)}
+.bt span{font:500 15px var(--b);opacity:.8}
+.bh{font:800 clamp(26px,3.4vw,40px) var(--d);letter-spacing:-.03em;margin:44px 0 14px}
+.tp a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 18px;align-items:center;padding:14px 4px;border-top:2px solid var(--ink);text-decoration:none;color:var(--ink);transition:background .25s,padding .25s}
+.tp a:last-child{border-bottom:2px solid var(--ink)}.tp a:hover{background:#fff;padding-left:16px}
+.tp strong{font:800 clamp(18px,2.2vw,26px) var(--d);letter-spacing:-.02em}.tp em{font-style:normal;font:700 12px var(--b);background:var(--ink);color:var(--lil);padding:2px 9px;border-radius:99px;margin-left:8px;vertical-align:middle}
+.tp .n{font:800 20px var(--d);text-align:right}.tp .n small{display:block;font:500 12px var(--b);opacity:.7}
+.tp i{grid-column:1/-1;display:block;height:10px;border-radius:9px;background:var(--ink);width:var(--w);transform-origin:0 50%}
+.bc{display:flex;gap:10px;flex-wrap:wrap}.bc div{background:#fff;border-radius:18px;padding:12px 18px;font-weight:500}.bc b{font:800 22px var(--d);display:block;letter-spacing:-.02em}
+.tl2{border-bottom:2px solid var(--ink)}
+.st2{display:grid;grid-template-columns:120px 1fr;gap:22px;padding:30px 0;border-top:2px solid var(--ink);transition:padding .3s,background .3s}
+.st2:hover{padding-left:20px;background:var(--lim)}
+.st2>b{font:800 clamp(48px,7vw,92px)/.9 var(--d);letter-spacing:-.05em;color:var(--red)}.st2:nth-child(even)>b{color:var(--cob)}
+.st2 small{font:700 13px var(--b);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.st2 h3{font-size:clamp(26px,3.8vw,48px);margin:6px 0 8px}.st2 p{max-width:56ch;font-size:19px}
+.bf2{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:start}
+.f2 label{display:block;font:700 15px var(--b);margin:18px 0 8px}.f2 label:first-child{margin-top:0}
+.f2 input,.f2 select,.f2 textarea{width:100%;padding:15px 18px;border-radius:18px;border:2px solid #fff;background:transparent;color:#fff;font:500 17px var(--b)}
+.f2 ::placeholder{color:rgba(255,255,255,.65)}.f2 select option{color:#15120E}
+.pk{display:flex;gap:10px;flex-wrap:wrap}
+.pk button{font:700 16px var(--b);padding:11px 22px;border-radius:999px;border:2px solid #fff;background:transparent;color:#fff;cursor:pointer;transition:background .2s,color .2s,transform .2s}
+.pk button:hover,.pk button.on{background:var(--yel);border-color:var(--yel);color:var(--ink);transform:translateY(-2px)}
+.wap small{display:block;font:700 13px var(--b);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;opacity:.85}
+.wab{background:#DCF8C6;color:#15120E;border-radius:24px 24px 4px 24px;padding:20px 22px;font:500 17px/1.55 var(--b);white-space:pre-wrap;box-shadow:0 22px 44px rgba(0,0,0,.3);margin-bottom:24px;word-break:break-word}
+.wap .btn.y:hover{background:var(--red);border-color:var(--red);color:#fff}
+@media (max-width:860px){.bf2{grid-template-columns:1fr;gap:34px}.st2{grid-template-columns:70px 1fr;gap:14px}}
+/* auto covers */
+.ac,.reel.ac[data-cat],.tile.ac{background-image:radial-gradient(circle at 18% 14%,hsl(var(--h1),95%,64%) 0 20%,transparent 21%),radial-gradient(circle at 90% 60%,hsla(var(--h2),92%,62%,.85) 0 27%,transparent 28%),linear-gradient(165deg,hsl(var(--h1),78%,46%),hsl(var(--h2),80%,24%))}
+.reel .acn{position:absolute;top:16px;left:16px;z-index:2;font:800 clamp(34px,4vw,52px)/.88 var(--d);letter-spacing:-.045em;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.25)}
+.reel .acn small{display:block;font:700 13px var(--b);letter-spacing:0;margin-top:5px;opacity:.9}
+.reel iframe{opacity:0;transition:opacity .5s}.reel iframe.on{opacity:1}
+.tile.dz{border:3px solid #fff}
+.stg{transition:background .9s}.bp{position:fixed;width:16px;height:16px;margin:-8px;border-radius:50%;pointer-events:none;z-index:120;animation:bp .95s cubic-bezier(.2,.8,.4,1) forwards}@keyframes bp{to{transform:translate(var(--dx),calc(var(--dy) + 110px)) scale(.2);opacity:0}}
+.sv{opacity:0;transform:translate(var(--sx,0),46px) scale(.98);filter:blur(8px);transition:opacity .8s,transform .9s cubic-bezier(.2,.8,.2,1),filter .8s;transition-delay:var(--rd,0s)}.sv.v{opacity:1;transform:none;filter:none}
+#pg{position:fixed;top:0;left:0;height:4px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,#FF2E93,#FFB02E,#C6FF3D,#19E6D3,#4D6BFF);z-index:200;pointer-events:none}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));width:64px;height:64px;border-radius:50%;z-index:90;display:grid;place-items:center;background:radial-gradient(circle at 32% 26%,#fff 0 4%,#25D366 24%,#0B7A3E 85%);color:#fff;font:800 14px var(--d);text-decoration:none;box-shadow:0 14px 30px -8px #25D366;transform:scale(0) rotate(-90deg);transition:transform .6s cubic-bezier(.3,1.6,.5,1)}.fab.on{transform:none}.fab:hover{transform:scale(1.12)}
+@media(prefers-reduced-motion:reduce){.sv{opacity:1;transform:none;filter:none}}
+.rvs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}.rvc{margin:0;background:#fff;color:#15120E;border:2px solid #15120E;border-radius:24px;padding:26px;box-shadow:7px 7px 0 #15120E;animation:pop .7s cubic-bezier(.2,.8,.2,1) both;transition:transform .3s}.rvc:hover{transform:translate(-3px,-3px) rotate(-.6deg)}
+.rvc .stx{color:#FF8A00;letter-spacing:3px;font-size:20px}.rvc blockquote{margin:12px 0 16px;font-size:18px}.rvc figcaption b{display:block}.rvc figcaption span{opacity:.65;font-size:15px}
+@keyframes pop{from{opacity:0;transform:translateY(30px) scale(.94)}}.dr textarea{width:100%;font:inherit;padding:10px;border-radius:10px}
 </style>
 </head>
 <body>
@@ -257,9 +339,9 @@ details[open] summary::after{transform:rotate(45deg)}details p{padding:0 4px 24p
 <div class="orbs" id="orbs">
  <button type="button" class="orb o1" data-go="#work" data-f="ims" aria-label="See IMS work"><span>IMS</span></button>
  <button type="button" class="orb o2" data-go="#proof" aria-label="See results"><span>14.5M<small>views</small></span></button>
- <button type="button" class="orb o3" data-go="#work" data-f="all" aria-label="See all reels"><span>Reels</span></button>
- <button type="button" class="orb o4" data-go="#work" data-f="mes" aria-label="See Mesmereyes work"><span>Salon</span></button>
- <button type="button" class="orb o5" data-go="#work" data-f="all" aria-label="See designs"><span>Design</span></button>
+ <button type="button" class="orb o3" data-go="#reels-h" data-f="all" aria-label="See all reels"><span>Reels</span></button>
+ <button type="button" class="orb o4" data-go="#work" data-f="mes" aria-label="See Mesmereyes work"><span>Mesmer<br>eyes</span></button>
+ <button type="button" class="orb o5" data-go="#designs-h" data-f="all" aria-label="See designs"><span>Design</span></button>
  <button type="button" class="orb o6" data-go="#work" data-f="taj" aria-label="See Taj Beauty work"><span>Taj<small>Beauty</small></span></button>
  <button type="button" class="orb o7" data-go="#proof" aria-label="See results"><span>+3,550<small>followers</small></span></button>
  <button type="button" class="orb o8" data-go="#work" data-f="urb" aria-label="See UrbaNest work"><span>Urba<br>Nest</span></button>
@@ -298,7 +380,7 @@ details[open] summary::after{transform:rotate(45deg)}details p{padding:0 4px 24p
    <div class="facts">
     <div><span>Studying</span><b>B.Com, GLS University</b></div>
     <div><span>Founder</span><b>UrbaNest Clothing</b></div>
-    <div><span>Working now</span><b>Mesmereyes</b></div>
+    <div><span>Freelancing for</span><b>Mesmereyes</b></div>
     <div><span>Based in</span><b>Ahmedabad, remote friendly</b></div>
    </div>
   </div>
@@ -320,27 +402,48 @@ details[open] summary::after{transform:rotate(45deg)}details p{padding:0 4px 24p
  </div>
 </div></section>
 
-<section id="stage" class="stg" aria-label="Pick a brand to see its work"><div class="stgc"><small>Tap an orb</small><h3 id="stgt">Pick a world.</h3><p id="stgp"></p></div><div id="tiles"></div><div class="dock" id="dock"></div></section>
+<section id="shots" class="s-pnk"><div class="wrap">
+ <h2 class="hd"><span>See it for yourself.</span></h2>
+ <p class="lead" id="shots-lead">Real screenshots from Instagram Insights, straight from the pages I ran. Tap one to zoom in.</p>
+ <div class="board" id="board" hidden></div>
+ <div class="shots" id="shots-grid"></div>
+</div></section>
+
+<section id="stage" class="stg" aria-label="Pick a brand to see its work"><div class="stgc"><small>Tap an orb</small><h3 id="stgt">Pick a world.</h3><p id="stgp"></p><div class="stgl"><button type="button" data-t="#reels-h">Watch the reels</button><button type="button" data-t="#designs-h">See the designs</button></div></div><div id="tiles"></div><div class="dock" id="dock"></div></section>
 <section id="work" class="s-ink"><div class="wrap">
  <h2 class="hd"><span>Selected work.</span></h2>
- <p class="lead">Reels, edits and designs for institutes, salons, international clients and my own brand. Every reel shows its real Instagram numbers. Tap one to watch it.</p>
+ <p class="lead">Reels, edits and designs for institutes, a London beauty lounge, international clients and my own brand. Every reel shows its real Instagram numbers. Tap one to watch it.</p>
  <div class="chips" role="group" aria-label="Filter work"><button class="on" data-f="all">All</button><button data-f="ims">IMS</button><button data-f="mes">Mesmereyes</button><button data-f="taj">Taj Beauty</button><button data-f="urb">UrbaNest</button><button data-f="fre">Freelance</button></div>
  <div class="snap" id="snap"></div>
- <h3 class="sh">Video editing</h3>
+ <h3 class="sh" id="reels-h">Video editing</h3>
  <div class="reels" id="reels"></div>
- <h3 class="sh" style="margin-top:70px">Graphic design</h3>
+ <h3 class="sh" id="designs-h" style="margin-top:70px">Graphic design</h3>
  <div class="designs" id="designs"></div>
 </div></section>
 
 <section id="clients"><div class="wrap">
  <h2 class="hd"><span>Brands I've worked with.</span></h2>
- <p class="lead">From a coaching institute to a UK client and a local salon, I match the content to the brand and its audience.</p>
+ <p class="lead">From a coaching institute to two UK beauty brands, I work as their freelancer and match the content to the brand and its audience.</p>
  <div class="rows">
-  <div class="r"><h3>Mesmereyes<span class="live">Working now</span></h3><span>Salon</span><span>Freelance content and creatives</span></div>
+  <div class="r"><h3>Mesmereyes<span class="live">Freelancing now</span></h3><span>Beauty lounge for women, London</span><span>I work with them as a freelancer: reels, creatives and content</span></div>
   <div class="r"><h3>Taj Beauty</h3><span>Beauty brand, UK</span><span>Graphic design and video editing</span></div>
   <div class="r"><h3>IMS</h3><span>Coaching institute, Gujarat and Rajasthan</span><span>Social media, June to September 2026</span></div>
   <div class="r"><h3>Freelance</h3><span>Brands and creators</span><span>Reels, edits and designs</span></div>
   <div class="r"><h3>UrbaNest Clothing</h3><span>Clothing brand</span><span>Founder: brand, content and design</span></div>
+ </div>
+</div></section>
+
+<section id="reviews" hidden><div class="wrap"><h2 class="hd"><span>Kind words.</span></h2><p class="lead">What clients say about working with me.</p><div class="rvs" id="rvs"></div></div></section>
+
+<section id="journey"><div class="wrap">
+ <h2 class="hd"><span>How I got here.</span></h2>
+ <p class="lead">From design and edits for clients to running full Instagram pages that reach millions.</p>
+ <div class="tl2">
+  <div class="st2"><b>01</b><div><small>Where it started</small><h3>Freelance design and video editing</h3><p>I began by designing posts and editing videos for clients, including Taj Beauty in the UK.</p></div></div>
+  <div class="st2"><b>02</b><div><small>My own brand</small><h3>Founded UrbaNest Clothing</h3><p>Building a clothing label taught me brand, content and design from the owner's side.</p></div></div>
+  <div class="st2"><b>03</b><div><small>June 2026</small><h3>Social Media Executive at IMS</h3><p>I took over the Instagram pages of three branches: Ahmedabad, Jaipur and Bopal.</p></div></div>
+  <div class="st2"><b>04</b><div><small>September 2026</small><h3>14.5M views later</h3><p>I wrapped up with 14.5M views and +3,550 followers across the three pages.</p></div></div>
+  <div class="st2"><b>05</b><div><small>Now</small><h3>Mesmereyes, and open for more</h3><p>I'm freelancing for Mesmereyes, a beauty lounge for women in London, and open to freelance projects and full-time roles.</p></div></div>
  </div>
 </div></section>
 
@@ -370,21 +473,45 @@ details[open] summary::after{transform:rotate(45deg)}details p{padding:0 4px 24p
   <details><summary>How do we get started?</summary><p>Send me a message on WhatsApp or Instagram with what you need. I'll reply, understand your goals and suggest the best next step.</p></details>
  </div>
 </div></section>
+
+<section id="brief" class="s-cob"><div class="wrap">
+ <h2 class="hd"><span>Got a project? Start here.</span></h2>
+ <p class="lead">Fill this in and watch your message write itself. One tap and it opens in my WhatsApp, ready to send.</p>
+ <div class="bf2">
+  <div class="f2">
+   <label>What do you need?</label><div class="pk" id="bk"></div>
+   <label for="bn">Your name or brand</label><input id="bn" type="text" maxlength="60" placeholder="e.g. Riya, Glow Studio">
+   <label for="bl">Instagram page or website (optional)</label><input id="bl" type="text" maxlength="120" placeholder="@yourpage">
+   <label for="bg">Main goal</label><select id="bg"><option>Grow followers</option><option>Get more sales or leads</option><option>Launch something new</option><option>Better looking content</option><option>Not sure yet</option></select>
+   <label for="bm">Anything else?</label><textarea id="bm" rows="3" maxlength="500" placeholder="Tell me a little about it"></textarea>
+  </div>
+  <div class="wap"><small>Your message to Maninder</small><div class="wab" id="wab"></div><a class="btn y" id="bw" data-mag href="https://wa.me/919712890124" target="_blank" rel="noopener">Send on WhatsApp</a></div>
+ </div>
+</div></section>
 </main>
 
 <footer class="contact" id="contact" style="margin-top:130px"><div class="wrap">
  <h2>Let's make something people <em>can't scroll past.</em></h2>
  <p class="l">I'm open to freelance projects and full-time social media roles. Message me and I'll get back to you soon.</p>
  <div class="btns"><a class="btn" data-mag href="https://wa.me/919712890124?text=Hi%20Maninder%2C%20I%20saw%20your%20portfolio" target="_blank" rel="noopener">Message on WhatsApp</a><a class="btn o" data-mag href="https://instagram.com/manindergotra_25" target="_blank" rel="noopener">@manindergotra_25 on Instagram</a></div>
- <div class="foot"><span>Maninder, Ahmedabad, India. Available for remote work worldwide.</span><a href="#top">Back to top</a></div>
+ <div class="foot"><span>Maninder, Ahmedabad, India. Available for remote work worldwide.</span><span><a href="review.html">Leave a review</a><a href="#admin" id="adminlink">Admin</a><a href="#top">Back to top</a></span></div>
 </div></footer>
 
-<script>var REELS=[],DESIGNS=[]</script>
+<script>var REELS=[],DESIGNS=[],PROOF=[]</script>
 <script src="work.js"></script>
 <script>
 (function(){
 var rm=matchMedia('(prefers-reduced-motion:reduce)').matches,touch=matchMedia('(pointer:coarse)').matches;
-var CL={ims:'IMS',mes:'Mesmereyes',taj:'Taj Beauty',urb:'UrbaNest',fre:'Freelance'},cur='all';
+var CL={ims:'IMS',mes:'Mesmereyes',taj:'Taj Beauty',urb:'UrbaNest',fre:'Freelance'},cur='all',PV={};
+window.mpScale=function(k){var R=typeof REELS!=='undefined'?REELS:[],D=typeof DESIGNS!=='undefined'?DESIGNS:[],c={};R.concat(D).forEach(function(x){c[x.client]=(c[x.client]||0)+1});
+ var m=Math.max(1,R.length,D.length,c.ims||0,c.mes||0,c.taj||0,c.urb||0,c.fre||0);if(k==='all')return 1.18;if(k==='next')return 1.05;var n=k==='reels'?R.length:k==='designs'?D.length:(c[k]||0);return +(.82+.38*Math.sqrt(n/m)).toFixed(3)};
+function hsh(t){var h=0;for(var i=0;i<t.length;i++)h=(h*31+t.charCodeAt(i))|0;return Math.abs(h)}
+window.mpCover=function(el,r,small){var h=hsh(String(r.url||r.title||'x')),b={ims:48,mes:330,taj:178,urb:250,fre:96}[r.client];if(b==null)b=h%360;
+ el.classList.add('ac');el.style.setProperty('--h1',(b+h%36)%360);el.style.setProperty('--h2',(b+140+h%70)%360);
+ if(!small&&+r.views){var n=mk('span','acn',fmt(r.views));n.appendChild(mk('small',null,'views'));el.insertBefore(n,el.firstChild)}};
+function hoverPrev(a,r){var ig=igId(r.url);if(!ig||matchMedia('(pointer:coarse)').matches)return;var on=false;
+ a.addEventListener('pointerenter',function(){if(on)return;on=true;var f=document.createElement('iframe');f.src='https://www.instagram.com/'+ig.t+'/'+ig.id+'/embed';f.title='';f.setAttribute('scrolling','no');f.tabIndex=-1;f.setAttribute('aria-hidden','true');f.addEventListener('load',function(){f.classList.add('on')});a.appendChild(f)})}
+function igId(u){var m=String(u||'').match(/instagram\.com\/(reel|reels|p|tv)\/([\w-]+)/i);return m?{t:m[1].toLowerCase()==='reels'?'reel':m[1].toLowerCase(),id:m[2]}:null}
 function mk(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
 function fmt(n){n=+n||0;if(n>=1e6)return(n/1e6).toFixed(1).replace(/\.0$/,'')+'M';if(n>=1e3)return(n/1e3).toFixed(1).replace(/\.0$/,'')+'K';return String(n)}
 function okUrl(u){return /^https?:\/\//i.test(u||'')}
@@ -394,7 +521,8 @@ var H=document.documentElement,bubblesGo=false;
 /* preloader */
 var pre=document.getElementById('pre'),pc=document.getElementById('pc');
 function start(){bubblesGo=true;H.classList.add('go-in');if(pre)pre.classList.add('out');setTimeout(function(){if(pre)pre.remove()},1000)}
-if(rm||!pre){bubblesGo=true;H.classList.add('go-in');if(pre)pre.remove()}
+var sn=0;try{sn=sessionStorage.getItem('s');sessionStorage.setItem('s','1')}catch(e){}
+if(rm||!pre||sn){bubblesGo=true;H.classList.add('go-in');if(pre)pre.remove()}
 else{var n=0,t0=performance.now();(function f(t){n=Math.min(100,Math.round((t-t0)/1300*100));pc.textContent=n;if(n<100)requestAnimationFrame(f);else setTimeout(start,150)})(t0);setTimeout(function(){if(pre&&!pre.classList.contains('out'))start()},4000)}
 
 /* hero: name letters + glass bubbles (own tiny physics, no library) */
@@ -404,11 +532,11 @@ var tcl=document.getElementById('tcl'),hero=document.getElementById('top'),name=
 var orbsEl=document.getElementById('orbs'),orbs=[].slice.call(orbsEl.children),F=[1.15,.95,1,.9,1.05,.9,1,.85,.9],P=[],W=0,HH=0,floor=0,ceilOn=false,drag=null,lastW=innerWidth;
 function baseR(){return Math.max(32,Math.min(80,hero.clientWidth*.056,hero.clientHeight*.085))}
 function hp(e){var b=hero.getBoundingClientRect();return{x:e.clientX-b.left,y:e.clientY-b.top}}
-function go(o){var f=o.dataset.f;if(f){var b=document.querySelector('.chips button[data-f="'+f+'"]');if(b)b.click()}var t=document.querySelector(o.dataset.go);if(t)t.scrollIntoView({behavior:rm?'auto':'smooth'})}
+function go(o){var f=o.dataset.f;if(f){var b=document.querySelector('.chips button[data-f="'+f+'"]');if(b)b.click()}var t=document.querySelector(o.dataset.go);if(t){t.scrollIntoView({behavior:rm?'auto':'smooth'});t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash')}}
 function render(){orbs.forEach(function(o,i){var q=P[i];if(!q)return;o.style.transform='translate('+(q.x-q.r)+'px,'+(q.y-q.r)+'px)';o.firstChild.style.transform='rotate('+(Math.sin(q.a)*.4)+'rad)'})}
 function build(){
  W=hero.clientWidth;HH=hero.clientHeight;floor=HH-34;ceilOn=false;drag=null;var br=baseR();
- P=orbs.map(function(o,i){var r=br*F[i];o.style.width=o.style.height=(r*2)+'px';o.style.fontSize=Math.max(12,r*.26)+'px';return{r:r,m:r*r,x:W*(.08+.84*(((i*5)%9)/8)),y:-r-i*r*2.4,vx:0,vy:0,a:0}});
+ P=orbs.map(function(o,i){var r=br*F[i]*((o.dataset.f&&o.dataset.f!=='all'&&window.mpScale)?mpScale(o.dataset.f)/1.0:1);o.style.width=o.style.height=(r*2)+'px';o.style.fontSize=Math.max(12,r*.26)+'px';return{r:r,m:r*r,x:W*(.08+.84*(((i*5)%9)/8)),y:-r-i*r*2.4,vx:0,vy:0,a:0}});
  if(rm){var cx=14,cy=floor;P.forEach(function(q){if(cx+q.r*2>W-14){cx=14;cy-=q.r*1.7}q.x=cx+q.r;q.y=cy-q.r;cx+=q.r*2+8})}
  render()}
 function step(){
@@ -477,14 +605,14 @@ document.querySelectorAll('[data-to]').forEach(function(e){if(!rm)e.textContent=
 
 /* work */
 function renderSnap(){var el=document.getElementById('snap');el.innerHTML='';if(!REELS.length){el.hidden=true;return}
- var v=0,l=0,o=0;REELS.forEach(function(x){v+=+x.views||0;l+=+x.likes||0;o+=(+x.comments||0)+(+x.shares||0)});
+ var v=0,l=0,o=0,rc=0;REELS.forEach(function(x){rc+=+x.reach||0;v+=+x.views||0;l+=+x.likes||0;o+=(+x.comments||0)+(+x.shares||0)});
  var er=v?((l+o)/v*100):0;
- [[String(REELS.length),'reels showcased'],[fmt(v),'total views'],[fmt(l),'total likes'],[fmt(o),'comments and shares'],[er.toFixed(1)+'%','average engagement']].forEach(function(a){var d=mk('div');d.appendChild(mk('b',null,a[0]));d.appendChild(mk('span',null,a[1]));el.appendChild(d)})}
+ [[String(REELS.length),'reels showcased']].concat(rc?[[fmt(rc),'total reach']]:[]).concat([[fmt(v),'total views'],[fmt(l),'total likes'],[fmt(o),'comments and shares'],[er.toFixed(1)+'%','average engagement']]).forEach(function(a){var d=mk('div');d.appendChild(mk('b',null,a[0]));d.appendChild(mk('span',null,a[1]));el.appendChild(d)})}
 function reelCard(r){var rc=mk('article','rc');
  var a=mk('a','reel');a.dataset.cat=r.client;a.href=okUrl(r.url)?r.url:'#';a.target='_blank';a.rel='noopener';a.setAttribute('aria-label','Watch '+(r.title||'reel'));
- if(r.cover){a.classList.add('cv');a.style.backgroundImage=cssUrl(r.cover)}
+ if(r.cover){a.classList.add('cv');a.style.backgroundImage=cssUrl(PV[r.cover]||r.cover)}else{mpCover(a,r);hoverPrev(a,r)}
  a.appendChild(mk('span','pl'));a.appendChild(mk('span','cl',CL[r.client]||r.client||'Client'));a.appendChild(mk('strong',null,r.title||'Reel'));rc.appendChild(a);
- var s=mk('div','st');[['views',r.views],['likes',r.likes],['comments',r.comments],['shares',r.shares]].forEach(function(p){var d=mk('div');d.appendChild(mk('b',null,fmt(p[1])));d.appendChild(mk('span',null,p[0]));s.appendChild(d)});rc.appendChild(s);
+ var s=mk('div','st');s.style.gridTemplateColumns='repeat('+(r.reach?5:4)+',1fr)';(r.reach?[['reach',r.reach]]:[]).concat([['views',r.views],['likes',r.likes],['comments',r.comments],['shares',r.shares]]).forEach(function(p){var d=mk('div');d.appendChild(mk('b',null,fmt(p[1])));d.appendChild(mk('span',null,p[0]));s.appendChild(d)});rc.appendChild(s);
  var v=+r.views||0,er=v?((+r.likes||0)+(+r.comments||0)+(+r.shares||0))/v*100:0;
  var e=mk('div','er');e.appendChild(mk('span',null,'Engagement rate'));e.appendChild(mk('b',null,er.toFixed(1)+'%'));var bar=mk('i');bar.style.width=Math.min(100,er*5)+'%';e.appendChild(bar);rc.appendChild(e);
  if(!rm&&!touch){a.addEventListener('pointermove',function(ev){var b=a.getBoundingClientRect(),x=(ev.clientX-b.left)/b.width-.5,y=(ev.clientY-b.top)/b.height-.5;a.style.transform='rotateY('+x*16+'deg) rotateX('+(-y*16)+'deg) scale(1.03)'});a.addEventListener('pointerleave',function(){a.style.transform=''})}
@@ -494,35 +622,192 @@ function renderReels(){var g=document.getElementById('reels');g.innerHTML='';
  REELS.forEach(function(r){if(cur==='all'||r.client===cur)g.appendChild(reelCard(r))})}
 function renderDesigns(){var g=document.getElementById('designs');g.innerHTML='';
  if(!DESIGNS.length){for(var i=0;i<6;i++){var p=mk('div','post');p.style.cursor='default';p.appendChild(mk('span',null,'Coming soon'));g.appendChild(p)}return}
- DESIGNS.forEach(function(d){if(!(cur==='all'||d.client===cur))return;var p=mk('button','post');p.type='button';if(d.img)p.style.backgroundImage=cssUrl(d.img);p.appendChild(mk('span',null,(d.title||'Design')+' | '+(CL[d.client]||d.client||'')));
-  p.addEventListener('click',function(){if(!d.img)return;var lb=mk('div','lb'),im=mk('img');im.src=d.img;im.alt=d.title||'Design';lb.appendChild(im);function x(){lb.remove();removeEventListener('keydown',k)}function k(e){if(e.key==='Escape')x()}lb.addEventListener('click',x);addEventListener('keydown',k);document.body.appendChild(lb)});g.appendChild(p)})}
+ DESIGNS.forEach(function(d){if(!(cur==='all'||d.client===cur))return;var p=mk('button','post');p.type='button';if(d.img)p.style.backgroundImage=cssUrl(PV[d.img]||d.img);p.appendChild(mk('span',null,(d.title||'Design')+' | '+(CL[d.client]||d.client||'')));
+  p.addEventListener('click',function(){if(!d.img)return;var lb=mk('div','lb'),im=mk('img');im.src=PV[d.img]||d.img;im.alt=d.title||'Design';lb.appendChild(im);function x(){lb.remove();removeEventListener('keydown',k)}function k(e){if(e.key==='Escape')x()}lb.addEventListener('click',x);addEventListener('keydown',k);document.body.appendChild(lb)});g.appendChild(p)})}
 function glitch(){['reels','designs'].forEach(function(id){var e=document.getElementById(id);e.classList.remove('gl');void e.offsetWidth;if(!rm)e.classList.add('gl')})}
 function renderAll(){renderSnap();renderReels();renderDesigns()}
 renderAll();
 document.querySelectorAll('.chips button').forEach(function(b){b.addEventListener('click',function(){cur=b.dataset.f;glitch();document.querySelectorAll('.chips button').forEach(function(x){x.classList.toggle('on',x===b)});renderReels();renderDesigns()})});
+/* ---------- admin panel (publishes through GitHub) ---------- */
+window.mpPV=PV;var CK='mp_admin_cfg',cfg={};try{cfg=JSON.parse(localStorage.getItem(CK)||'{}')}catch(e){}
+var dr=null,pend=[],ei=-1;
+function shrink(file,max){return new Promise(function(res,rej){var img=new Image(),u=URL.createObjectURL(file);img.onload=function(){var k=Math.min(1,max/Math.max(img.width,img.height)),c=document.createElement('canvas');c.width=Math.round(img.width*k);c.height=Math.round(img.height*k);c.getContext('2d').drawImage(img,0,0,c.width,c.height);URL.revokeObjectURL(u);res(c.toDataURL('image/jpeg',.85))};img.onerror=function(){rej(new Error('Could not read the image'))};img.src=u})}
+function frame(file,max){return new Promise(function(res,rej){var v=document.createElement('video'),u=URL.createObjectURL(file);v.muted=true;v.playsInline=true;v.preload='auto';v.src=u;
+ v.onerror=function(){URL.revokeObjectURL(u);rej(new Error('Could not read this video. Try a screenshot instead.'))};
+ v.onloadedmetadata=function(){v.currentTime=Math.min(1.2,(v.duration||2)/2)};
+ v.onseeked=function(){var k=Math.min(1,max/Math.max(v.videoWidth,v.videoHeight)),c=document.createElement('canvas');c.width=Math.round(v.videoWidth*k);c.height=Math.round(v.videoHeight*k);c.getContext('2d').drawImage(v,0,0,c.width,c.height);URL.revokeObjectURL(u);res(c.toDataURL('image/jpeg',.85))}})}
+function ghx(method,path,body){return fetch('https://api.github.com/repos/'+cfg.user+'/'+cfg.repo+'/contents/'+path+(method==='GET'?'?ref='+encodeURIComponent(cfg.branch):''),{method:method,headers:{Authorization:'Bearer '+cfg.token,Accept:'application/vnd.github+json'},body:body?JSON.stringify(body):undefined})}
+async function putFile(path,b64,msg){var sha,g=await ghx('GET',path);if(g.ok){sha=(await g.json()).sha}else if(g.status!==404){throw new Error('GitHub '+g.status+(g.status===401?': token is wrong or expired':g.status===403?': give the token Contents = Read and write permission':g.status===404?'':''))}
+ var r=await ghx('PUT',path,{message:msg,content:b64,branch:cfg.branch,sha:sha});if(!r.ok){var t='';try{t=(await r.json()).message}catch(e){}throw new Error('Save fail '+r.status+(t?': '+t:''))}}
+function b64utf8(t){return btoa(unescape(encodeURIComponent(t)))}
+function workJs(){return '/* Saved by the admin panel. You can still edit this file by hand. client: ims | mes | taj | urb */\nvar REELS='+JSON.stringify(REELS,null,1)+';\nvar DESIGNS='+JSON.stringify(DESIGNS,null,1)+';\nvar PROOF='+JSON.stringify(typeof PROOF!=='undefined'?PROOF:[],null,1)+';\n'+'var REVIEWS='+JSON.stringify(typeof REVIEWS!=='undefined'?REVIEWS:[],null,1)+';\n'}
+function buildAdmin(){
+ dr=mk('div','dr');dr.hidden=true;
+ var opts='<option value="ims">IMS</option><option value="mes">Mesmereyes</option><option value="taj">Taj Beauty</option><option value="urb">UrbaNest</option><option value="fre">Freelance</option>';
+ dr.innerHTML='<div class="dh2"><h3>Admin</h3><button type="button" class="sec" id="dx">Close</button></div>'+
+ '<details id="gd"><summary>GitHub connection (one time)</summary><label>GitHub username</label><input id="gu" autocomplete="off"><label>Repository name</label><input id="gr" autocomplete="off"><label>Branch</label><input id="gb" value="main"><label>Token</label><input id="gt" type="password" autocomplete="off" placeholder="github_pat_..."><p>To create a token: GitHub > Settings > Developer settings > Fine-grained tokens > Generate. Select only this repo and set Contents to Read and write. The token stays in this browser only.</p><button type="button" id="gs">Save connection</button></details>'+
+ '<div class="tabs"><button type="button" class="sec on" data-t="r">Reels</button><button type="button" class="sec" data-t="d">Designs</button><button type="button" class="sec" data-t="p">Proof</button></div>'+
+ '<div id="tr"><label>Instagram reel link</label><input id="fu" type="url" placeholder="Paste the Instagram link"><div id="pv"></div><label>Title</label><input id="ft" maxlength="60"><label>Client (the reel shows up in this section)</label><select id="fc">'+opts+'</select>'+
+ '<div class="g4"><div><label>Reach</label><input id="fr" type="number" min="0"></div><div><label>Views</label><input id="fv" type="number" min="0"></div><div><label>Likes</label><input id="fl" type="number" min="0"></div><div><label>Comments</label><input id="fm" type="number" min="0"></div><div><label>Shares</label><input id="fs" type="number" min="0"></div></div>'+
+ '<details><summary>Auto-fill numbers from an Insights screenshot</summary><p>Upload an Instagram Insights screenshot. Views, reach, likes, comments and shares are read and filled in for you. Give them a quick check.</p><input id="fo" type="file" accept="image/*"><span class="msg" id="om"></span></details>'+
+ '<label>Cover (optional). Upload an image or the video itself, a frame is captured for you. If empty, a cover is generated automatically.</label><input id="fi" type="file" accept="image/*,video/*">'+
+ '<label class="chk"><input type="checkbox" id="afp"> Feature this first (shows first in the orb stage)</label>'+
+ '<label class="chk"><input type="checkbox" id="ap" checked> Publish right after adding</label>'+
+ '<div style="display:flex;gap:8px;margin-top:14px"><button type="button" id="fa">Add reel</button><button type="button" class="sec" id="fx" hidden>Cancel edit</button></div><details style="margin-top:14px"><summary>Add many links at once</summary><p>One Instagram link per line. All of them get the client selected above. Add numbers later with Edit.</p><textarea id="abk" placeholder="https://www.instagram.com/reel/...\nhttps://www.instagram.com/reel/..."></textarea><button type="button" id="bb" style="margin-top:8px">Add all</button></details><div id="lr"></div></div>'+
+ '<div id="td" hidden><label>Title</label><input id="dt" maxlength="60"><label>Client</label><select id="dc">'+opts+'</select><label>Design image</label><input id="di" type="file" accept="image/*"><div style="margin-top:14px"><button type="button" id="da">Add design</button></div><div id="ld"></div></div>'+
+ '<div id="tp" hidden><p style="font-size:14px;color:var(--mute)">Upload Instagram Insights screenshots. They appear in the pink "See it for yourself" section.</p><label>Title</label><input id="pt" maxlength="60" placeholder="IMS Ahmedabad reach"><label>Screenshot</label><input id="pi" type="file" accept="image/*"><div style="margin-top:14px"><button type="button" id="pa">Add screenshot</button></div><div id="lp"></div></div>'+
+ '<div class="df"><button type="button" id="sv" style="width:100%">Save and publish</button><span class="msg" id="mg">Changes go live when you press Save and publish.</span></div>';
+ document.body.appendChild(dr);
+ var $=function(i){return dr.querySelector('#'+i)};
+ function msg(t){$('mg').textContent=t}
+ $('gu').value=cfg.user||'';$('gr').value=cfg.repo||'';$('gb').value=cfg.branch||'main';$('gt').value=cfg.token||'';if(!cfg.token)$('gd').open=true;
+ $('gs').addEventListener('click',function(){cfg={user:$('gu').value.trim(),repo:$('gr').value.trim(),branch:$('gb').value.trim()||'main',token:$('gt').value.trim()};try{localStorage.setItem(CK,JSON.stringify(cfg))}catch(e){}msg('Connection saved.');$('gd').open=false});
+ $('dx').addEventListener('click',function(){dr.hidden=true});
+ dr.querySelectorAll('.tabs button').forEach(function(b){b.addEventListener('click',function(){dr.querySelectorAll('.tabs button').forEach(function(x){x.classList.toggle('on',x===b)});$('tr').hidden=b.dataset.t!=='r';$('td').hidden=b.dataset.t!=='d';$('tp').hidden=b.dataset.t!=='p'})});
+ function lists(){var lr=$('lr');lr.innerHTML='';REELS.forEach(function(r,i){var li=mk('div','li');li.appendChild(mk('span',null,(r.title||'Reel')+' ('+(CL[r.client]||r.client)+', '+fmt(r.views)+')'));var b=mk('div');
+  [['Edit',function(){ei=i;$('fu').value=r.url||'';$('ft').value=r.title||'';$('fc').value=r.client;$('fr').value=r.reach||'';$('afp').checked=!!r.pin;$('fv').value=r.views;$('fl').value=r.likes;$('fm').value=r.comments;$('fs').value=r.shares;$('fa').textContent='Update reel';$('fx').hidden=false;$('fu').scrollIntoView({block:'center'})}],
+   ['Up',function(){if(i>0){var t=REELS[i-1];REELS[i-1]=r;REELS[i]=t;done()}}],
+   ['Delete',function(){REELS.splice(i,1);done()},'del']].forEach(function(a){var x=mk('button',a[2]||'sec',a[0]);x.type='button';x.addEventListener('click',a[1]);b.appendChild(x)});li.appendChild(b);lr.appendChild(li)});
+  var lp=$('lp');lp.innerHTML='';(typeof PROOF!=='undefined'?PROOF:[]).forEach(function(d,i){var li=mk('div','li');li.appendChild(mk('span',null,d.title||'Screenshot'));var x=mk('button','del','Delete');x.type='button';x.addEventListener('click',function(){PROOF.splice(i,1);done()});li.appendChild(x);lp.appendChild(li)});
+  var ld=$('ld');ld.innerHTML='';DESIGNS.forEach(function(d,i){var li=mk('div','li');li.appendChild(mk('span',null,(d.title||'Design')+' ('+(CL[d.client]||d.client)+')'));var x=mk('button','del','Delete');x.type='button';x.addEventListener('click',function(){DESIGNS.splice(i,1);done()});li.appendChild(x);ld.appendChild(li)})}
+ function done(){renderAll();lists();if(window.renderShots)renderShots();msg('Unsaved changes. Press Save and publish.')}
+ function clear(){$('afp').checked=false;ei=-1;['fu','ft','fr','fv','fl','fm','fs','fi'].forEach(function(i){$(i).value=''});$('fa').textContent='Add reel';$('fx').hidden=true}
+ $('fx').addEventListener('click',clear);
+ $('pa').addEventListener('click',function(){var f=$('pi').files[0];if(!f){msg('Choose a screenshot first.');return}msg('Preparing image...');
+  shrink(f,1400).then(function(d){var path='proof/'+Date.now()+'.jpg';PV[path]=d;pend.push({path:path,data:d});PROOF.unshift({title:$('pt').value.trim()||'Insights',img:path});$('pt').value='';$('pi').value='';done()}).catch(function(e){msg(e.message)})});
+ try{var lc=localStorage.getItem('mp_lastc');if(lc)$('fc').value=lc}catch(e){}
+ $('fc').addEventListener('change',function(){try{localStorage.setItem('mp_lastc',$('fc').value)}catch(e){}});
+ $('fu').addEventListener('input',function(){var pv=$('pv'),u=$('fu').value.trim(),g=igId(u);pv.innerHTML='';pv.classList.toggle('on',!!g);if(!g)return;
+  var fr=mk('div','fr'),f=document.createElement('iframe');f.src='https://www.instagram.com/'+g.t+'/'+g.id+'/embed';f.setAttribute('scrolling','no');f.tabIndex=-1;fr.appendChild(f);pv.appendChild(fr);
+  pv.appendChild(mk('span',null,(g.t==='reel'?'Reel':'Post')+' detected ('+g.id+'). Pick a client, add numbers, press Add.'));
+  if(!$('ft').value)$('ft').placeholder='Title (defaults to '+(g.t==='reel'?'Reel':'Post')+' if empty)'});
+ $('bb').addEventListener('click',function(){var ls=$('abk').value.split(/\s+/).filter(function(x){return igId(x)}),n=0;
+  ls.forEach(function(u){var g=igId(u);if(REELS.some(function(r){var h=igId(r.url);return h&&h.id===g.id}))return;REELS.unshift({url:u,title:(g.t==='reel'?'Reel ':'Post ')+g.id.slice(0,5),client:$('fc').value,reach:0,views:0,likes:0,comments:0,shares:0,cover:''});n++});
+  $('abk').value='';done();msg(n+' links added. Use Edit to set titles and numbers, then Save and publish.')});
+ var ocr=null;$('fo').addEventListener('change',async function(){var f=$('fo').files[0];if(!f)return;var om=$('om');om.textContent='Reading screenshot...';
+  try{if(!window.Tesseract){await new Promise(function(ok,no){var sc=document.createElement('script');sc.src='https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/5.1.0/tesseract.min.js';sc.onload=ok;sc.onerror=function(){no(new Error('Could not load the reader. Check your internet.'))};document.head.appendChild(sc)})}
+   var r=await Tesseract.recognize(f,'eng'),v=parseIns(r.data.text),got=[];
+   [['reach','fr'],['views','fv'],['likes','fl'],['comments','fm'],['shares','fs']].forEach(function(k){if(v[k[0]]){$(k[1]).value=v[k[0]];got.push(k[0])}});
+   $('fo').value='';om.textContent=got.length?'Filled in: '+got.join(', ')+'. Please double-check them.':'No numbers found. Use a clear, zoomed screenshot or type them in.'}
+  catch(e){om.textContent='Error: '+e.message}})
+ $('fa').addEventListener('click',function(){var u=$('fu').value.trim();if(!okUrl(u)){msg('The Instagram link must start with https://');return}
+  var o={url:u,title:$('ft').value.trim()||((igId(u)||{}).t==='p'?'Post':'Reel'),client:$('fc').value,pin:$('afp').checked||undefined,reach:+$('fr').value||0,views:+$('fv').value||0,likes:+$('fl').value||0,comments:+$('fm').value||0,shares:+$('fs').value||0,cover:ei>=0?(REELS[ei].cover||''):''};
+  var f=$('fi').files[0],p=Promise.resolve();
+  if(f){msg('Preparing image...');p=(f.type.indexOf('video')===0?frame(f,720):shrink(f,1000)).then(function(d){var path='covers/'+Date.now()+'.jpg';PV[path]=d;pend.push({path:path,data:d});o.cover=path})}
+  p.then(function(){if(ei>=0)REELS[ei]=o;else REELS.unshift(o);clear();done();if($('ap').checked&&cfg.token)$('sv').click()}).catch(function(e){msg(e.message)})});
+ $('da').addEventListener('click',function(){var f=$('di').files[0];if(!f){msg('Choose an image first.');return}msg('Preparing image...');
+  shrink(f,1600).then(function(d){var path='designs/'+Date.now()+'.jpg';PV[path]=d;pend.push({path:path,data:d});DESIGNS.unshift({title:$('dt').value.trim()||'Design',client:$('dc').value,img:path});$('dt').value='';$('di').value='';done()}).catch(function(e){msg(e.message)})});
+ $('sv').addEventListener('click',async function(){
+  if(!cfg.token||!cfg.user||!cfg.repo){$('gd').open=true;msg('Save the GitHub connection first.');return}
+  var btn=$('sv');btn.disabled=true;
+  try{var keep=[];
+   for(var k=0;k<pend.length;k++){var it=pend[k];if(!REELS.some(function(r){return r.cover===it.path})&&!DESIGNS.some(function(d){return d.img===it.path})&&!PROOF.some(function(x){return x.img===it.path}))continue;msg('Uploading image: '+(k+1)+'/'+pend.length);await putFile(it.path,it.data.split(',')[1],'Add '+it.path)}
+   msg('Saving work.js...');await putFile('work.js',b64utf8(workJs()),'Update portfolio work');
+   pend=[];msg('Published. The live site updates in 1-2 minutes (refresh with Ctrl+F5).')}
+  catch(e){msg('Error: '+e.message)}
+  btn.disabled=false});
+ lists()}
+function num(t){t=String(t).replace(/,/g,'').trim();var m=t.match(/^([\d.]+)\s*([kKmM])?$/);if(!m)return 0;var n=parseFloat(m[1]);if(m[2]&&/k/i.test(m[2]))n*=1e3;if(m[2]&&/m/i.test(m[2]))n*=1e6;return Math.round(n)}
+function parseIns(txt){var out={},K={reach:/accounts\s*reached|reach/i,views:/views|plays/i,likes:/likes/i,comments:/comments/i,shares:/shares/i},L=String(txt).split(/\n+/).map(function(x){return x.trim()}).filter(Boolean);
+ Object.keys(K).forEach(function(k){for(var i=0;i<L.length;i++){if(!K[k].test(L[i]))continue;var m=L[i].match(/(\d[\d,.]*\s*[kKmM]?)\s*$/)||L[i].match(/(\d[\d,.]*\s*[kKmM]?)/)||(L[i+1]&&L[i+1].match(/^(\d[\d,.]*\s*[kKmM]?)\b/))||(L[i-1]&&L[i-1].match(/^(\d[\d,.]*\s*[kKmM]?)\b/));if(m){var n=num(m[1]);if(n){out[k]=n;break}}}});return out}
+window.mpParse=parseIns;
+function openAdmin(){if(!dr)buildAdmin();dr.hidden=false}
+var al=document.getElementById('adminlink');if(al)al.addEventListener('click',function(e){e.preventDefault();openAdmin()});
+if(location.hash==='#admin')openAdmin();
 })();
 </script>
 <script>
 (function(){
-var C=[['all','All work','Reels, edits and designs from every brand.','#FF3D2E','#7B1208'],['ims','IMS','Three coaching pages, 14.5M views in one season.','#FFDD3C','#B07A00'],['mes','Mesmereyes','Salon content and creatives. Working now.','#FF8FD0','#9A2A6B'],['taj','Taj Beauty','UK beauty brand. Graphic design and video editing.','#7DF3E8','#0A6E78'],['urb','UrbaNest','My own clothing brand, built from scratch.','#7B8CFF','#1A1A7A'],['fre','Freelance','Reels, edits and designs for brands and creators.','#9BFFC9','#0B7A4A']];
-var dock=document.getElementById('dock'),tl=document.getElementById('tiles'),T=document.getElementById('stgt'),P=document.getElementById('stgp');
-function show(i){var c=C[i];[].forEach.call(dock.children,function(b,j){b.classList.toggle('on',j===i)});
- T.textContent=c[1];P.textContent=c[2];
+var C=[['all','All work','Reels, edits and designs from every brand.','#FF4D6D','#B0002A'],['reels','Reels','Every reel with its real Instagram numbers. Tap one to watch it.','#FF8A3D','#B0004F'],['designs','Designs','Posts, creatives and menus for every brand.','#C6FF3D','#00A86B'],['next','You can be next.','Your brand could be on this wall. Tap any card and message me.','#B24CFF','#3A00A8','You?'],['ims','IMS','Three coaching pages, 14.5M views in one season.','#FFE94D','#FF8A00'],['mes','Mesmereyes','Freelancing for a beauty lounge for women in London: reels, creatives and content. Working now.','#FF8AD8','#C400A0'],['taj','Taj Beauty','UK beauty brand. Graphic design and video editing.','#7DFFF0','#00A7C7'],['urb','UrbaNest','My own clothing brand, built from scratch.','#9AA6FF','#3B1FFF'],['fre','Freelance','Reels, edits and designs for brands and creators.','#B8FF2E','#00B864']];
+var key='all',dock=document.getElementById('dock'),tl=document.getElementById('tiles'),T=document.getElementById('stgt'),P=document.getElementById('stgp');
+function show(i){var c=C[i];key=c[0];window.__stgKey=key;[].forEach.call(dock.children,function(b,j){b.classList.toggle('on',j===i)});
+ T.textContent=c[1];P.textContent=c[2];document.getElementById('stage').style.background='color-mix(in srgb,'+c[3]+' 26%,#F1EEE3)';
  [].slice.call(tl.children).forEach(function(t){t.style.setProperty('--dl','0ms');t.classList.remove('in');setTimeout(function(){t.remove()},800)});
- var all=(typeof REELS!=='undefined'?REELS:[]).filter(function(r){return i===0||r.client===c[0]}).slice(0,innerWidth<700?5:8);
- if(!all.length)all=[{},{},{},{},{}];var n=all.length;
+ var lim=innerWidth<700?5:8,rs=(typeof REELS!=='undefined'?REELS:[]).filter(function(r){return c[0]==='designs'?false:(i===0||c[0]==='reels'||r.client===c[0])}).slice().sort(function(a,b){return (b.pin?1:0)-(a.pin?1:0)||(+b.views||0)-(+a.views||0)}),
+  ds=(typeof DESIGNS!=='undefined'?DESIGNS:[]).filter(function(d){return d.img&&(c[0]==='reels'?false:(i===0||c[0]==='designs'||d.client===c[0]))}),nd=Math.min(ds.length,c[0]==='designs'?lim:Math.floor(lim/3)),all=[],ri=0,di=0;
+ for(var q=0;q<lim;q++){if(di<nd&&(c[0]==='designs'||q%3===2)){var d=ds[di++];all.push({title:d.title,url:d.img,cover:d.img,design:1})}else if(ri<rs.length)all.push(rs[ri++])}
+ var WA='https://wa.me/919712890124?text=Hi%20Maninder%2C%20I%20want%20to%20work%20with%20you';if(c[0]==='next')all=[{title:'You can be next',url:WA},{title:'Your brand here',url:WA},{title:'Your reels',url:WA},{title:'Your designs',url:WA},{title:'Say hi',url:WA}];else if(!all.length)all=[{},{},{},{},{}];var n=all.length;
  all.forEach(function(r,k){var a=k/n*6.283-1.4,t=document.createElement(r.url?'a':'div');t.className='tile g'+(k%4);
-  if(r.url){t.href=/^https?:\/\//i.test(r.url)?r.url:'#';t.target='_blank';t.rel='noopener';t.setAttribute('aria-label','Watch '+(r.title||'reel'))}
-  if(r.cover)t.style.backgroundImage='url("'+encodeURI(r.cover)+'")';
+  if(r.design)t.classList.add('dz');if(r.url){t.href=(r.design||/^https?:\/\//i.test(r.url))?r.url:'#';t.target='_blank';t.rel='noopener';t.setAttribute('aria-label','Watch '+(r.title||'reel'))}
+  if(r.cover)t.style.backgroundImage='url("'+encodeURI((window.mpPV&&mpPV[r.cover])||r.cover)+'")';else if(r.url&&window.mpCover)mpCover(t,r,true);
   if(r.title){var s=document.createElement('span');s.textContent=r.title;t.appendChild(s)}
   t.style.left=(50+39*Math.cos(a))+'%';t.style.top=(36+26*Math.sin(a))+'%';
   t.style.setProperty('--x0',(Math.random()*90-45)+'vw');t.style.setProperty('--y0',(Math.random()*90-45)+'vh');
   t.style.setProperty('--r',(Math.random()*12-6)+'deg');t.style.setProperty('--dl',(150+k*80)+'ms');
   tl.appendChild(t);requestAnimationFrame(function(){requestAnimationFrame(function(){t.classList.add('in')})})})}
-C.forEach(function(c,i){var b=document.createElement('button');b.type='button';b.className='ob';b.style.cssText='--c1:'+c[3]+';--c2:'+c[4]+';--d:-'+(i*.8)+'s';
- b.innerHTML='<em></em><span>'+c[1]+'</span>';b.setAttribute('aria-label',c[1]);b.addEventListener('click',function(){show(i)});dock.appendChild(b)});
+function burst(b,c){var r=b.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2;for(var k=0;k<14;k++){var d=document.createElement('i'),a=Math.random()*6.283,v=70+Math.random()*130;d.className='bp';d.style.cssText='left:'+x+'px;top:'+y+'px;--dx:'+Math.cos(a)*v+'px;--dy:'+(Math.sin(a)*v-50)+'px;background:radial-gradient(circle at 30% 30%,#fff,'+c[3]+' 42%,'+c[4]+')';document.body.appendChild(d);setTimeout(d.remove.bind(d),950)}}
+C.forEach(function(c,i){var b=document.createElement('button');b.type='button';b.className='ob';b.style.cssText='--c1:'+c[3]+';--c2:'+c[4]+';--d:-'+(i*.8)+'s;--sz:'+(window.mpScale?mpScale(c[0]):1);
+ b.innerHTML='<em></em><span>'+(c[5]||c[1])+'</span>';b.setAttribute('aria-label',c[1]);b.addEventListener('click',function(){show(i);burst(b,c)});dock.appendChild(b)});
 new IntersectionObserver(function(es,o){if(es[0].isIntersecting){show(0);o.disconnect()}},{threshold:.4}).observe(document.getElementById('stage'));
 if('serviceWorker'in navigator)addEventListener('load',function(){navigator.serviceWorker.register('sw.js')});
+})();
+</script>
+<script>
+(function(){
+function mk(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function cu(u){return 'url("'+String(u).replace(/["\\()\s]/g,function(c){return encodeURIComponent(c)})+'")'}
+function zoom(src,alt){var lb=mk('div','lb'),im=mk('img');im.src=src;im.alt=alt||'';lb.appendChild(im);function x(){lb.remove();removeEventListener('keydown',k)}function k(e){if(e.key==='Escape')x()}lb.addEventListener('click',x);addEventListener('keydown',k);document.body.appendChild(lb)}
+var g=document.getElementById('shots-grid'),bd=document.getElementById('board'),sl=document.getElementById('shots-lead'),LB={ims:'IMS',mes:'Mesmereyes',taj:'Taj Beauty',urb:'UrbaNest',fre:'Freelance'};
+function f2(n){n=+n||0;if(n>=1e6)return(n/1e6).toFixed(1).replace(/\.0$/,'')+'M';if(n>=1e3)return(n/1e3).toFixed(1).replace(/\.0$/,'')+'K';return String(n)}
+function eng(r){var v=+r.views||0;return v?((+r.likes||0)+(+r.comments||0)+(+r.shares||0))/v*100:0}
+function renderShots(){
+ var R=(typeof REELS!=='undefined'&&REELS)||[],P=(typeof PROOF!=='undefined'&&PROOF&&PROOF.length)?PROOF:null,PV2=window.mpPV||{};
+ g.innerHTML='';bd.innerHTML='';
+ if(R.length){bd.hidden=false;
+  var v=0,l=0,o=0,rc=0,by={};R.forEach(function(r){v+=+r.views||0;l+=+r.likes||0;o+=(+r.comments||0)+(+r.shares||0);rc+=+r.reach||0;var c=by[r.client]=by[r.client]||{v:0,n:0,x:0};c.v+=+r.views||0;c.n++;c.x+=(+r.likes||0)+(+r.comments||0)+(+r.shares||0)});
+  var t=mk('div','bt'),T=rc?[[f2(rc),'total reach'],[f2(v),'total views']]:[[f2(v),'total views']];
+  T=T.concat([[f2(l),'likes'],[(v?(l+o)/v*100:0).toFixed(1)+'%','engagement rate'],[String(R.length),'reels tracked']]);
+  T.forEach(function(a){var d=mk('div');d.appendChild(mk('b',null,a[0]));d.appendChild(mk('span',null,a[1]));t.appendChild(d)});bd.appendChild(t);
+  bd.appendChild(mk('h3','bh','Top reels by views'));
+  var tp=mk('div','tp'),top=R.slice().sort(function(a,b){return (+b.views||0)-(+a.views||0)}).slice(0,5),mxv=Math.max(1,+top[0].views||1);
+  top.forEach(function(r){var a=mk('a');a.href=/^https?:\/\//.test(r.url||'')?r.url:'#';a.target='_blank';a.rel='noopener';var h=mk('span');h.appendChild(mk('strong',null,r.title||'Reel'));h.appendChild(mk('em',null,LB[r.client]||r.client));a.appendChild(h);
+   var n=mk('span','n',f2(r.views));n.appendChild(mk('small',null,eng(r).toFixed(1)+'% engagement'));a.appendChild(n);var bar=mk('i');bar.style.setProperty('--w',Math.max(3,(+r.views||0)/mxv*100)+'%');a.appendChild(bar);tp.appendChild(a)});
+  bd.appendChild(tp);
+  bd.appendChild(mk('h3','bh','Views by client'));
+  var bc=mk('div','bc');Object.keys(by).sort(function(a,b){return by[b].v-by[a].v}).forEach(function(k){var d=mk('div');d.appendChild(mk('b',null,f2(by[k].v)));d.appendChild(document.createTextNode((LB[k]||k)+', '+by[k].n+' reels, '+(by[k].v?by[k].x/by[k].v*100:0).toFixed(1)+'% engagement'));bc.appendChild(d)});bd.appendChild(bc);
+  if(sl)sl.textContent=P?'Live numbers from my reels, plus real screenshots from Instagram Insights. Tap a screenshot to zoom in.':'Live numbers from every reel I have added. They update the moment I add a new one.'}
+ else{bd.hidden=true;if(sl)sl.textContent='Real screenshots from Instagram Insights, straight from the pages I ran. Tap one to zoom in.'}
+ if(P){bd.hidden=bd.hidden;g.hidden=false;if(R.length)g.before&&0;P.forEach(function(p){var b=mk('button','shot');b.type='button';var im=mk('span','im');if(p.img)im.style.backgroundImage=cu(PV2[p.img]||p.img);b.appendChild(im);b.appendChild(mk('b',null,p.title||'Insights'));b.addEventListener('click',function(){if(p.img)zoom(PV2[p.img]||p.img,p.title)});g.appendChild(b)})}
+ else if(R.length){g.hidden=true}
+ else{g.hidden=false;['Reach and views','Followers growth','Top reel insights','Audience'].forEach(function(t){var b=mk('div','shot ph');b.style.cursor='default';b.appendChild(mk('span','im'));b.appendChild(mk('b',null,t+' (coming soon)'));g.appendChild(b)})}}
+window.renderShots=renderShots;renderShots();
+var picked={},bk=document.getElementById('bk'),wab=document.getElementById('wab'),bw=document.getElementById('bw');
+function q(i){return document.getElementById(i)}
+function upd(){var n=Object.keys(picked),t='Hi Maninder, I saw your portfolio.';if(q('bn').value.trim())t+='\nName or brand: '+q('bn').value.trim();if(n.length)t+='\nNeed: '+n.join(', ');t+='\nGoal: '+q('bg').value;if(q('bl').value.trim())t+='\nPage: '+q('bl').value.trim();if(q('bm').value.trim())t+='\nNote: '+q('bm').value.trim();wab.textContent=t;bw.href='https://wa.me/919712890124?text='+encodeURIComponent(t)}
+['Social media management','Reels and editing','Graphic design','Research and analytics'].forEach(function(n){var b=mk('button',null,n);b.type='button';b.addEventListener('click',function(){if(picked[n])delete picked[n];else picked[n]=1;b.classList.toggle('on',!!picked[n]);upd()});bk.appendChild(b)});
+['bn','bl','bg','bm'].forEach(function(i){q(i).addEventListener('input',upd);q(i).addEventListener('change',upd)});upd();
+[].forEach.call(document.querySelectorAll('.stgl button'),function(b){b.addEventListener('click',function(){var ch=document.querySelector('.chips button[data-f="'+(window.__stgKey||'all')+'"]');if(ch)ch.click();var t=document.querySelector(b.dataset.t);if(t){t.scrollIntoView({behavior:'smooth'});t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash')}})});
+
+})();
+</script>
+<script>
+(function(){if(typeof REVIEWS==='undefined')window.REVIEWS=[];
+function E(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function draw(){var g=document.getElementById('rvs'),sec=document.getElementById('reviews');if(!g)return;g.textContent='';
+ window.REVIEWS.forEach(function(r){var n=Math.max(1,Math.min(5,+r.stars||5)),f=E('figure','rvc');f.appendChild(E('div','stx','\u2605'.repeat(n)+'\u2606'.repeat(5-n)));f.appendChild(E('blockquote',null,'\u201C'+(r.text||'')+'\u201D'));
+  var c=E('figcaption');c.appendChild(E('b',null,r.name||'Client'));if(r.brand)c.appendChild(E('span',null,r.brand));f.appendChild(c);g.appendChild(f)});
+ sec.hidden=!window.REVIEWS.length}
+draw();
+new MutationObserver(function(){var sv=document.getElementById('sv');if(!sv||document.getElementById('rvadm'))return;
+ var d=E('details');d.id='rvadm';d.innerHTML='<summary>Reviews (kind words)</summary><label>Name</label><input id="rn" autocomplete="off"><label>Brand or role</label><input id="rb" autocomplete="off"><label>Stars</label><select id="rs"><option>5</option><option>4</option><option>3</option></select><label>Review text</label><textarea id="rt" rows="4"></textarea><button type="button" id="ra">Add review</button><div id="rl"></div><p id="rm"></p>';
+ sv.parentNode.insertBefore(d,sv);
+ function list(){var l=document.getElementById('rl');l.textContent='';window.REVIEWS.forEach(function(r,i){var li=E('div','li');li.appendChild(E('span',null,(r.name||'Client')+' ('+(r.stars||5)+'/5)'));var x=E('button','del','Delete');x.type='button';x.addEventListener('click',function(){window.REVIEWS.splice(i,1);upd()});li.appendChild(x);l.appendChild(li)})}
+ function upd(){draw();list();document.getElementById('rm').textContent='Unsaved changes. Press Save and publish.'}
+ document.getElementById('ra').addEventListener('click',function(){var n=document.getElementById('rn').value.trim(),t=document.getElementById('rt').value.trim();if(!n||!t){document.getElementById('rm').textContent='Add a name and the review text.';return}
+  window.REVIEWS.unshift({name:n,brand:document.getElementById('rb').value.trim(),stars:+document.getElementById('rs').value,text:t});['rn','rb','rt'].forEach(function(i){document.getElementById(i).value=''});upd()});
+ list()}).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
+<div id="pg"></div><a id="fab" class="fab" href="https://wa.me/919712890124?text=Hi%20Maninder%2C%20I%20saw%20your%20portfolio" target="_blank" rel="noopener" aria-label="Message on WhatsApp">Hi!</a>
+<script>
+(function(){var rmo=matchMedia('(prefers-reduced-motion:reduce)').matches;
+var els=[].slice.call(document.querySelectorAll('section[id]:not(#stage) .wrap>*:not(.hd)'));
+if(!rmo&&'IntersectionObserver'in window){var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('v');io2.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -6% 0px'});
+els.forEach(function(el,i){el.classList.add('sv');el.style.setProperty('--sx',['0px','-60px','60px'][i%3]);el.style.setProperty('--rd',(i%4*.08)+'s');io2.observe(el)})}
+var pg=document.getElementById('pg'),fab=document.getElementById('fab'),stg=document.getElementById('stage'),inS=false;
+function up(){var h=document.documentElement.scrollHeight-innerHeight;pg.style.transform='scaleX('+(h>0?scrollY/h:0)+')';fab.classList.toggle('on',scrollY>innerHeight*.7&&!inS)}
+if(stg)new IntersectionObserver(function(e){inS=e[0].isIntersecting;up()}).observe(stg);
+addEventListener('scroll',function(){requestAnimationFrame(up)},{passive:true});up();
 })();
 </script>
 </body>
