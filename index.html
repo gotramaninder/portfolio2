@@ -333,7 +333,7 @@ details[open] summary::after{transform:rotate(45deg)}details p{padding:0 4px 24p
  <h1 class="name" id="name" aria-label="Maninder"><i style="--n:0" aria-hidden="true">M</i><i style="--n:1" aria-hidden="true">a</i><i style="--n:2" aria-hidden="true">n</i><i style="--n:3" aria-hidden="true">i</i><i style="--n:4" aria-hidden="true">n</i><i style="--n:5" aria-hidden="true">d</i><i style="--n:6" aria-hidden="true">e</i><i style="--n:7" aria-hidden="true">r</i></h1>
  <p class="tag">Social media manager, video editor and designer from Ahmedabad.</p>
  <p class="sub">I plan, shoot, edit and design content that gets brands seen, remembered and followed. Three Instagram pages, 14.5 million views, one person behind the work.</p>
- <div class="btns"><a class="btn" data-mag href="https://wa.me/919712890124?text=Hi%20Maninder%2C%20I%20saw%20your%20portfolio" target="_blank" rel="noopener">Message on WhatsApp</a><a class="btn o" data-mag href="#work">See the work</a></div>
+ <div class="btns"><a class="btn" data-mag href="https://wa.me/919712890124?text=Hi%20Maninder%2C%20I%20saw%20your%20portfolio" target="_blank" rel="noopener">Message on WhatsApp</a><a class="btn o" data-mag href="#work">See the work</a><button type="button" class="btn y" id="rvOpen" data-mag>Leave a review</button></div>
  <p class="dh">Drag the bubbles. Tap one to jump to that work.</p>
 </div>
 <div class="orbs" id="orbs">
@@ -494,7 +494,7 @@ details[open] summary::after{transform:rotate(45deg)}details p{padding:0 4px 24p
  <h2>Let's make something people <em>can't scroll past.</em></h2>
  <p class="l">I'm open to freelance projects and full-time social media roles. Message me and I'll get back to you soon.</p>
  <div class="btns"><a class="btn" data-mag href="https://wa.me/919712890124?text=Hi%20Maninder%2C%20I%20saw%20your%20portfolio" target="_blank" rel="noopener">Message on WhatsApp</a><a class="btn o" data-mag href="https://instagram.com/manindergotra_25" target="_blank" rel="noopener">@manindergotra_25 on Instagram</a></div>
- <div class="foot"><span>Maninder, Ahmedabad, India. Available for remote work worldwide.</span><span><a href="review.html">Leave a review</a><a href="#admin" id="adminlink">Admin</a><a href="#top">Back to top</a></span></div>
+ <div class="foot"><span>Maninder, Ahmedabad, India. Available for remote work worldwide.</span><span><a href="review.html" id="rvFoot">Leave a review</a><a href="#admin" id="adminlink">Admin</a><a href="#top">Back to top</a></span></div>
 </div></footer>
 
 <script>var REELS=[],DESIGNS=[],PROOF=[]</script>
@@ -784,10 +784,11 @@ function upd(){var n=Object.keys(picked),t='Hi Maninder, I saw your portfolio.';
 (function(){if(typeof REVIEWS==='undefined')window.REVIEWS=[];
 function E(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
 function draw(){var g=document.getElementById('rvs'),sec=document.getElementById('reviews');if(!g)return;g.textContent='';
- window.REVIEWS.forEach(function(r){var n=Math.max(1,Math.min(5,+r.stars||5)),f=E('figure','rvc');f.appendChild(E('div','stx','\u2605'.repeat(n)+'\u2606'.repeat(5-n)));f.appendChild(E('blockquote',null,'\u201C'+(r.text||'')+'\u201D'));
+ (window.REVIEWS.concat(window.__API_REVIEWS||[])).forEach(function(r){var n=Math.max(1,Math.min(5,+r.stars||5)),f=E('figure','rvc');f.appendChild(E('div','stx','\u2605'.repeat(n)+'\u2606'.repeat(5-n)));f.appendChild(E('blockquote',null,'\u201C'+(r.text||'')+'\u201D'));
   var c=E('figcaption');c.appendChild(E('b',null,r.name||'Client'));if(r.brand)c.appendChild(E('span',null,r.brand));f.appendChild(c);g.appendChild(f)});
- sec.hidden=!window.REVIEWS.length}
+ sec.hidden=!(window.REVIEWS.length+(window.__API_REVIEWS||[]).length)}
 draw();
+try{fetch('/api/reviews/public').then(function(r){return r.ok?r.json():null}).then(function(d){if(d&&d.reviews&&d.reviews.length){window.__API_REVIEWS=d.reviews.map(function(x){return{name:x.name,brand:x.brand,stars:x.rating,text:x.text}});draw()}}).catch(function(){})}catch(e){}
 new MutationObserver(function(){var sv=document.getElementById('sv');if(!sv||document.getElementById('rvadm'))return;
  var d=E('details');d.id='rvadm';d.innerHTML='<summary>Reviews (kind words)</summary><label>Name</label><input id="rn" autocomplete="off"><label>Brand or role</label><input id="rb" autocomplete="off"><label>Stars</label><select id="rs"><option>5</option><option>4</option><option>3</option></select><label>Review text</label><textarea id="rt" rows="4"></textarea><button type="button" id="ra">Add review</button><div id="rl"></div><p id="rm"></p>';
  sv.parentNode.insertBefore(d,sv);
@@ -808,6 +809,132 @@ var pg=document.getElementById('pg'),fab=document.getElementById('fab'),stg=docu
 function up(){var h=document.documentElement.scrollHeight-innerHeight;pg.style.transform='scaleX('+(h>0?scrollY/h:0)+')';fab.classList.toggle('on',scrollY>innerHeight*.7&&!inS)}
 if(stg)new IntersectionObserver(function(e){inS=e[0].isIntersecting;up()}).observe(stg);
 addEventListener('scroll',function(){requestAnimationFrame(up)},{passive:true});up();
+})();
+</script>
+<!-- ===== Leave a Review modal (same page, saves to the database as Pending) ===== -->
+<style>
+html.rvm-lock,html.rvm-lock body{overflow:hidden}
+.rvm{position:fixed;inset:0;z-index:260;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(21,18,14,.72)}
+.rvm.on{display:flex}
+.rvm-box{position:relative;width:min(560px,100%);max-height:calc(100dvh - 32px);overflow:auto;overscroll-behavior:contain;background:#fff;color:#15120E;border:2px solid #15120E;border-radius:26px;padding:28px;box-shadow:8px 8px 0 #15120E;font-size:16px;line-height:1.5}
+.rvm h2{font:800 clamp(26px,5vw,36px)/1.05 var(--d,inherit);letter-spacing:-.03em;margin:0 36px 6px 0}
+.rvm .rvm-s{opacity:.7;margin:0 0 6px}
+.rvm label,.rvm legend{display:block;font-weight:700;font-size:14px;margin:14px 0 6px;padding:0}
+.rvm fieldset{border:0;padding:0;margin:0;min-width:0}
+.rvm input[type=text],.rvm input[type=email],.rvm select,.rvm textarea{width:100%;font:inherit;font-size:16px;padding:12px 14px;border:2px solid #15120E;border-radius:14px;background:#F1EEE3;color:#15120E}
+.rvm textarea{resize:vertical;min-height:110px}
+.rvm input:focus-visible,.rvm select:focus-visible,.rvm textarea:focus-visible,.rvm button:focus-visible{outline:3px solid #2E3BFF;outline-offset:2px}
+.rvm-x{position:absolute;top:12px;right:12px;width:44px;height:44px;border-radius:50%;border:2px solid #15120E;background:#fff;color:#15120E;font:700 22px/1 system-ui;cursor:pointer}
+.rvm-st{display:flex;gap:2px}
+.rvm-st label{margin:0;font-size:38px;line-height:1;cursor:pointer;color:#C9C3B0;padding:2px 4px;font-weight:400;transition:transform .15s}
+.rvm-st label.on{color:#FF8A00}
+.rvm-st label:hover{transform:scale(1.15)}
+.rvm-st input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.rvm-st input:focus-visible+span{outline:3px solid #2E3BFF;outline-offset:2px;border-radius:6px}
+.rvm-c{display:flex;gap:10px;align-items:flex-start;font-weight:400!important;font-size:14px!important;margin-top:16px!important}
+.rvm-c input{width:22px;height:22px;flex:none;margin-top:2px;accent-color:#15120E}
+.rvm-er{color:#B0002A;font-weight:700;font-size:14px;min-height:0;margin-top:4px}
+.rvm-go{margin-top:20px;width:100%;padding:16px;border:0;border-radius:999px;background:#15120E;color:#F1EEE3;font:700 18px var(--b,inherit);cursor:pointer;min-height:52px}
+.rvm-go:disabled{opacity:.6;cursor:wait}
+.rvm-top{margin-top:12px;color:#B0002A;font-weight:700}
+.rvm-ok{text-align:center;padding:18px 0 6px}
+.rvm-ok h2{margin:0 0 10px}
+.rvm-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.rvm-note{font-size:13px;opacity:.6;text-align:center;margin-top:12px}
+@media (max-width:600px){.rvm{align-items:flex-end;padding:0}.rvm-box{width:100%;max-height:92dvh;border-radius:26px 26px 0 0;border-bottom:0;box-shadow:none;padding:24px 18px calc(24px + env(safe-area-inset-bottom))}.rvm-st label{font-size:42px}}
+@media (prefers-reduced-motion:reduce){.rvm-st label{transition:none}}
+</style>
+<div class="rvm" id="rvm" role="dialog" aria-modal="true" aria-labelledby="rvmT" aria-hidden="true">
+ <div class="rvm-box" id="rvmBox">
+  <button type="button" class="rvm-x" id="rvmX" aria-label="Close review form">&times;</button>
+  <div id="rvmForm">
+   <h2 id="rvmT">How was working with me?</h2>
+   <p class="rvm-s">A few honest lines help a lot. It takes one minute.</p>
+   <label for="rvN">Your name *</label><input type="text" id="rvN" autocomplete="name" maxlength="80" required>
+   <div class="rvm-er" id="rvNe" role="alert"></div>
+   <label for="rvB">Brand or business name</label><input type="text" id="rvB" autocomplete="organization" maxlength="120">
+   <label for="rvE">Email (optional)</label><input type="email" id="rvE" autocomplete="email" inputmode="email" maxlength="254">
+   <div class="rvm-er" id="rvEe" role="alert"></div>
+   <label for="rvS">Service you received (optional)</label>
+   <select id="rvS"><option value="">Choose one</option><option>Social media management</option><option>Reels and video editing</option><option>Graphic design</option><option>Content strategy</option><option>Other</option></select>
+   <fieldset id="rvRG"><legend>Your rating *</legend>
+    <div class="rvm-st" id="rvSt"></div>
+    <div class="rvm-er" id="rvRe" role="alert"></div>
+   </fieldset>
+   <label for="rvT">Your review *</label><textarea id="rvT" rows="5" maxlength="1500" placeholder="What did I do for you? How did it go?" required></textarea>
+   <div class="rvm-er" id="rvTe" role="alert"></div>
+   <label class="rvm-c" for="rvC"><input type="checkbox" id="rvC"><span>I give permission for my review to be displayed publicly on the Design Hustler website.</span></label>
+   <div class="rvm-hp" aria-hidden="true"><label for="rvW">Leave this empty</label><input type="text" id="rvW" tabindex="-1" autocomplete="off"></div>
+   <div class="rvm-top" id="rvTop" role="alert"></div>
+   <button type="button" class="rvm-go" id="rvGo">Send my review</button>
+   <p class="rvm-note">Your review is checked by me first. It only appears on the site if you gave permission above.</p>
+  </div>
+  <div class="rvm-ok" id="rvOk" hidden>
+   <h2>Thank you!</h2>
+   <p>Your review has reached me. I read every one, and if you gave permission I may show it on this site after checking it.</p>
+   <button type="button" class="rvm-go" id="rvDone">Close</button>
+  </div>
+ </div>
+</div>
+<script>
+(function(){
+var m=document.getElementById('rvm');if(!m)return;
+var $=function(id){return document.getElementById(id)},opener=null,opened=0,rating=0,busy=false;
+var st=$('rvSt'),stars=[];
+for(var i=1;i<=5;i++)(function(i){
+ var l=document.createElement('label');l.setAttribute('for','rvR'+i);
+ var inp=document.createElement('input');inp.type='radio';inp.name='rvRate';inp.id='rvR'+i;inp.value=i;
+ var sp=document.createElement('span');sp.setAttribute('aria-hidden','true');sp.textContent='\u2605';
+ var sr=document.createElement('span');sr.className='rvm-hp';sr.textContent=i+' star'+(i>1?'s':'');
+ l.appendChild(inp);l.appendChild(sp);l.appendChild(sr);
+ inp.addEventListener('change',function(){rating=i;paint()});
+ st.appendChild(l);stars.push(l)})(i);
+function paint(){stars.forEach(function(l,k){l.classList.toggle('on',k<rating)})}
+function errs(){['rvNe','rvEe','rvRe','rvTe','rvTop'].forEach(function(i){$(i).textContent=''})}
+function open(e){
+ if(e&&e.preventDefault)e.preventDefault();
+ opener=document.activeElement;opened=Date.now();errs();
+ $('rvmForm').hidden=false;$('rvOk').hidden=true;
+ m.classList.add('on');m.setAttribute('aria-hidden','false');document.documentElement.classList.add('rvm-lock');
+ setTimeout(function(){$('rvN').focus()},30)}
+function close(){
+ m.classList.remove('on');m.setAttribute('aria-hidden','true');document.documentElement.classList.remove('rvm-lock');
+ if(opener&&opener.focus)opener.focus()}
+function reset(){['rvN','rvB','rvE','rvT','rvW'].forEach(function(i){$(i).value=''});$('rvS').value='';$('rvC').checked=false;rating=0;[].forEach.call(st.querySelectorAll('input'),function(x){x.checked=false});paint();errs()}
+[$('rvOpen'),$('rvFoot')].forEach(function(b){if(b)b.addEventListener('click',open)});
+$('rvmX').addEventListener('click',close);$('rvDone').addEventListener('click',function(){close();reset()});
+m.addEventListener('mousedown',function(e){if(e.target===m&&!busy)close()});
+document.addEventListener('keydown',function(e){
+ if(!m.classList.contains('on'))return;
+ if(e.key==='Escape'&&!busy){close();return}
+ if(e.key==='Tab'){
+  var f=[].filter.call($('rvmBox').querySelectorAll('button,input,select,textarea,a[href]'),function(x){return !x.disabled&&x.tabIndex>=0&&x.offsetParent!==null&&!x.closest('[hidden]')});
+  if(!f.length)return;var a=f[0],z=f[f.length-1];
+  if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}
+  else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}});
+if(location.hash==='#review')open();
+$('rvGo').addEventListener('click',function(){
+ if(busy)return;errs();
+ var n=$('rvN').value.trim(),em=$('rvE').value.trim(),t=$('rvT').value.trim(),bad=false;
+ if(n.length<2){$('rvNe').textContent='Please enter your name.';bad=true}
+ if(em&&!/^[^\s@]{1,64}@[^\s@]{1,190}\.[^\s@]{2,}$/.test(em)){$('rvEe').textContent='That email does not look right.';bad=true}
+ if(!rating){$('rvRe').textContent='Please choose a rating from 1 to 5 stars.';bad=true}
+ if(t.length<10){$('rvTe').textContent='Please write at least a few words (10 characters).';bad=true}
+ if(bad){var f=m.querySelector('.rvm-er:not(:empty)');if(f&&f.previousElementSibling&&f.previousElementSibling.focus)f.previousElementSibling.focus();return}
+ busy=true;var g=$('rvGo');g.disabled=true;g.textContent='Sending\u2026';
+ var ctl=window.AbortController?new AbortController():null,to=setTimeout(function(){if(ctl)ctl.abort()},15000);
+ fetch('/api/reviews',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'same-origin',signal:ctl?ctl.signal:undefined,
+  body:JSON.stringify({name:n,brand:$('rvB').value.trim(),email:em,service:$('rvS').value,rating:rating,text:t,consent:$('rvC').checked,website:$('rvW').value,el:Date.now()-opened})})
+ .then(function(r){return r.json().catch(function(){return{}}).then(function(d){d.__s=r.status;return d})})
+ .then(function(d){
+  clearTimeout(to);busy=false;g.disabled=false;g.textContent='Send my review';
+  if(d.ok){$('rvmForm').hidden=true;$('rvOk').hidden=false;$('rvDone').focus();return}
+  if(d.error==='validation'&&d.fields){
+   if(d.fields.name)$('rvNe').textContent=d.fields.name;if(d.fields.email)$('rvEe').textContent=d.fields.email;
+   if(d.fields.rating)$('rvRe').textContent=d.fields.rating;if(d.fields.text)$('rvTe').textContent=d.fields.text;return}
+  $('rvTop').textContent=d.__s===429?'You have sent a few reviews already. Please try again later.':'Something went wrong and your review was not sent. Please try again in a moment.'})
+ .catch(function(){clearTimeout(to);busy=false;g.disabled=false;g.textContent='Send my review';$('rvTop').textContent='Could not reach the server. Check your connection and try again.'})
+});
 })();
 </script>
 </body>

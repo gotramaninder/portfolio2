@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "portfolio2",
+  "main": "src/index.js",
+  "compatibility_date": "2026-11-13",
+  "assets": {
+    "directory": "./",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*", "/admin", "/admin/", "/admin.html", "/studio", "/studio/"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "designhustler-db",
+      "database_id": "f85e765e-1940-4cda-a6c5-f581c59afbb5"
+    }
+  ],
+  "observability": { "enabled": true }
+}

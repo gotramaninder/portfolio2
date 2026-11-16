@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Design Hustler | Admin</title>
+<style nonce="__NONCE__">
+:root{--ink:#15120E;--panel:#1f1b15;--line:#3a342a;--lil:#F1EEE3;--yel:#FFE02E;--red:#FF2E4D;--grn:#37d67a;--mute:#a49d8b;--r:16px}
+*{box-sizing:border-box;margin:0}
+html{background:var(--ink)}
+body{font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--lil);background:var(--ink);min-height:100vh;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+.wrap{max-width:980px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:22px;letter-spacing:-.02em}h2{font-size:18px;margin-bottom:12px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.top small{color:var(--mute);display:block}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.narrow{max-width:420px;margin:12vh auto 0}
+label{display:block;font-weight:600;font-size:14px;margin:14px 0 6px}
+input,textarea,select{width:100%;font:inherit;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--ink);color:var(--lil)}
+input:focus,textarea:focus,select:focus,button:focus-visible{outline:2px solid var(--yel);outline-offset:2px}
+button{font:inherit;font-weight:700;cursor:pointer;border-radius:999px;border:2px solid var(--lil);background:transparent;color:var(--lil);padding:10px 18px;min-height:44px}
+button.p{background:var(--yel);border-color:var(--yel);color:var(--ink)}
+button.d{border-color:var(--red);color:var(--red)}
+button.g{border-color:var(--grn);color:var(--grn)}
+button:disabled{opacity:.5;cursor:wait}
+.msg{min-height:1.4em;margin-top:12px;font-weight:600}.msg.e{color:var(--red)}.msg.o{color:var(--grn)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:18px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px;cursor:pointer;text-align:left;min-height:0;font-weight:400}
+.stat b{display:block;font-size:28px;line-height:1.1}.stat span{color:var(--mute);font-size:13px}
+.stat.on{border-color:var(--yel)}
+.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}.bar select{width:auto}
+.rv{margin-bottom:12px}
+.rv .h{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline}
+.rv .n{font-weight:700;font-size:17px}.rv .s{color:var(--yel);letter-spacing:2px}
+.rv .m{color:var(--mute);font-size:13px;margin-top:2px;overflow-wrap:anywhere}
+.rv p{margin:10px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 10px;border-radius:99px;border:1px solid currentColor}
+.t-pending{color:var(--yel)}.t-approved{color:#7cc4ff}.t-published{color:var(--grn)}.t-rejected{color:var(--red)}
+.orig{background:var(--ink);border:1px dashed var(--line);border-radius:12px;padding:10px 12px;margin:8px 0;color:var(--mute);font-size:14px}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.acts button{padding:8px 14px;min-height:40px;font-size:14px}
+.log{font-size:13px;color:var(--mute);margin-top:8px}
+.mu{color:var(--mute)}.wide{width:100%;margin-top:6px}.btnrow{display:flex;gap:8px;flex-wrap:wrap}label.nom{margin:0}.right{text-align:right}.edbox{margin-top:10px}
+.empty{color:var(--mute);text-align:center;padding:30px 0}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<section id="vLogin" class="card narrow" hidden>
+  <h1>Design Hustler</h1><small class="mu">Admin sign in</small>
+  <label for="lEmail">Email</label><input id="lEmail" type="email" autocomplete="username" inputmode="email">
+  <label for="lPass">Password</label><input id="lPass" type="password" autocomplete="current-password">
+  <div class="msg" id="lMsg" role="alert"></div>
+  <button class="p wide" id="lGo" type="button">Sign in</button>
+</section>
+
+<section id="vPass" class="card narrow" hidden>
+  <h1>Set a new password</h1><small class="mu">Required before you can use the dashboard. Minimum 12 characters.</small>
+  <label for="pCur">Current (temporary) password</label><input id="pCur" type="password" autocomplete="current-password">
+  <label for="pNew">New password</label><input id="pNew" type="password" autocomplete="new-password">
+  <label for="pNew2">Repeat new password</label><input id="pNew2" type="password" autocomplete="new-password">
+  <div class="msg" id="pMsg" role="alert"></div>
+  <button class="p wide" id="pGo" type="button">Save password</button>
+</section>
+
+<section id="vApp" hidden>
+  <div class="top">
+    <div><h1>Reviews</h1><small id="who"></small></div>
+    <div class="btnrow">
+      <button id="bPw" type="button">Change password</button>
+      <button id="bOut" type="button">Log out</button>
+    </div>
+  </div>
+  <div class="stats" id="stats"></div>
+  <div class="bar">
+    <label for="fRate" class="nom">Rating</label>
+    <select id="fRate"><option value="">All</option><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select>
+    <button id="bAll" type="button">Show all statuses</button>
+  </div>
+  <div class="msg" id="aMsg" role="status"></div>
+  <div id="list"></div>
+</section>
+
+</div>
+<script nonce="__NONCE__">
+(function(){
+var $=function(id){return document.getElementById(id)};
+var state={status:'pending',rating:''};
+function show(v){['vLogin','vPass','vApp'].forEach(function(x){$(x).hidden=x!==v})}
+function msg(el,t,k){el.textContent=t||'';el.className='msg'+(k?' '+k:'')}
+function api(method,path,body){
+  var o={method:method,headers:{},credentials:'same-origin'};
+  if(body!==undefined){o.headers['Content-Type']='application/json';o.body=JSON.stringify(body)}
+  return fetch(path,o).then(function(r){return r.json().catch(function(){return{}}).then(function(d){d.__s=r.status;return d})})
+}
+function E(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+
+function boot(){
+  api('GET','/api/admin/me').then(function(d){
+    if(d.__s===200){$('who').textContent=d.email;if(d.mustChange)show('vPass');else{show('vApp');load()}}
+    else show('vLogin')
+  }).catch(function(){show('vLogin')})
+}
+
+$('lGo').addEventListener('click',function(){
+  var b=$('lGo');msg($('lMsg'),'');
+  var email=$('lEmail').value.trim(),pw=$('lPass').value;
+  if(!email||!pw){msg($('lMsg'),'Enter your email and password.','e');return}
+  b.disabled=true;b.textContent='Signing in\u2026';
+  api('POST','/api/admin/login',{email:email,password:pw}).then(function(d){
+    b.disabled=false;b.textContent='Sign in';
+    if(d.ok){$('lPass').value='';boot()}
+    else if(d.__s===429)msg($('lMsg'),'Too many attempts. Try again in 15 minutes.','e');
+    else msg($('lMsg'),'Wrong email or password.','e')
+  }).catch(function(){b.disabled=false;b.textContent='Sign in';msg($('lMsg'),'Network error. Try again.','e')})
+});
+$('lPass').addEventListener('keydown',function(e){if(e.key==='Enter')$('lGo').click()});
+
+$('pGo').addEventListener('click',function(){
+  var c=$('pCur').value,n=$('pNew').value,n2=$('pNew2').value;
+  if(n!==n2)return msg($('pMsg'),'The new passwords do not match.','e');
+  if(n.length<12)return msg($('pMsg'),'Use at least 12 characters.','e');
+  $('pGo').disabled=true;
+  api('POST','/api/admin/password',{current:c,next:n}).then(function(d){
+    $('pGo').disabled=false;
+    if(d.ok){['pCur','pNew','pNew2'].forEach(function(i){$(i).value=''});msg($('pMsg'),'');boot()}
+    else msg($('pMsg'),d.message||(d.__s===401?'Current password is wrong.':'Could not save. Try again.'),'e')
+  })
+});
+$('bPw').addEventListener('click',function(){show('vPass')});
+$('bOut').addEventListener('click',function(){api('POST','/api/admin/logout',{}).then(function(){show('vLogin')})});
+
+function load(){
+  var q='?'+(state.status?'status='+state.status+'&':'')+(state.rating?'rating='+state.rating:'');
+  api('GET','/api/admin/reviews'+q).then(function(d){
+    if(d.__s===401)return show('vLogin');
+    if(d.__s===403)return show('vPass');
+    if(!d.ok)return msg($('aMsg'),'Could not load reviews.','e');
+    drawStats(d.counts);drawList(d.reviews)
+  }).catch(function(){msg($('aMsg'),'Network error.','e')})
+}
+function drawStats(c){
+  var s=$('stats');s.textContent='';
+  [['pending','Pending'],['published','Published'],['approved','Approved (hidden)'],['rejected','Rejected']].forEach(function(x){
+    var b=E('button','stat'+(state.status===x[0]?' on':''));b.type='button';
+    b.appendChild(E('b',null,String(c[x[0]]||0)));b.appendChild(E('span',null,x[1]));
+    b.addEventListener('click',function(){state.status=x[0];load()});s.appendChild(b)
+  })
+}
+$('fRate').addEventListener('change',function(){state.rating=this.value;load()});
+$('bAll').addEventListener('click',function(){state.status='';load()});
+
+function act(id,action,extra,okText){
+  msg($('aMsg'),'');
+  var body={action:action};if(extra)for(var k in extra)body[k]=extra[k];
+  return api('POST','/api/admin/reviews/'+id+'/action',body).then(function(d){
+    if(d.ok){msg($('aMsg'),okText||'Done.','o');load()}
+    else msg($('aMsg'),d.error==='no_consent'?'This client did not give permission to publish. It cannot be made public.':'Could not do that ('+(d.error||d.__s)+').','e')
+  })
+}
+function drawList(rows){
+  var l=$('list');l.textContent='';
+  if(!rows.length){l.appendChild(E('div','empty','No reviews here yet.'));return}
+  rows.forEach(function(r){
+    var c=E('article','card rv'),h=E('div','h');
+    var left=E('div');left.appendChild(E('div','n',r.name));
+    left.appendChild(E('div','m',[r.brand,r.service,r.email].filter(Boolean).join(' \u00B7 ')||'No brand given'));
+    h.appendChild(left);
+    var right=E('div');right.className='right';
+    right.appendChild(E('div','s','\u2605'.repeat(r.rating)+'\u2606'.repeat(5-r.rating)));
+    right.appendChild(E('span','tag t-'+r.status,r.status+(r.featured?' \u00B7 featured':'')));
+    h.appendChild(right);c.appendChild(h);
+    c.appendChild(E('p',null,r.review_text));
+    if(r.review_text!==r.original_text){var o=E('div','orig');o.appendChild(E('b',null,'Original submission: '));o.appendChild(document.createTextNode(r.original_text));c.appendChild(o)}
+    c.appendChild(E('div','m','Received '+r.created_at+' UTC \u00B7 Public permission: '+(r.consent?'Yes':'NO')));
+    var a=E('div','acts');
+    function B(t,cls,fn){var b=E('button',cls,t);b.type='button';b.addEventListener('click',fn);a.appendChild(b)}
+    if(r.status==='pending'||r.status==='approved'){
+      if(r.consent)B('Approve & publish','p',function(){act(r.id,'publish',null,'Published on the website.')});
+      if(r.status==='pending')B('Approve only','g',function(){act(r.id,'approve',null,'Approved (not public yet).')});
+    }
+    if(r.status==='rejected')B('Re-approve','g',function(){act(r.id,'approve',null,'Moved back to approved.')});
+    if(r.status==='published'){
+      B('Unpublish','',function(){act(r.id,'unpublish',null,'Removed from the website.')});
+      B(r.featured?'Unfeature':'Feature','',function(){act(r.id,r.featured?'unfeature':'feature',null,r.featured?'Unfeatured.':'Featured at the top.')});
+    }
+    if(r.status!=='rejected')B('Reject','d',function(){act(r.id,'reject',null,'Rejected.')});
+    B('Edit text','',function(){
+      var ta=E('textarea');ta.rows=4;ta.value=r.review_text;ta.setAttribute('aria-label','Edit review text');
+      var row=E('div','acts');
+      var s=E('button','p','Save edit');s.type='button';s.addEventListener('click',function(){act(r.id,'edit',{text:ta.value},'Text updated. The original submission is kept.')});
+      var x=E('button',null,'Cancel');x.type='button';x.addEventListener('click',function(){ed.remove()});
+      row.appendChild(s);row.appendChild(x);
+      var ed=E('div');ed.className='edbox';ed.appendChild(ta);ed.appendChild(row);c.appendChild(ed);ta.focus()
+    });
+    B('History','',function(){
+      api('GET','/api/admin/reviews/'+r.id+'/log').then(function(d){
+        var old=c.querySelector('.log');if(old)old.remove();
+        var g=E('div','log');
+        if(!d.log||!d.log.length)g.textContent='No moderation actions yet.';
+        else d.log.forEach(function(x){g.appendChild(E('div',null,x.created_at+' UTC \u2014 '+x.action))});
+        c.appendChild(g)
+      })
+    });
+    B('Delete','d',function(){
+      if(!window.confirm('Delete this review permanently? A record of the deletion is kept.'))return;
+      api('DELETE','/api/admin/reviews/'+r.id).then(function(d){if(d.ok){msg($('aMsg'),'Deleted.','o');load()}else msg($('aMsg'),'Could not delete.','e')})
+    });
+    c.appendChild(a);l.appendChild(c)
+  })
+}
+boot();
+})();
+</script>
+</body>
+</html>
