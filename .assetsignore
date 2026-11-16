@@ -1,0 +1,15 @@
+# Files in this list are NOT served publicly
+src
+test
+migrations
+node_modules
+.git
+.github
+.wrangler
+.dev.vars
+wrangler.jsonc
+package.json
+package-lock.json
+SETUP.md
+.assetsignore
+scripts

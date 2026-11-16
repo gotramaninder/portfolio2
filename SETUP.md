@@ -1,10 +1,14 @@
-# Deploy notes (Design Hustler / portfolio2)
+# Deploy notes (Design Hustler / portfolio2) - code-only update
 
-1. Replace the repo files with this folder's contents and push (Workers Builds deploys on push).
-   - New: src/index.js, wrangler.jsonc, package.json, .assetsignore, dashboard.html, migrations/, test/
-   - Changed: index.html (Leave a review modal + approved reviews in Kind Words)
-   - Untouched: admin.html, review.html, work.js, sw.js, images, videos, JSON files
-2. Admin: https://<your-site>/admin  (email: gotramaninder@gmail.com). First login forces a new password.
-3. The old portfolio editor (admin.html, GitHub token based) now lives at /studio.
-4. Keep your existing proof/ folder in the repo if you have one (it was not in the ZIP).
-5. Local tests: `node test/run.mjs` (API) and `node test/browser.mjs` (needs a Chromium).
+Copy these into the repo root (they only ADD or replace code files):
+  index.html, dashboard.html, wrangler.jsonc, package.json, .assetsignore, _headers, SETUP.md
+  src/  migrations/  scripts/  test/
+
+DO NOT touch your content files: work.js, display-settings.json, site-content.json, covers/, videos/, designs/, posts/, proof/, photo.jpg, og.jpg.
+
+After deploy:
+  /admin   -> reviews dashboard (gotramaninder@gmail.com)
+  /studio  -> your existing portfolio editor (old admin.html)
+Database guards (migration 0003) are already applied to designhustler-db.
+Tests: `node test/run.mjs` (API), `node test/browser.mjs` (needs Chromium).
+Forgot the admin password: `node scripts/reset-admin-password.mjs "new password"`, or ask Claude to run the SQL.

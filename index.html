@@ -318,6 +318,7 @@ details[open] summary::after{transform:rotate(45deg)}details p{padding:0 4px 24p
 .rvc .stx{color:#FF8A00;letter-spacing:3px;font-size:20px}.rvc blockquote{margin:12px 0 16px;font-size:18px}.rvc figcaption b{display:block}.rvc figcaption span{opacity:.65;font-size:15px}
 @keyframes pop{from{opacity:0;transform:translateY(30px) scale(.94)}}.dr textarea{width:100%;font:inherit;padding:10px;border-radius:10px}
 </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Maninder Singh Gotra","alternateName":"Design Hustler","jobTitle":"Social media manager, video editor and graphic designer","description":"Independent social media specialist and creative partner from Ahmedabad.","address":{"@type":"PostalAddress","addressLocality":"Ahmedabad","addressRegion":"Gujarat","addressCountry":"IN"},"sameAs":["https://instagram.com/manindergotra_25"]}</script>
 </head>
 <body>
 <div class="pre" id="pre" aria-hidden="true"><p><i></i>REC</p><b id="pc">0</b></div>
@@ -333,7 +334,7 @@ details[open] summary::after{transform:rotate(45deg)}details p{padding:0 4px 24p
  <h1 class="name" id="name" aria-label="Maninder"><i style="--n:0" aria-hidden="true">M</i><i style="--n:1" aria-hidden="true">a</i><i style="--n:2" aria-hidden="true">n</i><i style="--n:3" aria-hidden="true">i</i><i style="--n:4" aria-hidden="true">n</i><i style="--n:5" aria-hidden="true">d</i><i style="--n:6" aria-hidden="true">e</i><i style="--n:7" aria-hidden="true">r</i></h1>
  <p class="tag">Social media manager, video editor and designer from Ahmedabad.</p>
  <p class="sub">I plan, shoot, edit and design content that gets brands seen, remembered and followed. Three Instagram pages, 14.5 million views, one person behind the work.</p>
- <div class="btns"><a class="btn" data-mag href="https://wa.me/919712890124?text=Hi%20Maninder%2C%20I%20saw%20your%20portfolio" target="_blank" rel="noopener">Message on WhatsApp</a><a class="btn o" data-mag href="#work">See the work</a><button type="button" class="btn y" id="rvOpen" data-mag>Leave a review</button></div>
+ <div class="btns"><a class="btn" data-mag href="https://wa.me/919712890124?text=Hi%20Maninder%2C%20I%20saw%20your%20portfolio" target="_blank" rel="noopener">Message on WhatsApp</a><a class="btn o" data-mag href="#work">See the work</a></div>
  <p class="dh">Drag the bubbles. Tap one to jump to that work.</p>
 </div>
 <div class="orbs" id="orbs">
@@ -369,7 +370,7 @@ details[open] summary::after{transform:rotate(45deg)}details p{padding:0 4px 24p
 <section id="about"><div class="wrap">
  <div class="about">
   <figure class="pol" data-cur="Hi!">
-   <div class="ph2" id="ph2"><img src="photo.jpg" alt="Maninder" onerror="this.remove();document.getElementById('ph2').textContent='M'"></div>
+   <div class="ph2" id="ph2"><img src="photo.jpg" alt="Maninder" loading="lazy" decoding="async" onerror="this.remove();document.getElementById('ph2').textContent='M'"></div>
    <figcaption>Maninder, Ahmedabad</figcaption>
   </figure>
   <div>
@@ -433,7 +434,7 @@ details[open] summary::after{transform:rotate(45deg)}details p{padding:0 4px 24p
  </div>
 </div></section>
 
-<section id="reviews" hidden><div class="wrap"><h2 class="hd"><span>Kind words.</span></h2><p class="lead">What clients say about working with me.</p><div class="rvs" id="rvs"></div></div></section>
+<section id="reviews"><div class="wrap"><h2 class="hd"><span>Kind words.</span></h2><p class="lead" id="rvLead">What clients say about working with me.</p><div class="rvs" id="rvs" hidden></div><div class="rvx"><p>Worked with me? I would love to hear how it went. Every review is read by me first and only shown with your permission.</p><button type="button" class="btn o" id="rvKw">Leave a review</button></div></div></section>
 
 <section id="journey"><div class="wrap">
  <h2 class="hd"><span>How I got here.</span></h2>
@@ -786,7 +787,7 @@ function E(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)
 function draw(){var g=document.getElementById('rvs'),sec=document.getElementById('reviews');if(!g)return;g.textContent='';
  (window.REVIEWS.concat(window.__API_REVIEWS||[])).forEach(function(r){var n=Math.max(1,Math.min(5,+r.stars||5)),f=E('figure','rvc');f.appendChild(E('div','stx','\u2605'.repeat(n)+'\u2606'.repeat(5-n)));f.appendChild(E('blockquote',null,'\u201C'+(r.text||'')+'\u201D'));
   var c=E('figcaption');c.appendChild(E('b',null,r.name||'Client'));if(r.brand)c.appendChild(E('span',null,r.brand));f.appendChild(c);g.appendChild(f)});
- sec.hidden=!(window.REVIEWS.length+(window.__API_REVIEWS||[]).length)}
+ var tot=window.REVIEWS.length+(window.__API_REVIEWS||[]).length;g.hidden=!tot;var ld=document.getElementById('rvLead');if(ld)ld.textContent=tot?'What clients say about working with me.':'No reviews are published here yet.'}
 draw();
 try{fetch('/api/reviews/public').then(function(r){return r.ok?r.json():null}).then(function(d){if(d&&d.reviews&&d.reviews.length){window.__API_REVIEWS=d.reviews.map(function(x){return{name:x.name,brand:x.brand,stars:x.rating,text:x.text}});draw()}}).catch(function(){})}catch(e){}
 new MutationObserver(function(){var sv=document.getElementById('sv');if(!sv||document.getElementById('rvadm'))return;
@@ -831,8 +832,8 @@ html.rvm-lock,html.rvm-lock body{overflow:hidden}
 .rvm-st label:hover{transform:scale(1.15)}
 .rvm-st input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
 .rvm-st input:focus-visible+span{outline:3px solid #2E3BFF;outline-offset:2px;border-radius:6px}
-.rvm-c{display:flex;gap:10px;align-items:flex-start;font-weight:400!important;font-size:14px!important;margin-top:16px!important}
-.rvm-c input{width:22px;height:22px;flex:none;margin-top:2px;accent-color:#15120E}
+.rvm label.rvm-c{display:flex;gap:12px;align-items:flex-start;font-weight:400;font-size:14px;margin-top:18px;line-height:1.45;cursor:pointer}
+.rvm label.rvm-c input{width:22px;height:22px;flex:none;margin:0;accent-color:#15120E}
 .rvm-er{color:#B0002A;font-weight:700;font-size:14px;min-height:0;margin-top:4px}
 .rvm-go{margin-top:20px;width:100%;padding:16px;border:0;border-radius:999px;background:#15120E;color:#F1EEE3;font:700 18px var(--b,inherit);cursor:pointer;min-height:52px}
 .rvm-go:disabled{opacity:.6;cursor:wait}
@@ -843,6 +844,16 @@ html.rvm-lock,html.rvm-lock body{overflow:hidden}
 .rvm-note{font-size:13px;opacity:.6;text-align:center;margin-top:12px}
 @media (max-width:600px){.rvm{align-items:flex-end;padding:0}.rvm-box{width:100%;max-height:92dvh;border-radius:26px 26px 0 0;border-bottom:0;box-shadow:none;padding:24px 18px calc(24px + env(safe-area-inset-bottom))}.rvm-st label{font-size:42px}}
 @media (prefers-reduced-motion:reduce){.rvm-st label{transition:none}}
+
+/* --- polish pass --- */
+.rvx{display:flex;gap:20px 32px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-top:34px;padding-top:24px;border-top:2px solid var(--ink)}
+.rvx p{max-width:52ch;font-size:18px;margin:0}
+.rvs:not([hidden])+.rvx{margin-top:44px}
+.foot a{display:inline-block;padding:12px 0}
+.foot a+a{margin-left:18px}
+@media (max-width:860px){.nav a{padding:11px 11px}}
+.rvm-go:hover:not(:disabled){background:var(--red,#FF2E4D);color:#fff}
+.rvm .rvm-s{margin-bottom:2px}
 </style>
 <div class="rvm" id="rvm" role="dialog" aria-modal="true" aria-labelledby="rvmT" aria-hidden="true">
  <div class="rvm-box" id="rvmBox">
@@ -901,7 +912,7 @@ function close(){
  m.classList.remove('on');m.setAttribute('aria-hidden','true');document.documentElement.classList.remove('rvm-lock');
  if(opener&&opener.focus)opener.focus()}
 function reset(){['rvN','rvB','rvE','rvT','rvW'].forEach(function(i){$(i).value=''});$('rvS').value='';$('rvC').checked=false;rating=0;[].forEach.call(st.querySelectorAll('input'),function(x){x.checked=false});paint();errs()}
-[$('rvOpen'),$('rvFoot')].forEach(function(b){if(b)b.addEventListener('click',open)});
+[$('rvKw'),$('rvFoot')].forEach(function(b){if(b)b.addEventListener('click',open)});
 $('rvmX').addEventListener('click',close);$('rvDone').addEventListener('click',function(){close();reset()});
 m.addEventListener('mousedown',function(e){if(e.target===m&&!busy)close()});
 document.addEventListener('keydown',function(e){
